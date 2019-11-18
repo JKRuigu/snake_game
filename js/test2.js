@@ -7,35 +7,42 @@ var ctx = canvas.getContext('2d');
    	const m = 50; 
    	var sizeX =10;   	 
    	var sizeY = 10;
-   	var currentMove =0; //0-Right 1-Left 2-Up 3-Down  
+   	var currentMove =0; //0-Right 1-Left 2-Up 3- Down  
+   	var data = [];
+   	data.push({x,y});
+   	var size = 5; 
+
+   	// console.log(data); 
 
 ctx.fillRect(m,m,350,350);
 ctx.clearRect(x,y,sizeX,sizeY);
 
 
 
-moveRight = (x,y,sizeX,sizeY)=>{
-	console.log(`x: ${x},y: ${y}`);
+moveRight = (x,y,sizeX,sizeY,data)=>{
 	if (x == 390) {
 		x= 50;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return x;
 	}else{
 		x+=10;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return x;
 	}	
 }
 
 moveDown = (x,y,sizeX,sizeY)=>{
-	console.log(`Down --> x: ${x},y: ${y}`)
 	if (y == 390) {
 		y= 50;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return y;
 	}else{
 		y+=10;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return y;
 	}
 }
@@ -44,10 +51,12 @@ moveLeft = (x,y,sizeX,sizeY)=>{
 	if (x == 390) {
 		x= 50;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return x;
 	}else{
 		x-=10;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return x;
 	}
 }
@@ -57,70 +66,90 @@ moveUp = (x,y,sizeX,sizeY)=>{
 	if (y == 390) {
 		y= 50;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return y;
 	}else{
 		y-=10;
 		ctx.clearRect(x,y,sizeX,sizeY);
+   		data.push({x,y});
 		return y;
 	}
 }
 
 
 moveRight2 = ()=>{
-	currentMove = 0;
+	var X = moveRight(x,y,sizeX,sizeY,data);
+	x=X;
 }
 
 moveLeft2 = ()=>{
-	currentMove =1;
+	// alert('Heck! Yeah');
+	var X = moveLeft(x,y,sizeX,sizeY,data);
+	x=X;	
 }
 
 moveUp2 = ()=>{
-	currentMove = 2;
+	var Y = moveUp(x,y,sizeX,sizeY,data);
+	y=Y;
 }
 
 moveDown2 = ()=>{
-	currentMove = 3;
+	var Y = moveDown(x,y,sizeX,sizeY,data);
+	y=Y;
 }
 
-
-moveRight3 = ()=>{
-	var X = moveRight(x,y,sizeX,sizeY);
-	console.log(x,X);
-	x =X;	
-	console.log(x,X);
+move = index =>{
+	currentMove = index;
 }
 
-moveLeft3 = ()=>{
-	currentMove =1;
+// function popdata() {
+// 	data.pop();
+// }
+
+fill = (data,size,x,y,sizeX,sizeY)=>{
+	let len = data.length;
+	let last = data[0].x;
+	console.log("FILL function",size,len,last);
+	// if(size == len){
+	// 	popdata();
+	// }
+	console.log(data[0].x,data[0].y,sizeX,sizeY);
+	
+	data.forEach((item,i)=>{
+		if(i >= (size-1)){
+			console.log(data[0].x,data[0].y,sizeX,sizeY);
+			ctx.fillRect(data[0].x,data[0].y,sizeX,sizeY);
+			// data.pop(0);		
+		}
+	});
+
 }
 
-moveUp3 = ()=>{
-	currentMove = 3;
-}
-
-moveDown3 = ()=>{
-	currentMove = 3;
+function callfill() {
+	fill(data,size,x,y,sizeX,sizeY);	
 }
 
 setInterval(()=>{
-	console.log(currentMove);
+	console.log(`current movement:${currentMove} x: ${x},y: ${y}`);	
+	// console.log(data);
+	callfill();
+
+	// data.slice(0,size);
+	console.log(data);	
 	switch(currentMove){
 		case 0:
-			moveRight3();
+			moveRight2();
+			break;
 		case 1:
-			var X = moveLeft(x,y,sizeX,sizeY);
-			x=X;
-		break;
+			moveLeft2();
+			break;
+		case 2:
+			moveUp2();
+			break;
 		case 3:
-			var Y = moveUp(x,y,sizeX,sizeY);
-			y=Y;
-		break;
-		case 4:
-			var Y = moveDown(x,y,sizeX,sizeY);	
-			y=Y;
-		break;
+			moveDown2();
+			break;
 		default:
-			var X = moveRight(x,y,sizeX,sizeY);
-			x=X;
+			console.log("default");
 	}
 },2000);
