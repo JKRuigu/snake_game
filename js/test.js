@@ -17,17 +17,23 @@ var ctx = canvas.getContext('2d');
 ctx.fillRect(m,m,350,350);
 ctx.clearRect(x,y,sizeX,sizeY);
 
+draw = (x,y,sizeX,sizeY,data)=>{
+	let len = data.length;
 
+	for(i=0; i<len; i++){
+		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
+	}
+}
 
 moveRight = (x,y,sizeX,sizeY,data)=>{
 	if (x == 390) {
 		x= 50;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
 	}else{
 		x+=10;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
 	}	
@@ -36,12 +42,12 @@ moveRight = (x,y,sizeX,sizeY,data)=>{
 moveDown = (x,y,sizeX,sizeY)=>{
 	if (y == 390) {
 		y= 50;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}else{
 		y+=10;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}
@@ -50,12 +56,17 @@ moveDown = (x,y,sizeX,sizeY)=>{
 moveLeft = (x,y,sizeX,sizeY)=>{
 	if (x == 390) {
 		x= 50;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
+   		data.push({x,y});
+		return x;
+	}else if(x == 50){
+		x= 380;
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
 	}else{
 		x-=10;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
 	}
@@ -65,12 +76,17 @@ moveLeft = (x,y,sizeX,sizeY)=>{
 moveUp = (x,y,sizeX,sizeY)=>{
 	if (y == 390) {
 		y= 50;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
+   		data.push({x,y});
+		return y;
+	}else if(y == 50){
+		y= 380;
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}else{
 		y-=10;
-		ctx.clearRect(x,y,sizeX,sizeY);
+		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}
@@ -102,27 +118,6 @@ move = index =>{
 	currentMove = index;
 }
 
-// function popdata() {
-// 	data.pop();
-// }
-
-fill = (data,size,x,y,sizeX,sizeY)=>{
-	let len = data.length;
-	let last = data[0].x;
-	console.log("FILL function",size,len,last);
-	
-	if(len > size){
-		ctx.fillRect(data[0].x,data[0].y,sizeX,sizeY);
-		var rdata = data.slice(1,(size-1));
-		return rdata;			
-	}
-	return data;
-
-}
-
-function callfill() {
-	return fill(data,size,x,y,sizeX,sizeY);	
-}
 
 var myTimer = setInterval(()=>{
 	let last = data[0];
@@ -130,7 +125,7 @@ var myTimer = setInterval(()=>{
 	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len}`);	
 
 	if (len == size) {
-		data.forEach(item=>console.log(item.x));
+		// data.forEach(item=>console.log(item.x));
 		let myData = [];
 
 		data.forEach((item,i)=>{
@@ -141,7 +136,7 @@ var myTimer = setInterval(()=>{
 		});
 		data= [...myData];
 	}
-
+	// console.log(data);
 	
 	switch(currentMove){
 		case 0:
@@ -159,6 +154,6 @@ var myTimer = setInterval(()=>{
 		default:
 			console.log("default");
 	}
-},2000);
+},1000);
 
-// setInterval(()=>{clearInterval(myTimer)},10000);
+// setInterval(()=>{clearInterval(myTimer)},30000);

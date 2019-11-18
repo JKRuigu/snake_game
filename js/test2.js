@@ -110,32 +110,39 @@ fill = (data,size,x,y,sizeX,sizeY)=>{
 	let len = data.length;
 	let last = data[0].x;
 	console.log("FILL function",size,len,last);
-	// if(size == len){
-	// 	popdata();
-	// }
-	console.log(data[0].x,data[0].y,sizeX,sizeY);
 	
-	data.forEach((item,i)=>{
-		if(i >= (size-1)){
-			console.log(data[0].x,data[0].y,sizeX,sizeY);
-			ctx.fillRect(data[0].x,data[0].y,sizeX,sizeY);
-			// data.pop(0);		
-		}
-	});
+	if(len > size){
+		ctx.fillRect(data[0].x,data[0].y,sizeX,sizeY);
+		var rdata = data.slice(1,(size-1));
+		return rdata;			
+	}
+	return data;
 
 }
 
 function callfill() {
-	fill(data,size,x,y,sizeX,sizeY);	
+	return fill(data,size,x,y,sizeX,sizeY);	
 }
 
-setInterval(()=>{
-	console.log(`current movement:${currentMove} x: ${x},y: ${y}`);	
-	// console.log(data);
-	callfill();
+var myTimer = setInterval(()=>{
+	let last = data[0];
+	let len = data.length;
+	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len}`);	
 
-	// data.slice(0,size);
-	console.log(data);	
+	if (len == size) {
+		data.forEach(item=>console.log(item.x));
+		let myData = [];
+
+		data.forEach((item,i)=>{
+			ctx.fillRect(data[0].x,data[0].y,sizeX,sizeY);
+			if (i!=0) {
+				myData.push(item);
+			}
+		});
+		data= [...myData];
+	}
+
+	
 	switch(currentMove){
 		case 0:
 			moveRight2();
@@ -153,3 +160,5 @@ setInterval(()=>{
 			console.log("default");
 	}
 },2000);
+
+// setInterval(()=>{clearInterval(myTimer)},10000);
