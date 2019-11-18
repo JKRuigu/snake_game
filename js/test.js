@@ -11,6 +11,8 @@ var ctx = canvas.getContext('2d');
    	var data = [];
    	data.push({x,y});
    	var size = 5; 
+   	var maxX = 390;
+   	var maxY =390;
 
    	// console.log(data); 
 
@@ -26,13 +28,13 @@ draw = (x,y,sizeX,sizeY,data)=>{
 }
 
 moveRight = (x,y,sizeX,sizeY,data)=>{
-	if (x == 390) {
-		x= 50;
+	if (x == maxX) {
+		x= m;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
 	}else{
-		x+=10;
+		x+=sizeX;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
@@ -40,13 +42,13 @@ moveRight = (x,y,sizeX,sizeY,data)=>{
 }
 
 moveDown = (x,y,sizeX,sizeY)=>{
-	if (y == 390) {
-		y= 50;
+	if (y == maxY) {
+		y= m;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}else{
-		y+=10;
+		y+=sizeY;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
@@ -54,18 +56,18 @@ moveDown = (x,y,sizeX,sizeY)=>{
 }
 
 moveLeft = (x,y,sizeX,sizeY)=>{
-	if (x == 390) {
-		x= 50;
+	if (x == maxX) {
+		x= m;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
-	}else if(x == 50){
-		x= 380;
+	}else if(x == m){
+		x= maxX-sizeX;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
 	}else{
-		x-=10;
+		x-=sizeX;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return x;
@@ -74,18 +76,18 @@ moveLeft = (x,y,sizeX,sizeY)=>{
 
 
 moveUp = (x,y,sizeX,sizeY)=>{
-	if (y == 390) {
-		y= 50;
+	if (y == maxY) {
+		y= m;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
-	}else if(y == 50){
-		y= 380;
+	}else if(y == m){
+		y= maxY-sizeY;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}else{
-		y-=10;
+		y-=sizeX;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
