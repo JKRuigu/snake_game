@@ -28,8 +28,10 @@ ctx.strokeText('Snakes', 150, 45);
 
 ctx.clearRect(x,y,sizeX,sizeY);
 ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
-function changeY() {
+changeY =()=>{
+	// console.log(isMoveY);
 	isMoveY = !isMoveY;
+	// console.log(isMoveY);
 }
 
 draw = (x,y,sizeX,sizeY,data)=>{
@@ -109,7 +111,7 @@ createReward = ()=>{
 		ran2Y = ran2Y <50? 50:ran2Y //checks wheather is below 50;
 		// treasure = [{"x":ran2X,"y":ran2Y,isFound:false}];
 		treasure = [{"x":ran2X,"y":ran2Y,isFound:false}];
-		console.log(treasure);
+		// console.log(treasure);
 		console.log("Display")
 		ctx.clearRect(ran2X,ran2Y,sizeX,sizeY);
 		// setInterval(()=>{clearInterval(myTimer)},40000);
@@ -118,7 +120,7 @@ createReward = ()=>{
 var myTimer = setInterval(()=>{
 	let last = data[0];
 	let len = data.length;
-	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY} interval: ${interval}`);	
+	// console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY} interval: ${interval}`);	
 
 	if (len == size) {
 		let myData = [];
@@ -154,6 +156,7 @@ var myTimer = setInterval(()=>{
 		pending=false;
 		used = true;
 		treasure[0].isFound == true;
+		// changeY();
 		createReward();
 	}
 
@@ -163,7 +166,7 @@ var myTimer = setInterval(()=>{
 		console.log("PENDING.......")
 		pending= true;
 	}
-	ai(treasure,data,isMoveY);
+	ai(treasure,data,isMoveY,pending);
 
 	interval++;
 	switch(currentMove){
@@ -180,50 +183,32 @@ var myTimer = setInterval(()=>{
 
 setInterval(()=>{clearInterval(myTimer)},20000);
 
-ai = (treasure,data,isMoveY)=>{
-
-	let location = {"x":treasure[0].x,"y":treasure[0].y};
-	let target = {"x":data[0].x,"y":data[0].y};
-
-
+ai = (treasure,data,isMoveY,pending)=>{
+	// console.log(data,treasure);
+	let target = {"x":treasure[0].x,"y":treasure[0].y};
+	let location = {"x":data[0].x,"y":data[0].y};
 	let diffX = location.x - target.x;
 	let diffY =  location.y - target.y;
+	let xBool = location.x >target.x ? false:true;
+	let yBool = location.y>target.y?true:false;
+	let cX = xBool?target.x +10:target.x-10;
+	if (location.x == target.x && isMoveY == false) {
 
-	// if (location.x != target.x ) {
-	// 	console.log("1");
-	// 	let diffX = location.x - target.x;
-	// 	let diffY =  location.y - target.y;
-	// 	console.log(diffX,diffY);
-	// 	if (diffX == 0 && isMoveY == false) {
-
-	// 		goToY(diffY,location,target,isMoveY);
-	// 		isMoveY = true;
-	// 	}
-	// 	console.log(isMoveY); 	
-	// }
-	console.log(isMoveY);
-	if (location.x == target.x && diffY != 0 && isMoveY == false) {
-		console.log("Yeap")
-		// moveHorizontal2(true);
+	console.log(yBool);
+		move(1,yBool);
+		changeY();
+	}
+	if(location.y == target.y && isMoveY == true){
+		move(0,xBool);
 		changeY();
 	}
 	
 }
 
 distanceCalcutor =(location,target)=>{
-
 }
 
 goToY = (diffY,location,target,isMoveY)=>{
-	console.log("Hello")
-	// if (diffX == 10 && isMoveX == false) {
-		// moveHorizontal2(true);
-		moveVertical2(false);
-	// 	isMoveX = true;
-	// 	return isMoveX;
-	// }
-	// console.log(diffX)
-	// return isMoveX =false;
 }
 
 
