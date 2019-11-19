@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
 <html>
    <head>
+   
+      <style>
+         #test {
+            width: 100px;
+            height:100px;
+            margin: 0px auto;
+         }
+      </style>
       
       <script type="text/javascript">
-         var pattern= new Image();
-         
-         function animate(){
-            pattern.src = '/html5/images/pattern.jpg';
-            setInterval(drawShape, 100);
-         }
-         
          function drawShape(){
+         
             // get the canvas element using the DOM
             var canvas = document.getElementById('mycanvas');
             
@@ -20,16 +22,14 @@
                // use getContext to use the canvas for drawing
                var ctx = canvas.getContext('2d');
                
-               ctx.fillStyle = 'rgba(0,0,0,0.4)';
-               ctx.strokeStyle = 'rgba(0,153,255,0.4)';
-               ctx.save();
-               ctx.translate(150,150); 
+               ctx.fillStyle    = '#00F';
+               ctx.font         = 'Italic 30px Sans-Serif';
                
-               var time = new Date(); 
-               ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ( (2*Math.PI)/6000)*time.getMilliseconds() );
-               ctx.translate(0,28.5);
-               ctx.drawImage(pattern,-3.5,-3.5);
-               ctx.restore();
+               ctx.textBaseline = 'Top';
+               ctx.fillText  ('Hello world!', 40, 100);
+               
+               ctx.font         = 'Bold 30px Sans-Serif';
+               ctx.strokeText('Hello world!', 40, 50);
             }
             
             else {
@@ -39,8 +39,8 @@
       </script>
    </head>
    
-   <body onload="animate();">
-      <canvas id="mycanvas" width="400" height="400"></canvas>
+   <body id="test" onload="drawShape();">
+      <canvas id="mycanvas"></canvas>
    </body>
    
 </html>

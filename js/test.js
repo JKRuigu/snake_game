@@ -18,6 +18,7 @@ var ctx = canvas.getContext('2d');
    	var treasure= [{x:190,y:250,isFound:false}];
    	var pending =false;
    	var interval = 0;
+   	var isMoveY = false;
 
    	// console.log(data); 
 
@@ -25,6 +26,9 @@ ctx.fillRect(m,m,350,350);
 ctx.clearRect(x,y,sizeX,sizeY);
 
 ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+function changeY() {
+	isMoveY = !isMoveY;
+}
 
 draw = (x,y,sizeX,sizeY,data)=>{
 	let len = data.length;
@@ -92,6 +96,7 @@ move = (index,bool) =>{
 	currentMove = index;
 	index == 0? toX =bool: toY =bool;
 }
+
 createReward = ()=>{
 		let ranX = Math.floor(Math.random()*390);
 		let ran2X = ranX -(ranX%10); //random number for X
@@ -111,7 +116,7 @@ createReward = ()=>{
 var myTimer = setInterval(()=>{
 	let last = data[0];
 	let len = data.length;
-	// console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY} interval: ${interval}`);	
+	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY} interval: ${interval}`);	
 
 	if (len == size) {
 		let myData = [];
@@ -130,6 +135,7 @@ var myTimer = setInterval(()=>{
 	if (data[0].x == treasure[0].x && data[0].y == treasure[0].y && isFound == false ) {
 		console.log("Heck! Yeah");
 		treasure[0].isFound = true;
+		used = false;
 	}
 
 	if (pending === true) {
@@ -155,6 +161,8 @@ var myTimer = setInterval(()=>{
 		console.log("PENDING.......")
 		pending= true;
 	}
+	ai(treasure,data,isMoveY);
+
 	interval++;
 	switch(currentMove){
 		case 0:
@@ -167,5 +175,54 @@ var myTimer = setInterval(()=>{
 			console.log("default");
 	}
 },500);
+
+setInterval(()=>{clearInterval(myTimer)},20000);
+
+ai = (treasure,data,isMoveY)=>{
+
+	let location = {"x":treasure[0].x,"y":treasure[0].y};
+	let target = {"x":data[0].x,"y":data[0].y};
+
+
+	let diffX = location.x - target.x;
+	let diffY =  location.y - target.y;
+
+	// if (location.x != target.x ) {
+	// 	console.log("1");
+	// 	let diffX = location.x - target.x;
+	// 	let diffY =  location.y - target.y;
+	// 	console.log(diffX,diffY);
+	// 	if (diffX == 0 && isMoveY == false) {
+
+	// 		goToY(diffY,location,target,isMoveY);
+	// 		isMoveY = true;
+	// 	}
+	// 	console.log(isMoveY); 	
+	// }
+	console.log(isMoveY);
+	if (location.x == target.x && diffY != 0 && isMoveY == false) {
+		console.log("Yeap")
+		// moveHorizontal2(true);
+		changeY();
+	}
+	
+}
+
+distanceCalcutor =(location,target)=>{
+
+}
+
+goToY = (diffY,location,target,isMoveY)=>{
+	console.log("Hello")
+	// if (diffX == 10 && isMoveX == false) {
+		// moveHorizontal2(true);
+		moveVertical2(false);
+	// 	isMoveX = true;
+	// 	return isMoveX;
+	// }
+	// console.log(diffX)
+	// return isMoveX =false;
+}
+
 
 // setInterval(()=>{clearInterval(myTimer)},30000);
