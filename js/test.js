@@ -7,21 +7,24 @@ var ctx = canvas.getContext('2d');
    	const m = 50; 
    	var sizeX =10;   	 
    	var sizeY = 10;
-   	var currentMove =0; //0-Right 1-Left 2-Up 3- Down  
+   	var currentMove =0; // 0-Right 1-Left 2-Up 3- Down  
    	var data = [];
    	data.push({x,y});
-   	var size = 5; 
+   	var size = 2; // 2(TWO) is the least size; 
    	var maxX = 390;
    	var maxY =390;
-   	var toX = false; //True when direction to X axis is positive
-   	var toY = true;  //True when direction to Y axis is positive
+   	var toX = true; //True when direction to X axis is positive;
+   	var toY = true;  //True when direction to Y axis is positive;
+   	var treasure= [{x:190,y:250,isFound:false}];
+   	var pending =false;
+   	var interval = 0;
 
    	// console.log(data); 
 
 ctx.fillRect(m,m,350,350);
 ctx.clearRect(x,y,sizeX,sizeY);
 
-ctx.clearRect(60,70,sizeX,sizeY);
+ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
 
 draw = (x,y,sizeX,sizeY,data)=>{
 	let len = data.length;
@@ -89,15 +92,28 @@ move = (index,bool) =>{
 	currentMove = index;
 	index == 0? toX =bool: toY =bool;
 }
+createReward = ()=>{
+		let ranX = Math.floor(Math.random()*390);
+		let ran2X = ranX -(ranX%10); //random number for X
+		ran2X = ran2X <50? 50:ran2X //checks wheather is below 50;
 
+		let ranY = Math.floor(Math.random()*390);
+		let ran2Y = ranY - (ranY%10); //random number for Y
+		ran2Y = ran2Y <50? 50:ran2Y //checks wheather is below 50;
+		// treasure = [{"x":ran2X,"y":ran2Y,isFound:false}];
+		treasure = [{"x":ran2X,"y":ran2Y,isFound:false}];
+		console.log(treasure);
+		console.log("Display")
+		ctx.clearRect(ran2X,ran2Y,sizeX,sizeY);
+		// setInterval(()=>{clearInterval(myTimer)},40000);
+}
 
 var myTimer = setInterval(()=>{
 	let last = data[0];
 	let len = data.length;
-	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY}`);	
+	// console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY} interval: ${interval}`);	
 
 	if (len == size) {
-		// data.forEach(item=>console.log(item.x));
 		let myData = [];
 
 		data.forEach((item,i)=>{
@@ -108,8 +124,38 @@ var myTimer = setInterval(()=>{
 		});
 		data= [...myData];
 	}
-	// console.log(data);
 	
+	var isFound = treasure[0].isFound;
+	// console.log(isFound,treasure[0].isFound);
+	if (data[0].x == treasure[0].x && data[0].y == treasure[0].y && isFound == false ) {
+		console.log("Heck! Yeah");
+		treasure[0].isFound = true;
+	}
+
+	if (pending === true) {
+		console.log("Mmmmmh");
+		let myData2 = [{"x":treasure[0].x,"y":treasure[0].y}];
+		
+		let jk2 = [...myData2];
+		data.forEach(x=>jk2.push(x))
+		// console.log(jk2);
+
+		data =jk2;
+		size++;
+
+		pending=false;
+		used = true;
+		treasure[0].isFound == true;
+		createReward();
+	}
+
+	var l = data.length-1;
+	// console.log(data[l].x,'---->',treasure[0].x,data[l].y,'---->',treasure[0].y,)
+	if (data[l].x == treasure[0].x && data[l].y == treasure[0].y ) {
+		console.log("PENDING.......")
+		pending= true;
+	}
+	interval++;
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);
