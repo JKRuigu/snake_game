@@ -13,11 +13,15 @@ var ctx = canvas.getContext('2d');
    	var size = 5; 
    	var maxX = 390;
    	var maxY =390;
+   	var toX = false; //True when direction to X axis is positive
+   	var toY = true;  //True when direction to Y axis is positive
 
    	// console.log(data); 
 
 ctx.fillRect(m,m,350,350);
 ctx.clearRect(x,y,sizeX,sizeY);
+
+ctx.clearRect(60,70,sizeX,sizeY);
 
 draw = (x,y,sizeX,sizeY,data)=>{
 	let len = data.length;
@@ -27,56 +31,44 @@ draw = (x,y,sizeX,sizeY,data)=>{
 	}
 }
 
-moveRight = (x,y,sizeX,sizeY,data)=>{
-	if (x == maxX) {
-		x= m;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return x;
-	}else{
-		x+=sizeX;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return x;
-	}	
-}
+moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 
-moveDown = (x,y,sizeX,sizeY)=>{
-	if (y == maxY) {
-		y= m;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return y;
+	if (toX) {
+		if (x == maxX) {
+			x= m;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+			return x;
+		}else{
+			x+=sizeX;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+			return x;
+		}
 	}else{
-		y+=sizeY;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return y;
-	}
-}
-
-moveLeft = (x,y,sizeX,sizeY)=>{
-	if (x == maxX) {
-		x= m;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return x;
-	}else if(x == m){
-		x= maxX-sizeX;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return x;
-	}else{
-		x-=sizeX;
-		draw(x,y,sizeX,sizeY,data);
-   		data.push({x,y});
-		return x;
+		if (x == maxX) {
+			x= m;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+			return x;
+		}else if(x == m){
+			x= maxX-sizeX;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+			return x;
+		}else{
+			x-=sizeX;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+			return x;
+		}
 	}
 }
 
 
-moveUp = (x,y,sizeX,sizeY)=>{
-	if (y == maxY) {
+moveVertical = (x,y,sizeX,sizeY,data,toY)=>{
+	if (toY) {
+			if (y == maxY) {
 		y= m;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
@@ -92,32 +84,37 @@ moveUp = (x,y,sizeX,sizeY)=>{
    		data.push({x,y});
 		return y;
 	}
+	}else{
+		if (y == maxY) {
+			y= m;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+		return y;
+		}else{
+			y+=sizeY;
+			draw(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
+			return y;
+		}	
+	}
 }
 
 
-moveRight2 = ()=>{
-	var X = moveRight(x,y,sizeX,sizeY,data);
+moveHorizontal2 = (bool)=>{
+	toX = bool;
+	var X = moveHorizontal(x,y,sizeX,sizeY,data,toX);
 	x=X;
 }
 
-moveLeft2 = ()=>{
-	// alert('Heck! Yeah');
-	var X = moveLeft(x,y,sizeX,sizeY,data);
-	x=X;	
-}
-
-moveUp2 = ()=>{
-	var Y = moveUp(x,y,sizeX,sizeY,data);
+moveVertical2 = (bool)=>{
+	toY = bool;
+	var Y = moveVertical(x,y,sizeX,sizeY,data,toY);
 	y=Y;
 }
 
-moveDown2 = ()=>{
-	var Y = moveDown(x,y,sizeX,sizeY,data);
-	y=Y;
-}
-
-move = index =>{
+move = (index,bool) =>{
 	currentMove = index;
+	index == 0? toX =bool: toY =bool;
 }
 
 
@@ -142,20 +139,14 @@ var myTimer = setInterval(()=>{
 	
 	switch(currentMove){
 		case 0:
-			moveRight2();
+			moveHorizontal2(toX);
 			break;
 		case 1:
-			moveLeft2();
-			break;
-		case 2:
-			moveUp2();
-			break;
-		case 3:
-			moveDown2();
-			break;
+			moveVertical2(toY);
+			break;			
 		default:
 			console.log("default");
 	}
-},1000);
+},500);
 
 // setInterval(()=>{clearInterval(myTimer)},30000);
