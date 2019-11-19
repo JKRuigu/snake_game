@@ -53,35 +53,22 @@ moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 
 
 moveVertical = (x,y,sizeX,sizeY,data,toY)=>{
-	if (toY) {
-			if (y == maxY) {
+	
+	if (y == maxY && toY == false) {
 		y= m;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
-	}else if(y == m){
-		y= maxY-sizeY;
+	}else if(y == m && toY == true){
+		y= maxY;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
 	}else{
-		y-=sizeX;
+		y = toY ?y-=sizeX: y+=sizeY;
 		draw(x,y,sizeX,sizeY,data);
    		data.push({x,y});
 		return y;
-	}
-	}else{
-		if (y == maxY) {
-			y= m;
-			draw(x,y,sizeX,sizeY,data);
-	   		data.push({x,y});
-		return y;
-		}else{
-			y+=sizeY;
-			draw(x,y,sizeX,sizeY,data);
-	   		data.push({x,y});
-			return y;
-		}	
 	}
 }
 
@@ -107,7 +94,7 @@ move = (index,bool) =>{
 var myTimer = setInterval(()=>{
 	let last = data[0];
 	let len = data.length;
-	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len}`);	
+	console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY}`);	
 
 	if (len == size) {
 		// data.forEach(item=>console.log(item.x));
