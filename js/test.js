@@ -23,8 +23,10 @@ var ctx = canvas.getContext('2d');
    	// console.log(data); 
 
 ctx.fillRect(m,m,350,350);
-ctx.clearRect(x,y,sizeX,sizeY);
+ctx.font= 'Bold 40px Sans-Serif';
+ctx.strokeText('Snakes', 150, 45);
 
+ctx.clearRect(x,y,sizeX,sizeY);
 ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
 function changeY() {
 	isMoveY = !isMoveY;
