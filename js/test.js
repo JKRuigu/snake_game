@@ -33,36 +33,22 @@ draw = (x,y,sizeX,sizeY,data)=>{
 
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 
-	if (toX) {
-		if (x == maxX) {
+		if (x == maxX && toX == true) {
 			x= m;
 			draw(x,y,sizeX,sizeY,data);
 	   		data.push({x,y});
 			return x;
-		}else{
-			x+=sizeX;
-			draw(x,y,sizeX,sizeY,data);
-	   		data.push({x,y});
-			return x;
-		}
-	}else{
-		if (x == maxX) {
-			x= m;
-			draw(x,y,sizeX,sizeY,data);
-	   		data.push({x,y});
-			return x;
-		}else if(x == m){
-			x= maxX-sizeX;
+		}else if(x == m && toX == false){
+			x= maxX;
 			draw(x,y,sizeX,sizeY,data);
 	   		data.push({x,y});
 			return x;
 		}else{
-			x-=sizeX;
+			toX ? x+=sizeX:x-=sizeX;
 			draw(x,y,sizeX,sizeY,data);
 	   		data.push({x,y});
 			return x;
 		}
-	}
 }
 
 
