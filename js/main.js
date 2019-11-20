@@ -7,8 +7,8 @@ const m = 50; //external margin of the canvas;
 var sizeX =10; //width of the snake  	 
 var sizeY = 10; //heigth of the snake;
 var size = 1; // 2(TWO) is the least size; 
-var maxX = 390; //max width;
-var maxY =390; // max height;
+var maxX = 380; //max width;
+var maxY =380; // max height;
 var toX = true; //True when direction to X axis is positive (left to right);
 var toY = true;  //True when direction to Y axis is positive (up to down);
 var pending =false; //True when snake tail has reached the treasure location;
@@ -22,12 +22,11 @@ var interval =0;
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
 	let len = treasure.length;
-
 	ctx.fillRect(m,m,(maxX-m),(maxY-m));
-	if(len !=0) {
+	if(len !=0 && treasure[0].isFound == false) {
 		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
 	}
-	for(i=0; i<len; i++){
+	for(i=0; i<size; i++){
 		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
 	}
 }
@@ -61,7 +60,8 @@ data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
 
 // CREATE TREASURE;
 createTreasure = (treasure=[])=>{
-		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
+		// treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
+		treasure = [{"x":180,"y":170,isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 		console.log("created treasure");
 		return treasure;
@@ -134,6 +134,39 @@ move = (index,bool) =>{
 	index == 0? toX =bool: toY =bool;
 }
 
+// CHECK IF TREASURE IS FOUND;
+isTreaseureFound = ()=>{
+	if (data[0].x == treasure[0].x && data[0].y == treasure[0].y && treasure[0].isFound == false ) {
+		console.log("Heck! Yeah");
+		treasure[0].isFound = true;
+		used = false;
+		setPending();
+	}
+}
+
+// set pending to true;
+setPending = ()=>{
+		console.log("PENDING.......")
+		pending= true;
+		getReward();
+}
+
+getReward =()=>{
+		console.log("Mmmmmh");
+		let myData2 = [{"x":treasure[0].x,"y":treasure[0].y}];
+		let jk2 = [...myData2];
+		data.forEach(x=>jk2.push(x))
+		console.log(jk2);
+		data =jk2;
+		size++;
+		displaySnake(x,y,sizeX,sizeY,jk2);
+
+		pending=false;
+		used = true;
+		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
+		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
+
+}
 
 // AI function;
 ai = (treasure,data,isMoveY,pending)=>{
@@ -157,17 +190,21 @@ ai = (treasure,data,isMoveY,pending)=>{
 }
 
 var myTimer = setInterval(()=>{
-//SET GAME; 
-switch(currentMove){
-	case 0:
-		moveHorizontal2(toX);
-		break;
-	case 1:
-		moveVertical2(toY);
-		break;			
-	default:
-		console.log("default");
-}
-},1000);
+	if (data) {
+		isTreaseureFound();
+	}
+	var l = data.length-1;
+	console.log(data[l].x,treasure[0].x, data[l].y,treasure[0].y,data);
+	switch(currentMove){
+		case 0:
+			moveHorizontal2(toX);
+			break;
+		case 1:
+			moveVertical2(toY);
+			break;			
+		default:
+			console.log("default");
+	}
+},500);
 
-setInterval(()=>{clearInterval(myTimer)},5000);
+setInterval(()=>{clearInterval(myTimer)},60000);
