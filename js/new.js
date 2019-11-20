@@ -2,7 +2,7 @@ var canvas = document.getElementById('mycanvas');
 var ctx = canvas.getContext('2d');
 
 var x = 150; //width of canvas;
-var y = 170; //height of canvas;
+var y = 250; //height of canvas;
 const m = 50; //external margin of the canvas;
 var sizeX =10; //width of the snake  	 
 var sizeY = 10; //heigth of the snake;
@@ -21,12 +21,8 @@ var interval =0;
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
-	let len = treasure.length;
+	let len = data.length;
 
-	ctx.fillRect(m,m,(maxX-m),(maxY-m));
-	if(len !=0) {
-		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
-	}
 	for(i=0; i<len; i++){
 		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
 	}
@@ -39,10 +35,22 @@ createRandom = ()=>{
 	return ran2;
 }
 
+// CREATE TREASURE;
+createTreasure = (treasure=[])=>{
+		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
+		console.log("Treasure",treasure);
+		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
+		return treasure;
+}
+
+treasure = createTreasure(treasure);
+
+
 // CREATE THE SNAKE;
-createSnake =(x,y,sizeX,sizeY,data)=>{
-	data= [{x,y}];
-	displaySnake(x,y,sizeX,sizeY,data);
+createSnake =(m,sizeX,sizeY,data,treasure)=>{
+	data= [{"x":createRandom(),"y":createRandom()}];
+	// console.log(data);
+	displaySnake(m,m,sizeX,sizeY,data);
 	return data;
 }
 
@@ -52,41 +60,47 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	ctx.strokeText('Snakes', 150, 45);//displays the game title;
 	ctx.fillRect(m,m,(maxX-m),(maxY-m));
 	hasStarted = true;
-	console.log("Intialized the game");
-	return createSnake(x,y,sizeX,sizeY,data);	
+	return createSnake(m,sizeX,sizeY,data,treasure);	
 }
 
-data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
-
-
-// CREATE TREASURE;
-createTreasure = (treasure=[])=>{
-		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
-		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
-		console.log("created treasure");
-		return treasure;
-}
-
-treasure = createTreasure(treasure);
+data =intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
 
 // HORIZONTAL MOVEMENT along x-axis;
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 		if (x == maxX && toX == true) {
 			x= m;//intialize x to margin of x;
-			addData({x,y});
 			displaySnake(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
 			return x;
 		}else if(x == m && toX == false){
 			x= maxX;
-			addData({x,y});
 			displaySnake(x,y,sizeX,sizeY,data);
+	   		data.push({x,y});
 			return x;
 		}else{
 			toX ? x+=sizeX:x-=sizeX;
-	   		addData({x,y});
 			displaySnake(x,y,sizeX,sizeY,data);
+	   		addData(data,{x,y});
+	   		// data.push({x,y});
+	   		// console.log({x,y});
 			return x;
 		}
+}
+
+addData = (data,newData)=>{
+	myData = [];
+	console.log(data);
+	// myData.push(newData);
+	// console.log([newData,...data]);
+	data = [newData,...data];
+	// console
+	// data.forEach((item,i)=>{
+	// 	if ((i+1)<=size){
+	// 		myData.push(item);
+	// 	}
+	// });
+
+	console.log(data);
 }
 
 //VERTICAL MOVEMENT along y-axis;
@@ -94,24 +108,20 @@ moveVertical = (x,y,sizeX,sizeY,data,toY)=>{
 	
 	if (y == maxY && toY == false) {
 		y= m;
-		addData({x,y});
 		displaySnake(x,y,sizeX,sizeY,data);
+   		data.push({x,y});
 		return y;
 	}else if(y == m && toY == true){
 		y= maxY;
-		addData({x,y});
 		displaySnake(x,y,sizeX,sizeY,data);
+   		data.push({x,y});
 		return y;
 	}else{
 		y = toY ?y-=sizeX: y+=sizeY;
-		addData({x,y});
 		displaySnake(x,y,sizeX,sizeY,data);
+   		data.push({x,y});
 		return y;
 	}
-}
-
-addData = (newData)=>{
-	data = [newData,...data].slice(0,size);
 }
 
 // Communicates with moveHorizontal() function;
@@ -134,6 +144,71 @@ move = (index,bool) =>{
 	index == 0? toX =bool: toY =bool;
 }
 
+var myTimer = setInterval(()=>{
+	let last = data[0];
+	let len = data.length;
+	// console.log(`current movement:${currentMove} x: ${x},y: ${y},Size: ${size}, Length: ${len} toX: ${toX} toY: ${toY} interval: ${interval}`);	
+
+	if (len == size) {
+		let myData = [];
+
+		data.forEach((item,i)=>{
+			ctx.fillRect(data[0].x,data[0].y,sizeX,sizeY);
+			if (i!=0) {
+				myData.push(item);
+			}
+		});
+		data= [...myData];
+	}
+	
+	var isFound = treasure[0].isFound;
+	// console.log(isFound,treasure[0].isFound);
+	if (data[0].x == treasure[0].x && data[0].y == treasure[0].y && isFound == false ) {
+		console.log("Heck! Yeah");
+		treasure[0].isFound = true;
+		used = false;
+	}
+
+	if (pending === true) {
+		console.log("Mmmmmh");
+		let myData2 = [{"x":treasure[0].x,"y":treasure[0].y}];
+		
+		let jk2 = [...myData2];
+		data.forEach(x=>jk2.push(x))
+		// console.log(jk2);
+
+		data =jk2;
+		size++;
+
+		pending=false;
+		used = true;
+		treasure[0].isFound == true;
+		// changeY();
+		createReward();
+	}
+
+	var l = data.length-1;
+	// console.log(data[l].x,'---->',treasure[0].x,data[l].y,'---->',treasure[0].y,)
+	if (data[l].x == treasure[0].x && data[l].y == treasure[0].y ) {
+		console.log("PENDING.......")
+		pending= true;
+	}
+	ai(treasure,data,isMoveY,pending);
+
+	interval++;
+	switch(currentMove){
+		case 0:
+			moveHorizontal2(toX);
+			break;
+		case 1:
+			moveVertical2(toY);
+			break;			
+		default:
+			console.log("default");
+	}
+},500);
+
+setInterval(()=>{clearInterval(myTimer)},20000);
 
 // AI function;
 ai = (treasure,data,isMoveY,pending)=>{
@@ -154,20 +229,4 @@ ai = (treasure,data,isMoveY,pending)=>{
 		changeY();
 	}
 	
-}
-
-var myTimer = setInterval(()=>{
-//SET GAME; 
-switch(currentMove){
-	case 0:
-		moveHorizontal2(toX);
-		break;
-	case 1:
-		moveVertical2(toY);
-		break;			
-	default:
-		console.log("default");
-}
-},1000);
-
-setInterval(()=>{clearInterval(myTimer)},5000);
+} 
