@@ -7,8 +7,8 @@ const m = 50; //external margin of the canvas;
 var sizeX =10; //width of the snake  	 
 var sizeY = 10; //heigth of the snake;
 var size = 1; // 2(TWO) is the least size; 
-var maxX = 380; //max width;
-var maxY =380; // max height;
+var maxX = 390; //max width;
+var maxY =390; // max height;
 var toX = true; //True when direction to X axis is positive (left to right);
 var toY = true;  //True when direction to Y axis is positive (up to down);
 var pending =false; //True when snake tail has reached the treasure location;
@@ -18,6 +18,7 @@ var treasure= []; //reward loacation;
 var isTreaseure = false; //if false a new treasure is created;
 var hasStarted = false; //if true the game begins;
 var interval =0;
+var isMaxX =false;
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
@@ -32,9 +33,9 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 }
 
 createRandom = ()=>{
-	let ran = Math.floor(Math.random()*390); //generate random number from 0 -390;
+	let ran = Math.floor(Math.random()*maxX); //generate random number from 0 -390;
 	let ran2 = ran -(ran%10); //creates a number divisible by 10;
-	ran2 = ran2 <50? 50:ran2 //checks wheather is below the margin(m);
+	ran2 = ran2 <m? m:ran2 //checks wheather is below the margin(m);
 	return ran2;
 }
 
@@ -71,6 +72,7 @@ treasure = createTreasure(treasure);
 
 // HORIZONTAL MOVEMENT along x-axis;
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
+
 		if (x == maxX && toX == true) {
 			x= m;//intialize x to margin of x;
 			addData({x,y});
@@ -83,6 +85,7 @@ moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 			return x;
 		}else{
 			toX ? x+=sizeX:x-=sizeX;
+			x = (x == 390? 50:x); //checks if x is greater than maxX;
 	   		addData({x,y});
 			displaySnake(x,y,sizeX,sizeY,data);
 			return x;
@@ -116,9 +119,13 @@ addData = (newData)=>{
 
 // Communicates with moveHorizontal() function;
 moveHorizontal2 = (bool)=>{
-	toX = bool;
-	var X = moveHorizontal(x,y,sizeX,sizeY,data,toX);
-	x=X; //Increment x;
+	if (y != 390) {	//Solves not displaying on the screen;		
+		toX = bool;
+		var X = moveHorizontal(x,y,sizeX,sizeY,data,toX);
+		x=X; //Increment x;	
+	}else{
+		moveVertical2(toY);
+	}
 }
 
 // Communicates with moveVertical() function;
@@ -194,7 +201,8 @@ var myTimer = setInterval(()=>{
 		isTreaseureFound();
 	}
 	var l = data.length-1;
-	console.log(data[l].x,treasure[0].x, data[l].y,treasure[0].y,data);
+	console.log("timer",data);
+	// console.log(data[l].x,treasure[0].x, data[l].y,treasure[0].y,data);
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);
@@ -207,4 +215,4 @@ var myTimer = setInterval(()=>{
 	}
 },500);
 
-setInterval(()=>{clearInterval(myTimer)},60000);
+setInterval(()=>{clearInterval(myTimer)},20000);
