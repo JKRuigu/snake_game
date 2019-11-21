@@ -1,4 +1,20 @@
-var myTimer = setInterval(()=>{
+console.log("HELLO",isPlay);
+// Start game;
+start = ()=>{
+	// CHECKS IF THE GAME HAS STARTED; 
+	// IF YOU CALL THE startGame() Functions multiple time it increases the speed of the game;
+	if (!isPlay) {
+		startGame();
+	}else{
+		stopGame();
+		// isPlay = true;
+	}
+
+	isPlay = true;
+}
+// STARTS THE GAME; 
+startGame = ()=>{
+	var myTimer = setInterval(()=>{
 	if (data) {
 		isTreaseureFound();
 	}
@@ -8,8 +24,6 @@ var myTimer = setInterval(()=>{
 	currentMove = (myOpt == undefined ? currentMove:myOpt);
 	interval++;
 
-	// KEY INPUT
-	
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);
@@ -20,6 +34,15 @@ var myTimer = setInterval(()=>{
 		default:
 			console.log("default");
 	}
-},100);
-
-setInterval(()=>{clearInterval(myTimer)},100000);
+	},100);
+	setTimeOut(myTimer,10000);
+	// getTimer = 
+	function getTimer() {
+		return myTimer;
+	}
+}
+setTimeOut = (myTimer,period)=>{
+	// if (isPlay) {
+		setInterval(()=>{clearInterval(myTimer)},period);	
+	// }
+}

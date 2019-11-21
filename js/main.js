@@ -21,6 +21,8 @@ var hasStarted = false; //if true the game begins;
 var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
+var isPlay = false;
+
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
