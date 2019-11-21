@@ -10,6 +10,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	}
 }
 
+//Displays score;
 displayScore =(points)=>{
 	ctx.clearRect(30,5,350,55);
 	ctx.font= 'Bold 18px Sans-Serif';

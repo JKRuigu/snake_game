@@ -27,6 +27,7 @@ setPending = ()=>{
 		getReward();
 }
 
+//creates a new treasure when the current treasure is found;
 getReward =()=>{
 		// console.log("Mmmmmh");
 		let myData2 = [{"x":treasure[0].x,"y":treasure[0].y}];
