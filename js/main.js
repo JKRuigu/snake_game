@@ -34,8 +34,8 @@ createRandom = ()=>{
 	return ran2;
 }
 
-ai = (bool)=>{
-	isAI = bool;
+ai = ()=>{
+	isAI = !isAI;
 }
 
 

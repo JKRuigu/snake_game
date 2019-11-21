@@ -20,6 +20,9 @@ console.log(event.key,code);
 			case 40:
 				move(1,false);
 				break;
+			case 13:
+				start();
+				break;
 			default:
             	console.log("Invalid key");
 		}
