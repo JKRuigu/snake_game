@@ -33,6 +33,13 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	}
 }
 
+displayScore =(points)=>{
+	ctx.clearRect(30,5,350,55);
+	ctx.font= 'Bold 40px Sans-Serif';
+	let txt = `Snakes pts: ${points}`
+	ctx.strokeText(txt, 70, 45);//displays the game title;
+}
+
 createRandom = ()=>{
 	let ran = Math.floor(Math.random()*maxX); //generate random number from 0 -390;
 	let ran2 = ran -(ran%10); //creates a number divisible by 10;
@@ -42,6 +49,7 @@ createRandom = ()=>{
 
 // CREATE THE SNAKE;
 createSnake =(x,y,sizeX,sizeY,data)=>{
+	displayScore(points);
 	data= [{x,y}];
 	displaySnake(x,y,sizeX,sizeY,data);
 	return data;
@@ -49,8 +57,6 @@ createSnake =(x,y,sizeX,sizeY,data)=>{
 
 //INTIALIZE THE GAME;
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
-	ctx.font= 'Bold 40px Sans-Serif';
-	ctx.strokeText('Snakes', 150, 45);//displays the game title;
 	ctx.fillRect(m,m,(maxX-m),(maxY-m));
 	hasStarted = true;
 	console.log("Intialized the game");
@@ -171,6 +177,7 @@ getReward =()=>{
 		pending=false;
 		used = true;
 		points +=10;
+		displayScore(points);
 		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 
@@ -198,14 +205,14 @@ generateXY = (from,to)=>{
 	let diffY = fromY-toYA;
 	let isdiffY = ((diffY<1)?true:false);
 	let sY = isdiffY?10:-10;
-	console.log(fromY,toYA,sY,diffY,isdiffY)
-	console.log((fromY+sY),(toYA+sY),sY,diffY,isdiffY)
+	// console.log(fromY,toYA,sY,diffY,isdiffY)
+	// console.log((fromY+sY),(toYA+sY),sY,diffY,isdiffY)
 
 	while((fromY+sY)!= (to.y+sY)){
 	 	yRoute.push({"x":from.x,"y":fromY});
 		fromY+=sY;
 	}
-	console.log(xRoute,yRoute,to.x,to.y);
+	// console.log(xRoute,yRoute,to.x,to.y);
 
 	let xLen = xRoute.length;
 	let yLen = yRoute.length;
@@ -219,7 +226,7 @@ generateXY = (from,to)=>{
 	}
 	if (xLen<yLen) {
 		diffX = diffX <0 ? (diffX*-1):diffX;
-		toX = diffX<(390-diffX)?isdiffX:!isdiffX; 
+		toX = diffX<(390-diffX)? isdiffX:!isdiffX; 
 		return 0
 	}
 	if (yLen<xLen) {
@@ -238,7 +245,7 @@ var myTimer = setInterval(()=>{
 
 	let myOpt = generateXY(data[0],treasure[0]);
 	currentMove = (myOpt == undefined ? currentMove:myOpt);
-	// console.log(myOpt);
+	console.log(points);
 
 	switch(currentMove){
 		case 0:
@@ -252,4 +259,4 @@ var myTimer = setInterval(()=>{
 	}
 },100);
 
-setInterval(()=>{clearInterval(myTimer)},25000);
+setInterval(()=>{clearInterval(myTimer)},50000);
