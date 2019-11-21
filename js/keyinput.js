@@ -22,6 +22,8 @@ console.log(event.key,code);
 				break;
 			case 13:
 				start();
+			case 9:
+				ai();
 				break;
 			default:
             	console.log("Invalid key");
