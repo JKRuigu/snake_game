@@ -83,9 +83,9 @@ data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
 
 // CREATE TREASURE;
 createTreasure = (treasure=[])=>{
-		// treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
+		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
 		// ctx2.fillStyle = 'rgb(255,0,13)';
-		treasure = [{"x":150,"y":70,isFound:false}]; //create treasure;
+		// treasure = [{"x":150,"y":70,isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 		console.log("created treasure");
 		return treasure;
@@ -283,6 +283,6 @@ var myTimer = setInterval(()=>{
 		default:
 			console.log("default");
 	}
-},50);
+},0.0000000001);
 
 setInterval(()=>{clearInterval(myTimer)},500000);
