@@ -20,6 +20,7 @@ var hasStarted = false; //if true the game begins;
 var interval =0;
 var isMaxX =false;
 var points = 0;
+var pointsArr =[];
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
@@ -36,8 +37,20 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 displayScore =(points)=>{
 	ctx.clearRect(30,5,350,55);
 	ctx.font= 'Bold 20px Sans-Serif';
+	var avg =0;
+	if (points !=0 ) {
+		pointsArr.push(Math.floor((points/interval)*100));
+		let l = pointsArr.length;
+		let sum=0;
+		for (i = 0; i < l; i++) {
+				sum+=pointsArr[i];
+			}	
+			avg = Math.floor(sum/(l+1));
+	}else{
+		avg = 0;
+	}
 	let rate  = Math.floor((points/interval)*100);
-	let txt = `Snakes pts: ${points} ${rate}`
+	let txt = `Snakes pts: ${points} ${rate} ${avg}`
 	ctx.strokeText(txt, 70, 45);//displays the game title;
 }
 
@@ -224,6 +237,17 @@ generateXY = (from,to)=>{
 
 	if (yLen == 0 && xLen != 0) {
 		return 0;
+	}
+	if (diffX < diffY && xLen<yLen) {
+		diffX = diffX <0 ? (diffX*-1):diffX;
+		toX = diffX<(390-diffX)? isdiffX:!isdiffX; 
+		return 0
+	}
+
+	if (diffY < diffX && yLen<xLen) {
+		diffY = diffY <0 ? (diffY*-1):diffY;
+		toY = diffY<(390-diffY)?!isdiffY:isdiffY; 
+		return 1	
 	}
 	if (xLen<yLen) {
 		diffX = diffX <0 ? (diffX*-1):diffX;
