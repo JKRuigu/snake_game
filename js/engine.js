@@ -14,9 +14,10 @@ startGame = ()=>{
 		isTreaseureFound();
 	}
 	var l = data.length-1;
-
-	let myOpt = generateXY(data[0],treasure[0]);
-	currentMove = (myOpt == undefined ? currentMove:myOpt);
+	if (isAI) {
+		let myOpt = generateXY(data[0],treasure[0]);
+		currentMove = (myOpt == undefined ? currentMove:myOpt);
+	}
 	interval++;
 	displayScore(points);//Update time;
 

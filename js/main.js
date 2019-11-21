@@ -24,6 +24,7 @@ var pointsArr =[]; //store points to help in calculating average performance of 
 var isPlay = false;
 var timer = 10000; //duration of the game;
 var speed =  100; //speed of the game;
+var isAI = true;
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
@@ -31,6 +32,10 @@ createRandom = ()=>{
 	let ran2 = ran -(ran%10); //creates a number divisible by 10;
 	ran2 = ran2 <m? m:ran2 //checks wheather is below the margin(m);
 	return ran2;
+}
+
+ai = (bool)=>{
+	isAI = bool;
 }
 
 
