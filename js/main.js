@@ -224,7 +224,7 @@ generateXY = (from,to)=>{
 	}
 	if (yLen<xLen) {
 		diffY = diffY <0 ? (diffY*-1):diffY;
-		toY = diffY<(390-diffY)?isdiffY:!isdiffY; 
+		toY = diffY<(390-diffY)?!isdiffY:isdiffY; 
 		return 1
 	}
 	return undefined;
@@ -252,4 +252,4 @@ var myTimer = setInterval(()=>{
 	}
 },100);
 
-setInterval(()=>{clearInterval(myTimer)},5000);
+setInterval(()=>{clearInterval(myTimer)},25000);
