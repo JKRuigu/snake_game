@@ -12,13 +12,14 @@ var maxY =390; // max height;
 var toX = true; //True when direction to X axis is positive (left to right);
 var toY = true;  //True when direction to Y axis is positive (up to down);
 var pending =false; //True when snake tail has reached the treasure location;
-var currentMove =0; // 0-Right 1-Left 2-Up 3- Down  
+var currentMove =1; // 0-Right 1-Left 2-Up 3- Down  
 var data = []; //location of each segment of the snake;
 var treasure= []; //reward loacation;
 var isTreaseure = false; //if false a new treasure is created;
 var hasStarted = false; //if true the game begins;
 var interval =0;
 var isMaxX =false;
+var points = 0;
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
@@ -62,7 +63,7 @@ data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
 // CREATE TREASURE;
 createTreasure = (treasure=[])=>{
 		// treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
-		treasure = [{"x":180,"y":170,isFound:false}]; //create treasure;
+		treasure = [{"x":150,"y":70,isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 		console.log("created treasure");
 		return treasure;
@@ -163,46 +164,82 @@ getReward =()=>{
 		let myData2 = [{"x":treasure[0].x,"y":treasure[0].y}];
 		let jk2 = [...myData2];
 		data.forEach(x=>jk2.push(x))
-		console.log(jk2);
 		data =jk2;
 		size++;
 		displaySnake(x,y,sizeX,sizeY,jk2);
 
 		pending=false;
 		used = true;
+		points +=10;
 		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 
 }
 
-// AI function;
-ai = (treasure,data,isMoveY,pending)=>{
-	let target = {"x":treasure[0].x,"y":treasure[0].y};
-	let location = {"x":data[0].x,"y":data[0].y};
-	let diffX = location.x - target.x;
-	let diffY =  location.y - target.y;
-	let xBool = location.x >target.x ? false:true;
-	let yBool = location.y>target.y?true:false;
-	let cX = xBool?target.x +10:target.x-10;
-	if (location.x == target.x && isMoveY == false) {
 
-		move(1,yBool);
-		changeY();
+// XY FUNCTION
+generateXY = (from,to)=>{
+	let xRoute =[];
+	let fromX = from.x;
+	let toXA = to.x;
+	let diffX = fromX-toXA;
+	let isdiffX = ((diffX<1)? true:false);
+	let sX = isdiffX?10:-10;
+
+
+	while((fromX+sX) != (toXA+sX)){
+		xRoute.push({"x":fromX,"y":from.y});
+		fromX +=sX;
 	}
-	if(location.y == target.y && isMoveY == true){
-		move(0,xBool);
-		changeY();
+
+	let yRoute =[];
+	let fromY = from.y;
+	let toYA = to.y;
+	let diffY = fromY-toYA;
+	let isdiffY = ((diffY<1)?true:false);
+	let sY = isdiffY?10:-10;
+	console.log(fromY,toYA,sY,diffY,isdiffY)
+	console.log((fromY+sY),(toYA+sY),sY,diffY,isdiffY)
+
+	while((fromY+sY)!= (to.y+sY)){
+	 	yRoute.push({"x":from.x,"y":fromY});
+		fromY+=sY;
 	}
-	
-}
+	console.log(xRoute,yRoute,to.x,to.y);
+
+	let xLen = xRoute.length;
+	let yLen = yRoute.length;
+
+	if (xLen == 0 && yLen != 0) {
+		return 1;
+	}
+
+	if (yLen == 0 && xLen != 0) {
+		return 0;
+	}
+	if (xLen<yLen) {
+		diffX = diffX <0 ? (diffX*-1):diffX;
+		toX = diffX<(390-diffX)?isdiffX:!isdiffX; 
+		return 0
+	}
+	if (yLen<xLen) {
+		diffY = diffY <0 ? (diffY*-1):diffY;
+		toY = diffY<(390-diffY)?isdiffY:!isdiffY; 
+		return 1
+	}
+	return undefined;
+};
 
 var myTimer = setInterval(()=>{
 	if (data) {
 		isTreaseureFound();
 	}
 	var l = data.length-1;
-	console.log("timer",data);
-	// console.log(data[l].x,treasure[0].x, data[l].y,treasure[0].y,data);
+
+	let myOpt = generateXY(data[0],treasure[0]);
+	currentMove = (myOpt == undefined ? currentMove:myOpt);
+	// console.log(myOpt);
+
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);
@@ -213,6 +250,6 @@ var myTimer = setInterval(()=>{
 		default:
 			console.log("default");
 	}
-},500);
+},100);
 
-setInterval(()=>{clearInterval(myTimer)},20000);
+setInterval(()=>{clearInterval(myTimer)},5000);
