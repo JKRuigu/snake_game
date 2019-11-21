@@ -1,5 +1,6 @@
 var canvas = document.getElementById('mycanvas');
 var ctx = canvas.getContext('2d');
+// var ctx2 = canvas.getContext('2d');
 
 var x = 150; //width of canvas;
 var y = 170; //height of canvas;
@@ -36,7 +37,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 
 displayScore =(points)=>{
 	ctx.clearRect(30,5,350,55);
-	ctx.font= 'Bold 20px Sans-Serif';
+	ctx.font= 'Bold 18px Sans-Serif';
 	var avg =0;
 	if (points !=0 ) {
 		pointsArr.push(Math.floor((points/interval)*100));
@@ -50,8 +51,8 @@ displayScore =(points)=>{
 		avg = 0;
 	}
 	let rate  = Math.floor((points/interval)*100);
-	let txt = `Snakes pts: ${points} ${rate} ${avg}`
-	ctx.strokeText(txt, 70, 45);//displays the game title;
+	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg}`
+	ctx.strokeText(txt, 50, 45);//displays the game title;
 }
 
 createRandom = ()=>{
@@ -83,6 +84,7 @@ data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
 // CREATE TREASURE;
 createTreasure = (treasure=[])=>{
 		// treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
+		// ctx2.fillStyle = 'rgb(255,0,13)';
 		treasure = [{"x":150,"y":70,isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 		console.log("created treasure");
@@ -165,7 +167,7 @@ move = (index,bool) =>{
 // CHECK IF TREASURE IS FOUND;
 isTreaseureFound = ()=>{
 	if (data[0].x == treasure[0].x && data[0].y == treasure[0].y && treasure[0].isFound == false ) {
-		console.log("Heck! Yeah");
+		// console.log("Heck! Yeah");
 		treasure[0].isFound = true;
 		used = false;
 		setPending();
@@ -174,13 +176,13 @@ isTreaseureFound = ()=>{
 
 // set pending to true;
 setPending = ()=>{
-		console.log("PENDING.......")
+		// console.log("PENDING.......")
 		pending= true;
 		getReward();
 }
 
 getReward =()=>{
-		console.log("Mmmmmh");
+		// console.log("Mmmmmh");
 		let myData2 = [{"x":treasure[0].x,"y":treasure[0].y}];
 		let jk2 = [...myData2];
 		data.forEach(x=>jk2.push(x))
@@ -281,6 +283,6 @@ var myTimer = setInterval(()=>{
 		default:
 			console.log("default");
 	}
-},100);
+},50);
 
-setInterval(()=>{clearInterval(myTimer)},50000);
+setInterval(()=>{clearInterval(myTimer)},500000);
