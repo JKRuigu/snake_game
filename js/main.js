@@ -200,7 +200,7 @@ getReward =()=>{
 }
 
 
-// XY FUNCTION
+// ALGORTHM TO GET THE SHORTEST PATH; 46% accuracy;
 generateXY = (from,to)=>{
 	let xRoute =[];
 	let fromX = from.x;
@@ -264,15 +264,47 @@ generateXY = (from,to)=>{
 	return undefined;
 };
 
+
+setKey = (event,status)=>{
+	code = event.keyCode;
+// 	arrow left 	37
+// arrow up 	38
+// arrow right 	39
+// arrow down 	40
+console.log(event.key,code);
+	if (status) {
+		switch(code){
+			case 37:
+				move(0,false);
+				break;
+			case 38:
+				move(1,true);
+				break;
+			case 39:
+				move(0,true);
+				break;
+			case 40:
+				move(1,false);
+				break;
+			default:
+            	console.log("Invalid key");
+		}
+	}
+}
+
+
 var myTimer = setInterval(()=>{
 	if (data) {
 		isTreaseureFound();
 	}
 	var l = data.length-1;
 
-	let myOpt = generateXY(data[0],treasure[0]);
-	currentMove = (myOpt == undefined ? currentMove:myOpt);
+	// let myOpt = generateXY(data[0],treasure[0]);
+	// currentMove = (myOpt == undefined ? currentMove:myOpt);
 	interval++;
+
+	// KEY INPUT
+	
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);
@@ -283,6 +315,13 @@ var myTimer = setInterval(()=>{
 		default:
 			console.log("default");
 	}
-},0.0000000001);
+},500);
 
-setInterval(()=>{clearInterval(myTimer)},500000);
+document.addEventListener('keydown', function(e) {
+    setKey(e, true);
+});
+
+document.addEventListener('keyup', function(e) {
+    setKey(e, false);
+});
+setInterval(()=>{clearInterval(myTimer)},100000);
