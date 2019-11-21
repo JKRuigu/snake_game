@@ -35,8 +35,9 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 
 displayScore =(points)=>{
 	ctx.clearRect(30,5,350,55);
-	ctx.font= 'Bold 40px Sans-Serif';
-	let txt = `Snakes pts: ${points}`
+	ctx.font= 'Bold 20px Sans-Serif';
+	let rate  = Math.floor((points/interval)*100);
+	let txt = `Snakes pts: ${points} ${rate}`
 	ctx.strokeText(txt, 70, 45);//displays the game title;
 }
 
@@ -245,8 +246,7 @@ var myTimer = setInterval(()=>{
 
 	let myOpt = generateXY(data[0],treasure[0]);
 	currentMove = (myOpt == undefined ? currentMove:myOpt);
-	console.log(points);
-
+	interval++;
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);
