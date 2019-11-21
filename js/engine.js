@@ -1,15 +1,10 @@
-console.log("HELLO",isPlay);
 // Start game;
 start = ()=>{
 	// CHECKS IF THE GAME HAS STARTED; 
 	// IF YOU CALL THE startGame() Functions multiple time it increases the speed of the game;
 	if (!isPlay) {
 		startGame();
-	}else{
-		stopGame();
-		// isPlay = true;
 	}
-
 	isPlay = true;
 }
 // STARTS THE GAME; 
@@ -23,6 +18,7 @@ startGame = ()=>{
 	let myOpt = generateXY(data[0],treasure[0]);
 	currentMove = (myOpt == undefined ? currentMove:myOpt);
 	interval++;
+	displayScore(points);//Update time;
 
 	switch(currentMove){
 		case 0:
@@ -34,12 +30,8 @@ startGame = ()=>{
 		default:
 			console.log("default");
 	}
-	},100);
-	setTimeOut(myTimer,10000);
-	// getTimer = 
-	function getTimer() {
-		return myTimer;
-	}
+	},speed);
+	setTimeOut(myTimer,timer);
 }
 setTimeOut = (myTimer,period)=>{
 	// if (isPlay) {

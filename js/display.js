@@ -12,7 +12,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 
 //Displays score;
 displayScore =(points)=>{
-	ctx.clearRect(30,5,350,55);
+	ctx.clearRect(30,5,390,55);
 	ctx.font= 'Bold 18px Sans-Serif';
 	var avg =0;
 	if (points !=0 ) {
@@ -26,7 +26,8 @@ displayScore =(points)=>{
 	}else{
 		avg = 0;
 	}
+	let tLeft = timer -(interval*speed);
 	let rate  = Math.floor((points/interval)*100);
-	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg}`
+	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 45);//displays the game title;
 }
