@@ -40,11 +40,3 @@ displayScore =(points)=>{
 	let txt = `size:${size} pts: ${points} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }
-
-dispayMessage = msg =>{
-	// ctx.clearRect(30,5,400,55);
-	ctx.font= 'Bold 30px Sans-Serif';
-	console.log(msg);
-	ctx.clearRect(200,200,m,m);
-	ctx.strokeText(msg, 200, 200);//displays the game title;	
-}

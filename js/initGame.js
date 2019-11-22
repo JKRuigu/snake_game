@@ -21,3 +21,14 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 }
 
 data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
+
+console.log("DISPLAY");
+dispayMessage = msg =>{
+	// ctx.clearRect(30,5,400,55);
+	ctx.font= 'Bold 30px Sans-Serif';
+	console.log(msg);
+	ctx.clearRect(100,100,200,70);
+	ctx.strokeText(msg, 100, 150);//displays the game title;	
+}
+
+// dispayMessage("GAME OVER!")

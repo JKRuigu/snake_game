@@ -117,6 +117,18 @@ col = (myTimer,currentMove)=>{
 startGame = ()=>{
 	if (isPlaying) {
 		myTimer = setInterval(()=>{
+		if (col(myTimer,currentMove)) {
+		console.log(blocks,data[0]);
+			// ctx.font= 'Bold 30px Sans-Serif';
+			console.log("msg");
+			ctx.clearRect(200,200,200,200);
+			ctx.clearRect(50,50,50,50);
+			// ctx.strokeText("msg", 200, 200);//displays the game title;
+			clearInterval(myTimer);
+			isOver =true;
+			ctx.fillRect(100,100,200,70);
+			dispayMessage("GAME OVER!")
+		}
 		if (data) {
 			isTreaseureFound();
 		}
@@ -124,10 +136,8 @@ startGame = ()=>{
 		if (isAI) {
 			let myOpt = generateXY(data[0],treasure[0]);
 			let myCol = getNext(currentMove,toX,toY);
-			isOver = col(myTimer,currentMove);
+			// isOver = col(myTimer,currentMove);
 			currentMove = (myOpt == undefined ? currentMove:myOpt);
-		}else{
-			isOver = col(myTimer,currentMove);
 		}
 		if (isOver) {
 			document.getElementById('start').innerHTML ="RESTART";
