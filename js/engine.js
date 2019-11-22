@@ -33,11 +33,8 @@ startGame = ()=>{
 	}
 	},speed);
 
-	// console.log("HELLO")
-	let dx =new Date()*1;
-	setTimeout(()=>{clearInterval(myTimer),console.log("STOP",(new Date()*1)-dx)},timer);	
-	// setTimeOut(myTimer);
+	setTimeOut(myTimer);
 }
 setTimeOut = (myTimer)=>{
-	console.log(timer);
+	setTimeout(()=>{clearInterval(myTimer)},timer);	
 }
