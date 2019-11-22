@@ -5,7 +5,6 @@ setKey = (event,status)=>{
 // arrow up 	38
 // arrow right 	39
 // arrow down 	40
-console.log(event.key,code);
 	if (status) {
 		switch(code){
 			case 37:
