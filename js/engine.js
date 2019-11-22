@@ -3,7 +3,13 @@ start = ()=>{
 	// CHECKS IF THE GAME HAS STARTED; 
 	// IF YOU CALL THE startGame() Functions multiple time it increases the speed of the game;
 	if (!isPlay) {
+		timer = userTime>speed?userTime:timer;
 		startGame();
+		if (isAI) {
+			document.getElementById('start').innerHTML ="START";
+		}else{
+			document.getElementById('start').innerHTML ="STOP";		
+		}
 	}
 	isPlay = true;
 }
@@ -36,5 +42,5 @@ startGame = ()=>{
 	setTimeOut(myTimer);
 }
 setTimeOut = (myTimer)=>{
-	setTimeout(()=>{clearInterval(myTimer)},timer);	
+	setTimeout(()=>{clearInterval(myTimer),document.getElementById('start').innerHTML ="RESTART"},timer);	
 }

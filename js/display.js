@@ -26,7 +26,16 @@ displayScore =(points)=>{
 	}else{
 		avg = 0;
 	}
-	let tLeft = timer -(interval*speed);
+	let tLeft =timer;
+	if (isPlay) {
+		tLeft = timer -(interval*speed);
+	}else{
+		if (userTime>speed) {
+			tLeft = userTime -(interval*speed);
+		}else{
+			tLeft = timer -(interval*speed);
+		}
+	}
 	let rate  = Math.floor((points/interval)*100);
 	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 45);//displays the game title;

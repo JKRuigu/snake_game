@@ -25,7 +25,7 @@ var isPlay = false;
 var timer = 5000; //duration of the game;
 var speed =  50; //speed of the game; 50 is the recommended speed for pc with low memory;
 var isAI = true; //TRUE for manual FALSE for AI;
-
+var userTime = 0;
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
 	let ran = Math.floor(Math.random()*maxX); //generate random number from 0 -390;
@@ -36,8 +36,26 @@ createRandom = ()=>{
 
 ai = ()=>{
 	isAI = !isAI;
+	if (isAI) {
+		document.getElementById('ai').innerHTML ="AI";
+	}else{
+		document.getElementById('ai').innerHTML ="MANUAL";		
+	}
 }
 
+addTime = ()=>{
+	let t = document.getElementById('time').value;
+	console.log(t);
+	if (!isPlay) {
+		if (t>speed) {
+			userTime = t;
+			displayScore(points);
+		}else{
+			userTime = t;
+			displayScore(points);
+		}
+	}
+}
 
 document.addEventListener('keydown', function(e) {
     setKey(e, true);

@@ -10,6 +10,11 @@ createSnake =(x,y,sizeX,sizeY,data)=>{
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	ctx.fillRect(m,m,(maxX-m),(maxY-m));
 	hasStarted = true;
+	if (isAI) {
+		document.getElementById('ai').innerHTML ="AI";
+	}else{
+		document.getElementById('ai').innerHTML ="MANUAL";		
+	}
 	console.log("Intialized the game");
 	return createSnake(x,y,sizeX,sizeY,data);	
 }
