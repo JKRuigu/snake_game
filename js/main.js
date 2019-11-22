@@ -23,9 +23,14 @@ var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
 var timer = 5000; //duration of the game;
-var speed =  50; //speed of the game; 50 is the recommended speed for pc with low memory;
 var isAI = true; //TRUE for manual FALSE for AI;
-var userTime = 0;
+var userTime = 0; //user input time used only if its greater than speed;
+var easy = 300;
+var medium = 200; 
+var hard = 50;
+var level = 0; // 0 -easy 1-medium 2 -hard;
+var speed =  easy; //speed of the game; 50 is the recommended speed for pc with low memory;
+
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
 	let ran = Math.floor(Math.random()*maxX); //generate random number from 0 -390;
@@ -54,6 +59,16 @@ addTime = ()=>{
 			userTime = t;
 			displayScore(points);
 		}
+	}
+}
+
+selectLevel = value =>{
+	if (value == 0) {
+		speed= 300;		
+	}else if(value == 1){
+		speed= 200;		
+	}else{
+		speed= 50;				
 	}
 }
 

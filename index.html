@@ -26,6 +26,11 @@
     <button onclick="start()" id="start">START</button>
     <button onclick="ai()" id="ai">AI</button>
     <input type="number" onkeyup="addTime()" name="time" placeholder="Enter time" id="time">
+    <select onchange="selectLevel(value);">
+      <option value="0">Easy</option>
+      <option value="1">Medium</option>
+      <option value="2">Hard</option>
+    </select>
 	</p>
 	<canvas id="mycanvas" width="750" height="750"></canvas>
    </body>

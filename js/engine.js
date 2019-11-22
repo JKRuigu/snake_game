@@ -26,6 +26,7 @@ startGame = ()=>{
 	}
 	interval++;
 	displayScore(points);//Update time;
+	console.log(speed);
 
 	switch(currentMove){
 		case 0:
