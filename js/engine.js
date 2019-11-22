@@ -32,10 +32,12 @@ startGame = ()=>{
 			console.log("default");
 	}
 	},speed);
-	setTimeOut(myTimer,timer);
+
+	// console.log("HELLO")
+	let dx =new Date()*1;
+	setTimeout(()=>{clearInterval(myTimer),console.log("STOP",(new Date()*1)-dx)},timer);	
+	// setTimeOut(myTimer);
 }
-setTimeOut = (myTimer,period)=>{
-	// if (isPlay) {
-		setInterval(()=>{clearInterval(myTimer)},period);	
-	// }
+setTimeOut = (myTimer)=>{
+	console.log(timer);
 }

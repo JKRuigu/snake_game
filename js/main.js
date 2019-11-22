@@ -23,7 +23,7 @@ var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
 var timer = 5000; //duration of the game;
-var speed =  10; //speed of the game;
+var speed =  100; //speed of the game;
 var isAI = true; //TRUE for manual FALSE for AI
 
 // Create random number between the minX and maxY margins;
