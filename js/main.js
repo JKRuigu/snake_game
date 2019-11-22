@@ -34,7 +34,7 @@ var state = timer;
 var restart =false;
 var numMove =0; 
 var isPlaying = false;
-var blocks = [{"x":220,"y":170},{"x":210,"y":170},{"x":200,"y":170}];
+var blocks = [{"x":220,"y":170},{"x":220,"y":160},{"x":220,"y":150},{"x":220,"y":140}];
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
