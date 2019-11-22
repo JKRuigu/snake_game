@@ -23,18 +23,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 displayScore =(points)=>{
 	ctx.clearRect(30,5,400,55);
 	ctx.font= 'Bold 18px Sans-Serif';
-	var avg =0;
-	if (points !=0 ) {
-		pointsArr.push(Math.floor((points/numMove)*100));
-		let l = pointsArr.length;
-		let sum=0;
-		for (i = 0; i < l; i++) {
-				sum+=pointsArr[i];
-			}	
-			avg = Math.floor(sum/(l+1));
-	}else{
-		avg = 0;
-	}
+	
 	let tLeft =timer;
 	if (isPlay) {
 		tLeft = timer -(interval*speed);
@@ -46,9 +35,16 @@ displayScore =(points)=>{
 		}
 	}
 
-	let rate = Math.floor((points/numMove)*100);
+	// let rate = Math.floor((points/numMove)*100);
 	// console.log(rate,interval,points);
-	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg} time: ${tLeft}`
+	let txt = `size:${size} pts: ${points} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }
 
+dispayMessage = msg =>{
+	// ctx.clearRect(30,5,400,55);
+	ctx.font= 'Bold 30px Sans-Serif';
+	console.log(msg);
+	ctx.clearRect(200,200,m,m);
+	ctx.strokeText(msg, 200, 200);//displays the game title;	
+}

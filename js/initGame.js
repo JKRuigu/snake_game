@@ -1,8 +1,8 @@
 // CREATE THE SNAKE;
-createSnake =(x,y,sizeX,sizeY,data)=>{
+createSnake =()=>{
 	displayScore(points);
-	data= [{x,y}];
-	displaySnake(x,y,sizeX,sizeY,data);
+	data= [{"x":createRandom(),"y":createRandom()}];
+	displaySnake(data[0].x,data[0].y,sizeX,sizeY,data);
 	return data;
 }
 
@@ -16,7 +16,8 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 		document.getElementById('ai').innerHTML ="MANUAL";		
 	}
 	console.log("Intialized the game");
-	return createSnake(x,y,sizeX,sizeY,data);	
+	return createSnake();
+	state = timer;	
 }
 
 data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);

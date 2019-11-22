@@ -35,7 +35,8 @@ var restart =false;
 var numMove =0; 
 var isPlaying = false;
 var blocks = [{"x":220,"y":170},{"x":220,"y":160},{"x":220,"y":150},{"x":220,"y":140}];
-
+var isOver = false;
+var myTimer;
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
 	let ran = Math.floor(Math.random()*maxX); //generate random number from 0 -390;
@@ -45,6 +46,7 @@ createRandom = ()=>{
 }
 
 ai = ()=>{
+	console.log(isAI);
 	isAI = !isAI;
 	if (isAI) {
 		document.getElementById('ai').innerHTML ="AI";
@@ -79,10 +81,18 @@ selectLevel = value =>{
 	}
 }
 
+start2 = ()=>{
+	start(isPlaying);
+}
+
 document.addEventListener('keydown', function(e) {
-    setKey(e, true);
+    setKey(e, true,isPlaying);
 });
 
 document.addEventListener('keyup', function(e) {
-    setKey(e, false);
+    setKey(e, false,isPlaying);
 });
+
+if (!isPlaying && isOver) {
+	clearInterval(myTimer);
+}

@@ -1,5 +1,5 @@
 // Keyinput
-setKey = (event,status)=>{
+setKey = (event,status,isPlaying)=>{
 	code = event.keyCode;
 // 	arrow left 	37
 // arrow up 	38
@@ -20,7 +20,8 @@ setKey = (event,status)=>{
 				move(1,false);
 				break;
 			case 13:
-				start();
+				isPlaying== false?start2():console.log("KEY INPUT ERROR!",isPlaying);
+				break;
 			case 9:
 				ai();
 				break;

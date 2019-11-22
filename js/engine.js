@@ -1,36 +1,46 @@
 // Start game;
-start = ()=>{
+start = () =>{
 	// CHECKS IF THE GAME HAS STARTED; 
 	// IF YOU CALL THE startGame() Functions multiple time it increases the speed of the game;
-	if (!isPlay) {
-		if (!restart) {
-			timer = userTime>speed?userTime:timer;
-			state = timer;
-			isPlaying = true;
-			displayBlocks();
-			startGame();
-		}else{
-			timer = state;
-			interval =0;
-			points = 0;
-			size = 1;
-			isPlay = false;
-			isPlaying = true;
-			displayBlocks();
-			startGame();			
-		}
-	}else{
-		timer = state;
+	if (isPlaying == false) {
 		interval =0;
 		points = 0;
 		size = 1;
-		restart =true;
-		isPlay = false;
-		displayBlocks();
-		isPlaying = true;
-		startGame();		
-	}
-	isPlay = true;
+		if (isOver) {
+			displayBlocks();
+			createSnake();
+			startGame();
+		}else{
+			if (!isPlaying && isPlay && !restart) {
+				timer = userTime>speed?userTime:timer;
+				state = timer;
+				isPlaying = true;
+				isPlay = true;				
+				displayBlocks();
+				startGame();
+			}
+			if (!isPlaying && isPlay && restart) {				
+				isPlay = true;
+				isPlaying = true;
+				displayBlocks();
+				startGame();	
+			}
+			if (!isOver && !restart && !isPlay) {
+				timer =userTime>speed?userTime:timer;				
+				isPlaying = true;
+				isPlay = true;
+				displayBlocks();
+				startGame();		
+			}
+		}
+	}else{
+		interval =0;		
+		points = 0;
+		size = 1;
+		timer = state;
+		isPlaying =false;
+		startGame();
+	}	
 }
 
 getNext =()=>{
@@ -92,50 +102,71 @@ detectCollitionY = (index,bool)=>{
 col = (myTimer,currentMove)=>{
 	if (currentMove == 0) {
 		if (detectCollitionX(currentMove,toX)) {
-				console.log("TRUE A");
-				clearInterval(myTimer);
+				return true;
 		}
+		return false;
 	}else{
 		if(detectCollitionY(currentMove,toY)){
-			console.log("TRUE B");
-			clearInterval(myTimer);
+			return true;
 		}
+		return false;
 	}
 }
 
 // STARTS THE GAME; 
 startGame = ()=>{
-	var myTimer = setInterval(()=>{
-	if (data) {
-		isTreaseureFound();
-	}
-	var l = data.length-1;
-	if (isAI) {
-		let myOpt = generateXY(data[0],treasure[0]);
-		let myCol = getNext(currentMove,toX,toY);
-		col(myTimer,currentMove);
-		currentMove = (myOpt == undefined ? currentMove:myOpt);
+	if (isPlaying) {
+		myTimer = setInterval(()=>{
+		if (data) {
+			isTreaseureFound();
+		}
+		var l = data.length-1;
+		if (isAI) {
+			let myOpt = generateXY(data[0],treasure[0]);
+			let myCol = getNext(currentMove,toX,toY);
+			isOver = col(myTimer,currentMove);
+			currentMove = (myOpt == undefined ? currentMove:myOpt);
+		}else{
+			isOver = col(myTimer,currentMove);
+		}
+		if (isOver) {
+			document.getElementById('start').innerHTML ="RESTART";
+			dispayMessage("GAME OVER!");
+			timer = state;
+			restart = true;
+			isPlaying = false;
+			isPlay =true;
+			clearInterval(myTimer);
+		}
+		if(!isPlaying){
+			clearInterval(myTimer);
+		}
+		interval++;
+		displayScore(points);//Update time;
+
+		switch(currentMove){
+			case 0:
+				moveHorizontal2(toX);
+				break;
+			case 1:
+				moveVertical2(toY);
+				break;			
+			default:
+				console.log("default");
+		}
+		},speed);
+
+		setTimeOut(myTimer);
 	}else{
-		col(myTimer,currentMove);
+		clearInterval(myTimer);
 	}
-		
-	interval++;
-	displayScore(points);//Update time;
-
-	switch(currentMove){
-		case 0:
-			moveHorizontal2(toX);
-			break;
-		case 1:
-			moveVertical2(toY);
-			break;			
-		default:
-			console.log("default");
-	}
-	},speed);
-
-	setTimeOut(myTimer);
 }
 setTimeOut = (myTimer)=>{
-	setTimeout(()=>{clearInterval(myTimer),isPlaying = false;document.getElementById('start').innerHTML ="RESTART"},timer);	
+	setTimeout(()=>{
+		if (!isOver) {
+			clearInterval(myTimer);
+			isPlaying = false;
+			document.getElementById('start').innerHTML ="RESTART"	
+		}
+	},timer);	
 }
