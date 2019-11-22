@@ -30,6 +30,9 @@ var medium = 100;
 var hard = 50;
 var level = 0; // 0 -easy 1-medium 2 -hard;
 var speed =  easy; //speed of the game; 50 is the recommended speed for pc with low memory;
+var state = timer;
+var restart =false;
+var numMove =0; 
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{

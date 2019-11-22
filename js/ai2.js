@@ -1,5 +1,7 @@
 // ALGORTHM TO GET THE SHORTEST PATH; 46% accuracy;
 generateXY = (from,to)=>{
+	numMove++;
+	console.log(numMove,(points/numMove));
 	let diffX = from.x-to.x;
 	let isdiffX = ((diffX<1)? true:false);//TRUE - RIGHT FALSE - LEFT;
 

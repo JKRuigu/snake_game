@@ -3,13 +3,26 @@ start = ()=>{
 	// CHECKS IF THE GAME HAS STARTED; 
 	// IF YOU CALL THE startGame() Functions multiple time it increases the speed of the game;
 	if (!isPlay) {
-		timer = userTime>speed?userTime:timer;
-		startGame();
-		if (isAI) {
-			document.getElementById('start').innerHTML ="START";
+		if (!restart) {
+			timer = userTime>speed?userTime:timer;
+			state = timer;
+			startGame();
 		}else{
-			document.getElementById('start').innerHTML ="STOP";		
+			timer = state;
+			interval =0;
+			points = 0;
+			size = 1;
+			isPlay = false;
+			startGame();			
 		}
+	}else{
+		timer = state;
+		interval =0;
+		points = 0;
+		size = 1;
+		restart =true;
+		isPlay = false;
+		startGame();		
 	}
 	isPlay = true;
 }

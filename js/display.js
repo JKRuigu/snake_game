@@ -16,7 +16,7 @@ displayScore =(points)=>{
 	ctx.font= 'Bold 18px Sans-Serif';
 	var avg =0;
 	if (points !=0 ) {
-		pointsArr.push(Math.floor((points/interval)*100));
+		pointsArr.push(Math.floor((points/numMove)*100));
 		let l = pointsArr.length;
 		let sum=0;
 		for (i = 0; i < l; i++) {
@@ -36,8 +36,9 @@ displayScore =(points)=>{
 			tLeft = timer -(interval*speed);
 		}
 	}
-	let rate = 0;
-	  rate = points != 0? Math.floor((points/interval)*100):0;
+
+	let rate = Math.floor((points/numMove)*100);
+	// console.log(rate,interval,points);
 	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }
