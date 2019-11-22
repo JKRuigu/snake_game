@@ -1,3 +1,11 @@
+// DISPLAY BLOCKS;
+displayBlocks =()=>{
+	let l = blocks.length;
+	for(i=0;i<l;i++){
+		ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+	}
+}
+
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
 	let len = treasure.length;
@@ -8,6 +16,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	for(i=0; i<size; i++){
 		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
 	}
+	displayBlocks(blocks);
 }
 
 //Displays score;
@@ -42,3 +51,4 @@ displayScore =(points)=>{
 	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }
+

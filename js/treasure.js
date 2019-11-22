@@ -1,8 +1,6 @@
 // CREATE TREASURE;
 createTreasure = (treasure=[])=>{
 		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
-		// ctx2.fillStyle = 'rgb(255,0,13)';
-		// treasure = [{"x":150,"y":70,isFound:false}]; //create treasure;
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 		console.log("created treasure");
 		return treasure;
