@@ -62,12 +62,14 @@ addTime = ()=>{
 }
 
 selectLevel = value =>{
-	if (value == 0) {
-		speed= 300;		
-	}else if(value == 1){
-		speed= 200;		
-	}else{
-		speed= 50;				
+	if (!isPlay) {
+		if (value == 0) {
+			speed= 300;		
+		}else if(value == 1){
+			speed= 200;		
+		}else{
+			speed= 50;				
+		}
 	}
 }
 

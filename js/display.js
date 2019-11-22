@@ -36,7 +36,8 @@ displayScore =(points)=>{
 			tLeft = timer -(interval*speed);
 		}
 	}
-	let rate  = Math.floor((points/interval)*100);
+	let rate = 0;
+	  rate = points != 0? Math.floor((points/interval)*100):0;
 	let txt = `size:${size} pts: ${points} rate:${rate} avg:${avg} time: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }
