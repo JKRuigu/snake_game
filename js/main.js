@@ -33,6 +33,7 @@ var speed =  easy; //speed of the game; 50 is the recommended speed for pc with 
 var state = timer;
 var restart =false;
 var numMove =0; 
+var isPlaying = false;
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
@@ -53,7 +54,7 @@ ai = ()=>{
 
 addTime = ()=>{
 	let t = document.getElementById('time').value;
-	if (!isPlay) {
+	if (!isPlaying) {
 		if (t>(speed/1000)) {
 			userTime = t*1000;
 			displayScore(points);
@@ -65,7 +66,7 @@ addTime = ()=>{
 }
 
 selectLevel = value =>{
-	if (!isPlay) {
+	if (!isPlaying) {
 		if (value == 0) {
 			speed= 300;		
 		}else if(value == 1){

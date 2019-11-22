@@ -6,6 +6,7 @@ start = ()=>{
 		if (!restart) {
 			timer = userTime>speed?userTime:timer;
 			state = timer;
+			isPlaying = true;
 			startGame();
 		}else{
 			timer = state;
@@ -13,6 +14,7 @@ start = ()=>{
 			points = 0;
 			size = 1;
 			isPlay = false;
+			isPlaying = true;
 			startGame();			
 		}
 	}else{
@@ -22,6 +24,7 @@ start = ()=>{
 		size = 1;
 		restart =true;
 		isPlay = false;
+		isPlaying = true;
 		startGame();		
 	}
 	isPlay = true;
@@ -54,5 +57,5 @@ startGame = ()=>{
 	setTimeOut(myTimer);
 }
 setTimeOut = (myTimer)=>{
-	setTimeout(()=>{clearInterval(myTimer),document.getElementById('start').innerHTML ="RESTART"},timer);	
+	setTimeout(()=>{clearInterval(myTimer),isPlaying = false;document.getElementById('start').innerHTML ="RESTART"},timer);	
 }
