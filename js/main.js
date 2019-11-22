@@ -25,8 +25,8 @@ var isPlay = false;
 var timer = 5000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
-var easy = 300;
-var medium = 200; 
+var easy = 200;
+var medium = 100; 
 var hard = 50;
 var level = 0; // 0 -easy 1-medium 2 -hard;
 var speed =  easy; //speed of the game; 50 is the recommended speed for pc with low memory;
@@ -50,13 +50,12 @@ ai = ()=>{
 
 addTime = ()=>{
 	let t = document.getElementById('time').value;
-	console.log(t);
 	if (!isPlay) {
-		if (t>speed) {
-			userTime = t;
+		if (t>(speed/1000)) {
+			userTime = t*1000;
 			displayScore(points);
 		}else{
-			userTime = t;
+			userTime = t*1000;
 			displayScore(points);
 		}
 	}

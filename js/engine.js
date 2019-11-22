@@ -26,8 +26,7 @@ startGame = ()=>{
 	}
 	interval++;
 	displayScore(points);//Update time;
-	console.log(speed);
-
+	console.log(userTime);
 	switch(currentMove){
 		case 0:
 			moveHorizontal2(toX);

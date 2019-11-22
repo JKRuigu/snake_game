@@ -30,7 +30,7 @@ displayScore =(points)=>{
 	if (isPlay) {
 		tLeft = timer -(interval*speed);
 	}else{
-		if (userTime>speed) {
+		if (userTime>(speed/1000)) {
 			tLeft = userTime -(interval*speed);
 		}else{
 			tLeft = timer -(interval*speed);
