@@ -1,5 +1,11 @@
-var canvas = document.getElementById('mycanvas');
+var canvas = document.createElement("canvas");
 var ctx = canvas.getContext('2d');
+canvas.width = 750;
+canvas.height = 750;
+ctx.scale(1,1);
+document.body.appendChild(canvas);
+// var canvas = document.getElementById('mycanvas');
+// var ctx = canvas.getContext('2d');
 // var ctx2 = canvas.getContext('2d');
 
 var x = 150; //width of canvas;
@@ -49,7 +55,6 @@ createRandom = ()=>{
 }
 
 ai = ()=>{
-	console.log(isAI);
 	isAI = !isAI;
 	if (isAI) {
 		document.getElementById('ai').innerHTML ="AI";
@@ -57,6 +62,7 @@ ai = ()=>{
 		document.getElementById('ai').innerHTML ="MANUAL";		
 	}
 }
+
 
 addTime = ()=>{
 	let t = document.getElementById('time').value;
