@@ -9,11 +9,14 @@ createSnake =()=>{
 var img = new Image();
 img.src = "./imgs/mario.png";
 
+var img2 = new Image();
+img2.src = "./imgs/grass_15.png";
+
 displayBackGround = ()=>{
-	img.onload=function() {
+	img2.onload=function() {
 		for (var i = m; i <=(maxX+10); i+=10) {
 			for (var j = m; j <=(maxX+10); j+=20) {
-				ctx.drawImage(img, 10,10,50,50,i,j,10,20);
+				ctx.drawImage(img2, 10,10,50,50,i,j,10,20);
 			}
 		}									//pos//size			
 	    	// ctx.drawImage(img, 1,2,3, 4,5,6, 7,8);
