@@ -29,12 +29,6 @@ col2 = (x,y,colData,data,blocks)=>{
 					}
 				}
 			}
-		}else{
-			for (var i = 0; i < lenBloc; i++) {
-				if (blocks[i].x == colData[1].x && blocks[i].y == colData[1].y)
-					console.log("3 A");
-			}
-			
 		}
 	}
 }
