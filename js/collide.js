@@ -19,7 +19,7 @@ getNext =()=>{
 			let tempXL = (x-sizeX)<m?m:(x-sizeX);//LEFT;
 			return[{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y}]; 
 		}else{
-			let tempYF = (y+sizeY)>maxY? maxY:(y+sizeY); //UP;	
+			let tempYF = (y+sizeY)>maxY? maxY:(y+sizeY); //DOWN;	
 			let tempXR = (x+sizeX)>maxX?maxX:(x+sizeX);//RIGHT;
 			let tempXL = (x-sizeX)<m?m:(x-sizeX);//LEFT;
 			return [{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y}];

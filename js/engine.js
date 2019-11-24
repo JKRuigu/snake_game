@@ -6,19 +6,20 @@ start =()=>{
 		document.getElementById('start').innerHTML ="PAUSE";	
 
 		myTimer = setInterval(()=>{
+		let path = col2(x,y,getNext(),data,blocks);
+
 			if (data) {
 				isTreaseureFound();
 			}
 
 			var l = data.length-1;
 			if (isAI) {
-				let myOpt = aiType ==0? generateXY(data[0],treasure[0]):generateXY2(data[0],treasure[0]);
+				let myOpt = aiType ==0? generateXY(data[0],treasure[0]):generateXY2(data[0],treasure[0],path);
 				// let myCol = getNext(currentMove,toX,toY);
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
-			let colData = getNext();
-			console.log(col2(x,y,colData,data,blocks));
+			// console.log(aiType);
 			isOver = col(myTimer,currentMove,blocks,data)
 			if(!isPlaying || isOver){
 				clearInterval(myTimer);

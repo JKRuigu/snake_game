@@ -41,13 +41,16 @@ var snakeType = 0;
 var restart =false;
 var numMove =0; 
 var isPlaying = false;
-// var blocks = [];
-var blocks = [{"x":220,"y":170},{"x":220,"y":160},{"x":220,"y":150},{"x":220,"y":140}];
+var blocks = [];
+// var blocks = [{"x":220,"y":170},{"x":220,"y":160},{"x":220,"y":150},{"x":220,"y":140,"x":220,"y":130},{"x":220,"y":120},{"x":220,"y":110},{"x":220,"y":100}];
 var isOver = false;
 var myTimer;
 var isPaused = false;
-var aiType = false;
+var aiType = true;
 
+for (var i = 70; i < 350; i+=10) {
+	blocks.push({"x":220,"y":i});
+}
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{

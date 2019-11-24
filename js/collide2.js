@@ -6,6 +6,7 @@ col2 = (x,y,colData,data,blocks)=>{
 			for (var j = 0; j < blocks.length; j++) {
 				if (blocks[j].x == colData[0].x && blocks[j].y == colData[0].y){
 					choices[0] =false;
+					console.log("COL 1");
 				}
 			}
 		}
