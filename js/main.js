@@ -2,7 +2,7 @@ var canvas = document.createElement("canvas");
 var ctx = canvas.getContext('2d');
 canvas.width = 750;
 canvas.height = 750;
-ctx.scale(1,1);
+ctx.scale(1.5,1);
 document.body.appendChild(canvas);
 // var canvas = document.getElementById('mycanvas');
 // var ctx = canvas.getContext('2d');
@@ -28,15 +28,16 @@ var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 5000; //duration of the game;
+var timer = 50000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
 var medium = 100; 
 var hard = 50;
 var level = 0; // 0 -easy 1-medium 2 -hard;
-var speed =  easy; //speed of the game; 50 is the recommended speed for pc with low memory;
+var speed =  200; //speed of the game; 50 is the recommended speed for pc with low memory;
 var state = timer;
+var snakeType = true;
 var restart =false;
 var numMove =0; 
 var isPlaying = false;
@@ -82,13 +83,18 @@ addTime = ()=>{
 selectLevel = value =>{
 	if (!isPlaying) {
 		if (value == 0) {
-			speed= 300;		
+			speed= 200;		
 		}else if(value == 1){
 			speed= 200;		
 		}else{
-			speed= 50;				
+			speed= 200;				
 		}
 	}
+}
+
+selectType = type =>{
+		snakeType = type;
+		changeType(type,data,sizeX,sizeY);
 }
 
 start2 = ()=>{

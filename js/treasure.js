@@ -1,7 +1,7 @@
 // CREATE TREASURE;
 createTreasure = (treasure=[])=>{
 		treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
-		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
+		ctx.drawImage(img, 100,580,100,400,treasure[0].x,treasure[0].y,sizeX,(sizeY+sizeY));
 		console.log("created treasure!");
 		return treasure;
 }

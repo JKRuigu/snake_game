@@ -64,11 +64,13 @@ start2 =()=>{
 
 setTimeOut = (myTimer,timer)=>{
 	setTimeout(()=>{
-			if (!isPlay && !isPaused) {
+			if (!isPaused) {
 				clearInterval(myTimer);
 				isPlaying = false;
 				interval =0;
 				isPlay =false;
+				size =1;
+				timer = state;
 				document.getElementById('start').innerHTML ="RESTART";
 			}	
 	},timer);	
