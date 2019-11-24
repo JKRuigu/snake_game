@@ -1,4 +1,3 @@
-
 // HORIZONTAL MOVEMENT along x-axis;
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 

@@ -1,3 +1,6 @@
+// var img = new Image();
+// img.src = "./imgs/grass_15.png";
+
 // DISPLAY BLOCKS;
 displayBlocks =()=>{
 	let l = blocks.length;
@@ -8,23 +11,28 @@ displayBlocks =()=>{
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
-	let len = treasure.length;
-	ctx.fillRect(m,m,(maxX-m),(maxY-m));
+	let len = treasure.length;            
+	for (var i = m; i <=(maxX+10); i+=10) {
+		for (var j = m; j <=(maxX+10); j+=20) {
+			ctx.drawImage(img, 10,10,50,50,i,j,10,20);
+		}
+	}
+	
 	if(len !=0 && treasure[0].isFound == false) {
-		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+		// ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY)
+		ctx.drawImage(img, 100,580,100,400,treasure[0].x,treasure[0].y,sizeX,sizeY);
+		// ctx.clearRect();
 	}
 	for(i=0; i<size; i++){
 		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
 	}
-	displayBlocks(blocks);
+	// displayBlocks(blocks);
 }
 
 //Displays score;
 displayScore =(points)=>{
 	ctx.clearRect(30,5,400,55);
 	ctx.font= 'Bold 18px Sans-Serif';
-	
-	let tLeft =timer;
 	if (isPlay) {
 		tLeft = timer -(interval*speed);
 	}else{
@@ -35,8 +43,6 @@ displayScore =(points)=>{
 		}
 	}
 
-	// let rate = Math.floor((points/numMove)*100);
-	// console.log(rate,interval,points);
-	let txt = `size:${size} pts: ${points} time: ${tLeft}`
+	let txt = `Points: ${points} Time left: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }

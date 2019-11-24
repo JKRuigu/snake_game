@@ -20,7 +20,7 @@ setKey = (event,status,isPlaying)=>{
 				move(1,false);
 				break;
 			case 13:
-				isPlaying== false?start2():console.log("KEY INPUT ERROR!",isPlaying);
+				isPlaying== false?start():console.log("KEY INPUT ERROR!",isPlaying);
 				break;
 			case 9:
 				ai();

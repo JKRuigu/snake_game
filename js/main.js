@@ -28,7 +28,7 @@ var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 50000; //duration of the game;
+var timer = 5000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
@@ -44,6 +44,7 @@ var blocks = [];
 // var blocks = [{"x":220,"y":170},{"x":220,"y":160},{"x":220,"y":150},{"x":220,"y":140}];
 var isOver = false;
 var myTimer;
+var isPaused = false;
 
 
 // Create random number between the minX and maxY margins;
@@ -91,7 +92,7 @@ selectLevel = value =>{
 }
 
 start2 = ()=>{
-	start(isPlaying);
+	start();
 }
 
 document.addEventListener('keydown', function(e) {

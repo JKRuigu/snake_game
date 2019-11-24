@@ -6,14 +6,11 @@ getNext =()=>{
 			let tempYU = (y-sizeY)<m?m:(y-sizeY); //UP;
 			let tempYD = (y+sizeY)<m?m:(y+sizeY); //DOWN;
 			return [{"x":tempXF,y},{x,"y":tempYU},{x,"y":tempYD}];
-			// console.log("A",x,y,{"x":tempXF,y},{x,"y":tempYU},{x,"y":tempYD});
-			// s.push(tempXF)
 		}else{
 			let tempXF = (x-sizeX)>maxX? maxX:(x-sizeX); //LEFT;
 			let tempYU = (y-sizeY)<m?m:(y-sizeY); //UP;
 			let tempYD = (y+sizeY)<m?m:(y+sizeY);//DOWN;
 			return [{"x":tempXF,y},{x,"y":tempYU},{ x,tempYD}];
-			// console.log("B",x,y,{"x":tempXF,y},{x,"y":tempYU},{ x,tempYD});
 		}
 	}else{
 		if (toY == true) {
@@ -21,13 +18,11 @@ getNext =()=>{
 			let tempXR = (x+sizeX)>maxX?maxX:(x+sizeX);//RIGHT;
 			let tempXL = (x-sizeX)<m?m:(x-sizeX);//LEFT;
 			return[{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y}]; 
-			// console.log("C",x,y,{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y});
 		}else{
 			let tempYF = (y+sizeY)>maxY? maxY:(y+sizeY); //UP;	
 			let tempXR = (x+sizeX)>maxX?maxX:(x+sizeX);//RIGHT;
 			let tempXL = (x-sizeX)<m?m:(x-sizeX);//LEFT;
 			return [{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y}];
-			// console.log("D",x,y,{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y});
 		}
 	}
 }
@@ -36,9 +31,8 @@ detectCollitionX = (index,bool)=>{
 	let len =blocks.length;
 
 	for(i=0;i<len;i++){
-		if (blocks[i].x == x && blocks[i].y == y) {
+		if (blocks[i].x == x && blocks[i].y == y)
 			return true;
-		}
 	}
 	return false;
 }
@@ -47,9 +41,8 @@ detectCollitionY = (index,bool)=>{
 	let len =blocks.length;
 
 	for(i=0;i<len;i++){
-		if (blocks[i].y == y && blocks[i].x == x) {
+		if (blocks[i].y == y && blocks[i].x == x)
 			return true;
-		}
 	}
 	return false;
 }

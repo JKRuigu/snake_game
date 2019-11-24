@@ -6,45 +6,46 @@ createSnake =()=>{
 	return data;
 }
 
+var img = new Image();
+img.src = "./imgs/mario.png";
+
+displayBackGround = ()=>{
+	img.onload=function() {
+		for (var i = m; i <=(maxX+10); i+=10) {
+			for (var j = m; j <=(maxX+10); j+=20) {
+				ctx.drawImage(img, 10,10,50,50,i,j,10,20);
+			}
+		}									//pos//size			
+	    	// ctx.drawImage(img, 1,2,3, 4,5,6, 7,8);
+	// BLOCK;
+	// ctx.drawImage(img, 100,580,100,400,50,50,10,20);
+	console.log("IMG LOADED!");
+	if (data.length ==0) {
+		data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
+		treasure = createTreasure(treasure);
+	}
+	}
+}
+
+
+// displayBackGround();
+
+restoreBlackGround =(x,y,sizeX,sizeY)=>{
+	ctx.drawImage(img, 10,10,50,50,x,y,sizeX,sizeY);
+}            
+
 //INTIALIZE THE GAME;
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	// ctx.fillRect(m,m,(maxX-m),(maxY-m));
-
-	// var img = new Image();
-	// img.src = './imgs/grass_15.png';
-	// img.onload = function(){
-	// }
-	  let temX =(maxX-m);
-	  let temY = (maxY-m);
-	  
-	// for (var i = m; i < temY; i+m) {
-	// 	console.log(i);
-	//   	for (var i = m; i < temX; i+m) {
-	//   		// ctx.drawImage(img,10,10,temX,temY);	  		
-	//   		console.log(temX,temY);
-	//   	}
-	// }
-
-	hasStarted = true;
 	if (isAI) {
 		document.getElementById('ai').innerHTML ="AI";
 	}else{
 		document.getElementById('ai').innerHTML ="MANUAL";		
 	}
-	console.log("Intialized the game");
+	console.log("Intialized the game!");
 	return createSnake();
 	state = timer;	
 }
 
+
 data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
-
-console.log("DISPLAY");
-dispayMessage = msg =>{
-	// ctx.clearRect(30,5,400,55);
-	ctx.font= 'Bold 30px Sans-Serif';
-	console.log(msg);
-	ctx.clearRect(100,100,200,70);
-	ctx.strokeText(msg, 100, 150);//displays the game title;	
-}
-
-// dispayMessage("GAME OVER!")
