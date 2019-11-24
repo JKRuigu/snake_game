@@ -10,7 +10,7 @@ getNext =()=>{
 			let tempXF = (x-sizeX)>maxX? maxX:(x-sizeX); //LEFT;
 			let tempYU = (y-sizeY)<m?m:(y-sizeY); //UP;
 			let tempYD = (y+sizeY)<m?m:(y+sizeY);//DOWN;
-			return [{"x":tempXF,y},{x,"y":tempYU},{ x,tempYD}];
+			return [{"x":tempXF,y},{x,"y":tempYU},{ x,"y":tempYD}];
 		}
 	}else{
 		if (toY == true) {
@@ -31,14 +31,18 @@ detectCollitionX = (index,bool,blocks,data)=>{
 	let len =blocks.length;
 
 	for(i=0;i<len;i++){
-		if (blocks[i].x == x && blocks[i].y == y)
+		if (blocks[i].x == x && blocks[i].y == y){
+			console.log("BLOCK!");
 			return true;
+		}
 	}
 
 	for(i=0;i<size;i++){
 		if (i>0)
-			if (data[i].x == x && blocks[i].y == y)
+			if (data[i].x == x && data[i].y == y){
+				console.log("BODY!");
 				return true;
+			}
 	}
 	return false;
 }
@@ -47,13 +51,17 @@ detectCollitionY = (index,bool,blocks,data)=>{
 	let len =blocks.length;
 
 	for(i=0;i<len;i++){
-		if (blocks[i].x == x && blocks[i].y == y)
+		if (blocks[i].x == x && blocks[i].y == y){
+			console.log("Blocks");
 			return true;
+		}
 	}
 	for(i=0;i<size;i++){
 		if (i>0)
-			if (data[i].x == x && blocks[i].y == y)
+			if (data[i].x == x && data[i].y == y){
+				// console.log("BODY!",data[i].x,x && blocks[i].y == y)
 				return true;
+			}
 	}
 	return false;
 }
