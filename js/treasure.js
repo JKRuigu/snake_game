@@ -38,5 +38,3 @@ getReward =()=>{
 		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
 
 }
-
-treasure = createTreasure(treasure);

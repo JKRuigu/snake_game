@@ -3,7 +3,7 @@ start =()=>{
 		state = timer;
 		isPlay =true;
 		tLeft =timer;
-		document.getElementById('start').innerHTML ="STOP";	
+		document.getElementById('start').innerHTML ="PAUSE";	
 
 		myTimer = setInterval(()=>{
 			if (data) {
@@ -41,13 +41,17 @@ start =()=>{
 		timer == isPaused?tLeft:timer;
 		isPlaying = true;
 	}else{
-		if (isPlay && isPaused){
+		// isPaused = isPlay?true:false;
+		if (isPlay && !isPaused){
 			document.getElementById('start').innerHTML ="PLAY"
 			isPlaying = true;
-			isPaused = false;	
+			isPaused = true;	
 			start2();
 		}
-		console.log("GAME IS PLAYING!",isPaused);
+		if (isPaused) {
+			
+		}
+		console.log("GAME IS PLAYING!",isPaused,isPlay);
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;

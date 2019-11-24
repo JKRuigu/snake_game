@@ -28,7 +28,7 @@ displayBackGround = ()=>{
 }
 
 
-// displayBackGround();
+displayBackGround();
 
 restoreBlackGround =(x,y,sizeX,sizeY)=>{
 	ctx.drawImage(img, 10,10,50,50,x,y,sizeX,sizeY);
@@ -46,6 +46,3 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	return createSnake();
 	state = timer;	
 }
-
-
-data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
