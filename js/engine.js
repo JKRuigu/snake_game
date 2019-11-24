@@ -18,7 +18,7 @@ start =()=>{
 			}
 
 			let colData = getNext();
-			col2(x,y,colData,data,blocks);
+			console.log(col2(x,y,colData,data,blocks));
 			isOver = col(myTimer,currentMove,blocks,data)
 			if(!isPlaying || isOver){
 				clearInterval(myTimer);
