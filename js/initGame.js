@@ -25,7 +25,8 @@ displayBackGround = ()=>{
 	console.log("IMG LOADED!");
 	if (data.length ==0) {
 		data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
-		// console.log(data);
+		x = data[0].x;
+		y = data[0].y;
 		treasure = createTreasure(treasure);
 	}
 	}
