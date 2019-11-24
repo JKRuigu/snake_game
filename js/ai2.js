@@ -1,7 +1,7 @@
 // ALGORTHM TO GET THE SHORTEST PATH; 46% accuracy;
 generateXY2 = (from,to,path)=>{
 	numMove++;
-	console.log(path,currentMove);
+	// console.log(path,currentMove);
 
 	let diffX = from.x-to.x;
 	let isdiffX = ((diffX<1)? true:false);//TRUE - RIGHT FALSE - LEFT;
@@ -12,26 +12,29 @@ generateXY2 = (from,to,path)=>{
 	solveX = ()=>{
 		diffX = (diffX<1)?(diffX*-1):diffX;
 		//FIND SHORTCUT;
-		// if (diffX<(390-diffX)) {
+		if (diffX<(390-diffX)) {
 			toX = isdiffX;
 			return 0;
-		// }else{
-		// 	toX = !isdiffX;
-		// 	return 0;
-		// }
+		}else{
+			toX = !isdiffX;
+			return 0;
+		}
 	}
 	solveY = ()=>{
 		diffY = (diffY<1)?(diffY*-1):diffY;
 		//FIND SHORTCUT;
-		// if (diffY<(390-diffY)) {
+		if (diffY<(390-diffY)) {
+			toY = !isdiffY;
+			return 1;
+		}else{
 			toY = isdiffY;
 			return 1;
-		// }else{
-		// 	toY = isdiffY;
-		// 	return 1;
-		// }
+		}
 	}
+
+
 	if (path[0] && path[1] && path[2]) {
+		console.log("YES!",diffX,diffY);
 		// SOLVE FOR ZERO X;
 		if (diffX == 0 && diffY !=0) {
 			return solveY();
