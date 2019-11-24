@@ -34,6 +34,12 @@ detectCollitionX = (index,bool,blocks,data)=>{
 		if (blocks[i].x == x && blocks[i].y == y)
 			return true;
 	}
+
+	for(i=0;i<size;i++){
+		if (i>0)
+			if (data[i].x == x && blocks[i].y == y)
+				return true;
+	}
 	return false;
 }
 
@@ -41,8 +47,13 @@ detectCollitionY = (index,bool,blocks,data)=>{
 	let len =blocks.length;
 
 	for(i=0;i<len;i++){
-		if (blocks[i].y == y && blocks[i].x == x)
+		if (blocks[i].x == x && blocks[i].y == y)
 			return true;
+	}
+	for(i=0;i<size;i++){
+		if (i>0)
+			if (data[i].x == x && blocks[i].y == y)
+				return true;
 	}
 	return false;
 }
@@ -50,11 +61,13 @@ detectCollitionY = (index,bool,blocks,data)=>{
 col = (myTimer,currentMove,blocks,data)=>{
 	if (currentMove == 0) {
 		if (detectCollitionX(currentMove,toX,blocks,data)) {
+				console.log("detectCollitionX");
 				return true;
 		}
 		return false;
 	}else{
 		if(detectCollitionY(currentMove,toY,blocks,data)){
+			console.log("detectCollitionY");
 			return true;
 		}
 		return false;

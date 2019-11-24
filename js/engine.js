@@ -40,7 +40,7 @@ start =()=>{
 		// console.log(tLeft);
 		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,timer);
 		timer == isPaused?tLeft:timer;
-		console.log("GAME IS PLAYING!",aiType);
+		// console.log("GAME IS PLAYING!",aiType);
 		isPlaying = true;
 	}else{
 		// isPaused = isPlay?true:false;
