@@ -1,4 +1,4 @@
-getNext =()=>{
+getNext =(currentMove,toX,toY)=>{
 	let s= [];
 	if (currentMove == 0) {
 		if (toX == true) {
@@ -24,39 +24,5 @@ getNext =()=>{
 			let tempXL = (x-sizeX)<m?m:(x-sizeX);//LEFT;
 			return [{x,"y":tempYF},{"x":tempXR,y},{"x":tempXL,y}];
 		}
-	}
-}
-
-detectCollitionX = (index,bool,blocks,data)=>{
-	let len =blocks.length;
-
-	for(i=0;i<len;i++){
-		if (blocks[i].x == x && blocks[i].y == y)
-			return true;
-	}
-	return false;
-}
-
-detectCollitionY = (index,bool,blocks,data)=>{
-	let len =blocks.length;
-
-	for(i=0;i<len;i++){
-		if (blocks[i].y == y && blocks[i].x == x)
-			return true;
-	}
-	return false;
-}
-
-col = (myTimer,currentMove,blocks,data)=>{
-	if (currentMove == 0) {
-		if (detectCollitionX(currentMove,toX,blocks,data)) {
-				return true;
-		}
-		return false;
-	}else{
-		if(detectCollitionY(currentMove,toY,blocks,data)){
-			return true;
-		}
-		return false;
 	}
 }

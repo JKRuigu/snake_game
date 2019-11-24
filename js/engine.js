@@ -14,11 +14,12 @@ start =()=>{
 			if (isAI) {
 				let myOpt = aiType ==0? generateXY(data[0],treasure[0]):generateXY2(data[0],treasure[0]);
 				// let myCol = getNext(currentMove,toX,toY);
-				// isOver = col(myTimer,currentMove);
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
-			if(!isPlaying){
+			isOver = col(myTimer,currentMove,blocks,data)
+			// console.log();
+			if(!isPlaying || isOver){
 				clearInterval(myTimer);
 			}
 			// console.log("HEY!")

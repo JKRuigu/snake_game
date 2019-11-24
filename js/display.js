@@ -31,7 +31,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 			ctx.drawImage(img, 100,580,1000,1000,data[i].x,data[i].y,sizeX,(sizeY));
 		}
 	}
-	// displayBlocks(blocks);
+	displayBlocks(blocks);
 }
 changeType = (type,data,sizeX,sizeY)=>{
 	ctx.drawImage(img, 10,10,50,50,data[0].x,data[0].y,10,20);
