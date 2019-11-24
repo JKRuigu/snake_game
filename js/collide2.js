@@ -9,9 +9,12 @@ col2 = (x,y,colData,data,blocks)=>{
 					console.log("1 A");
 			}
 			for (var i = 0; i < data.length; i++) {
-				if(i>0)
-					if (data[i].y == colData[0].x && data[i].y == colData[0].y)
-						console.log("1 B");
+				if(i>0){
+					if (i!=1) {
+						if (data[i].y == colData[0].x && data[i].y == colData[0].y)
+							console.log("1 B");
+					}
+				}
 			}
 		}else if (i ==1) {
 			for(i=0;i<lenBloc;i++){
@@ -19,9 +22,12 @@ col2 = (x,y,colData,data,blocks)=>{
 					console.log("2 A");
 			}
 			for (var i = 0; i < data.length; i++) {
-				if(i>0)
-					if (data[i].x == colData[1].x && data[i].y == colData[1].y)
-						console.log("2 B");
+				if(i>0){
+					if (i!=1) {
+						if (data[i].x == colData[1].x && data[i].y == colData[1].y)
+							console.log("2 B");
+					}
+				}
 			}
 		}else{
 			for (var i = 0; i < lenBloc; i++) {

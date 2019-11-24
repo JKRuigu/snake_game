@@ -32,17 +32,20 @@ detectCollitionX = (index,bool,blocks,data)=>{
 
 	for(i=0;i<len;i++){
 		if (blocks[i].x == x && blocks[i].y == y){
-			console.log("BLOCK!");
+			console.log("BLOCK!",currentMove,toX,toY);
 			return true;
 		}
 	}
 
 	for(i=0;i<size;i++){
-		if (i>0)
-			if (data[i].x == x && data[i].y == y){
-				console.log("BODY!");
-				return true;
+		if (i>0){
+			if (i !=1) {
+				if (data[i].x == x && data[i].y == y){
+					console.log("BODY!",currentMove,toX,toY,pending,treasure[0].isFound);
+					return true;
+				}
 			}
+		}			
 	}
 	return false;
 }
@@ -52,16 +55,19 @@ detectCollitionY = (index,bool,blocks,data)=>{
 
 	for(i=0;i<len;i++){
 		if (blocks[i].x == x && blocks[i].y == y){
-			console.log("Blocks");
+			console.log("Blocks",currentMove,toX,toY);
 			return true;
 		}
 	}
 	for(i=0;i<size;i++){
-		if (i>0)
-			if (data[i].x == x && data[i].y == y){
-				// console.log("BODY!",data[i].x,x && blocks[i].y == y)
-				return true;
+		if (i>0){
+			if (i !=1) {
+				if (data[i].x == x && data[i].y == y){
+					console.log("BODY!",currentMove,toX,toY,pending,treasure[0].isFound);
+					return true;
+				}
 			}
+		}			
 	}
 	return false;
 }
