@@ -1,5 +1,6 @@
 // ALGORTHM TO GET THE SHORTEST PATH; 46% accuracy;
-generateXY = (from,to)=>{
+generateXY2 = (from,to)=>{
+	// console.log("CLEVER")
 	numMove++;
 	// console.log(numMove,(points/numMove));
 	let diffX = from.x-to.x;
@@ -10,6 +11,7 @@ generateXY = (from,to)=>{
 
 	solveX = ()=>{
 		diffX = (diffX<1)?(diffX*-1):diffX;
+		//FIND SHORTCUT;
 		if (diffX<(390-diffX)) {
 			toX = isdiffX;
 			return 0;
@@ -20,6 +22,7 @@ generateXY = (from,to)=>{
 	}
 	solveY = ()=>{
 		diffY = (diffY<1)?(diffY*-1):diffY;
+		//FIND SHORTCUT;
 		if (diffY<(390-diffY)) {
 			toY = !isdiffY;
 			return 1;

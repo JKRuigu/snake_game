@@ -15,7 +15,7 @@ img2.src = "./imgs/grass_15.png";
 displayBackGround = ()=>{
 	img2.onload=function() {
 		for (var i = m; i <=(maxX+10); i+=10) {
-			for (var j = m; j <=(maxX+10); j+=20) {
+			for (var j = m; j <=(maxX+10); j+=10) {
 				ctx.drawImage(img2, 10,10,50,50,i,j,10,20);
 			}
 		}									//pos//size			
@@ -25,6 +25,7 @@ displayBackGround = ()=>{
 	console.log("IMG LOADED!");
 	if (data.length ==0) {
 		data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
+		// console.log(data);
 		treasure = createTreasure(treasure);
 	}
 	}

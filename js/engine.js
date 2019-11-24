@@ -12,8 +12,8 @@ start =()=>{
 
 			var l = data.length-1;
 			if (isAI) {
-				let myOpt = generateXY(data[0],treasure[0]);
-				let myCol = getNext(currentMove,toX,toY);
+				let myOpt = aiType ==0? generateXY(data[0],treasure[0]):generateXY2(data[0],treasure[0]);
+				// let myCol = getNext(currentMove,toX,toY);
 				// isOver = col(myTimer,currentMove);
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
@@ -36,9 +36,10 @@ start =()=>{
 					console.log("default");
 			}
 		},speed);
-		console.log(tLeft);
+		// console.log(tLeft);
 		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,timer);
 		timer == isPaused?tLeft:timer;
+		console.log("GAME IS PLAYING!",aiType);
 		isPlaying = true;
 	}else{
 		// isPaused = isPlay?true:false;
@@ -51,7 +52,6 @@ start =()=>{
 		if (isPaused) {
 			
 		}
-		console.log("GAME IS PLAYING!",isPaused,isPlay);
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;

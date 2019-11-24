@@ -19,6 +19,18 @@ setKey = (event,status,isPlaying)=>{
 			case 40:
 				move(1,false);
 				break;
+			case 32:
+				start();
+				break;
+			case 27:
+				start();
+				break;
+			case 67:
+				selectTypeAiKeyBoard(true);
+				break;
+			case 83:
+				selectTypeAiKeyBoard(false);
+				break;
 			case 13:
 				isPlaying== false?start():console.log("KEY INPUT ERROR!",isPlaying);
 				break;

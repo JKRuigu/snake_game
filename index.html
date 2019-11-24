@@ -27,14 +27,15 @@
     <button onclick="ai()" id="ai">AI</button>
     <input type="number" onkeyup="addTime()" name="time" placeholder="Enter time" id="time">
     <select onchange="selectLevel(value);">
-      <option value="0">Easy</option>
-      <option value="1">Medium</option>
-      <option value="2">Hard</option>
+      <option value="200">Easy</option>
+      <option value="100">Medium</option>
+      <option value="50">Hard</option>
     </select>
     <select onchange="selectType(value);">
       <option value="0">Normal</option>
       <option value="1">block</option>
     </select>
+    <button id="typeAi" onclick="selectTypeAi()">Stupid</button>
 	</p>
   
    </body>
@@ -46,6 +47,7 @@
     <script src="./js/movement.js"></script>
     <script src="./js/keyinput.js"></script>
     <script src="./js/collide.js"></script>
+    <script src="./js/ai.js"></script>
     <script src="./js/ai2.js"></script>
     <script src="./js/engine.js"></script>
 	

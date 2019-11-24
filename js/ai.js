@@ -1,5 +1,6 @@
 // ALGORTHM TO GET THE SHORTEST PATH; 46% accuracy;
 generateXY = (from,to)=>{
+	// console.log("STUPID");
 	let xRoute =[];
 	let fromX = from.x;
 	let toXA = to.x;

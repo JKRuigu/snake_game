@@ -11,7 +11,7 @@ displayBlocks =()=>{
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
-	console.log()
+	// console.log()
 	let len = treasure.length;            
 	for (var i = m; i <=(maxX+10); i+=10) {
 		for (var j = m; j <=(maxX+10); j+=20) {

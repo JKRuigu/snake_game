@@ -19,7 +19,7 @@ var maxY =390; // max height;
 var toX = true; //True when direction to X axis is positive (left to right);
 var toY = true;  //True when direction to Y axis is positive (up to down);
 var pending =false; //True when snake tail has reached the treasure location;
-var currentMove =1; // 0-Right 1-Left 2-Up 3- Down  
+var currentMove =1; // 0 horizontal,1-varical;
 var data = []; //location of each segment of the snake;
 var treasure= []; //reward loacation;
 var isTreaseure = false; //if false a new treasure is created;
@@ -35,7 +35,7 @@ var easy = 200;
 var medium = 100; 
 var hard = 50;
 var level = 0; // 0 -easy 1-medium 2 -hard;
-var speed =  200; //speed of the game; 50 is the recommended speed for pc with low memory;
+var speed =  easy; //speed of the game; 50 is the recommended speed for pc with low memory;
 var state = timer;
 var snakeType = 0;
 var restart =false;
@@ -46,6 +46,7 @@ var blocks = [];
 var isOver = false;
 var myTimer;
 var isPaused = false;
+var aiType = false;
 
 
 // Create random number between the minX and maxY margins;
@@ -81,14 +82,20 @@ addTime = ()=>{
 
 
 selectLevel = value =>{
-	if (!isPlaying) {
-		if (value == 0) {
-			speed= 200;		
-		}else if(value == 1){
-			speed= 200;		
-		}else{
-			speed= 200;				
-		}
+	speed = value;
+}
+
+selectTypeAi = () =>{
+	aiType = !aiType;
+	document.getElementById("typeAi").innerHTML = aiType == false? "Stupid":"Clever";
+}
+
+selectTypeAiKeyBoard= bool =>{
+	if (bool && !aiType ) {
+		selectTypeAi();
+	}
+	if (!bool && aiType) {
+		selectTypeAi();		
 	}
 }
 
