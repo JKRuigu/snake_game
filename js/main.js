@@ -49,9 +49,25 @@ var isPaused = false;
 var aiType = true;
 
 for (var i = 70; i < 350; i+=10) {
-	blocks.push({"x":220,"y":i});
+	// console.log(i)
+	if (i==120 || i !=120 || i==220 || i !=230) {
+		blocks.push({"x":220,"y":i});
+	}else{
+		console.log("NOT!")
+	}
 }
 
+for (var i = 70; i < 350; i+=10) {
+	if (i !=170 || i!=210) {
+		blocks.push({"x":140,"y":i});
+	}
+}
+
+for (var i = 70; i < 350; i+=10) {
+	if (i!=110 || i!=170) {
+		blocks.push({"x":300,"y":i});
+	}
+}
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
 	let ran = Math.floor(Math.random()*maxX); //generate random number from 0 -390;

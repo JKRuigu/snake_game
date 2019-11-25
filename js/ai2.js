@@ -54,15 +54,37 @@ generateXY2 = (from,to,path)=>{
 	}
 
 	if (path[0] && path[1] && !path[0]) {
+		console.log("1");
 		if (currentMove == 0) {
 			return solveX();
 		}
 		if (currentMove == 1) {
-			return solveY();
+			return solveX();
 		}
 	}
 	
+	if (path[0] && !path[1] && path[0]) {
+		console.log("1B");
+		if (currentMove == 0 && toX) {
+			toY == false;
+			return 0;
+		}
+		if (currentMove == 0 && !toX) {
+			toY == false;
+			return 0;
+		}
+		// if (currentMove == 1 && toY) {
+		// 	toX = false;			
+		// 	return 0;
+		// }
+		// if (currentMove == 1 && !toY) {
+		// 	toX = false;			
+		// 	return 0;
+		// }
+	}
+
 	if (!path[0] && !path[1] && path[0]) {
+		console.log("2");
 		if (currentMove == 0) {
 			toY =false;
 			return 1;
@@ -75,6 +97,7 @@ generateXY2 = (from,to,path)=>{
 	}
 
 	if (path[0] && !path[1] && !path[0]) {
+		console.log("3");
 		if (currentMove == 0) {
 			return solveX();
 		}
@@ -84,6 +107,7 @@ generateXY2 = (from,to,path)=>{
 	}
 	
 	if (!path[0] && path[1] && path[0]) {
+		console.log("4");
 		if (currentMove ==0) {
 			return solveY();
 		}
@@ -93,6 +117,7 @@ generateXY2 = (from,to,path)=>{
 	}
 
 	if (!path[0] && path[1] && !path[0]) {
+		console.log("5");
 		if (currentMove == 0) {
 			toY = true;
 			return 1; 
@@ -104,6 +129,7 @@ generateXY2 = (from,to,path)=>{
 	}
 
 	if (!path[0] && !path[1] && path[0]) {
+		console.log("6");
 		if (currentMove ==0) {
 			toY = false;
 			return 1;
