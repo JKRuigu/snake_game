@@ -28,7 +28,7 @@ var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 50000; //duration of the game;
+var timer = 300000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
@@ -48,7 +48,7 @@ var myTimer;
 var isPaused = false;
 var aiType = true;
 
-for (var i = 70; i < 350; i+=10) {
+for (var i = 170; i < 250; i+=10) {
 	// console.log(i)
 	if (i==120 || i !=120 || i==220 || i !=230) {
 		blocks.push({"x":220,"y":i});
@@ -57,15 +57,20 @@ for (var i = 70; i < 350; i+=10) {
 	}
 }
 
-for (var i = 70; i < 350; i+=10) {
+for (var i = 270; i < 300; i+=10) {
 	if (i !=170 || i!=210) {
 		blocks.push({"x":140,"y":i});
 	}
 }
 
-for (var i = 70; i < 350; i+=10) {
+for (var i = 200; i < 230; i+=10) {
 	if (i!=110 || i!=170) {
 		blocks.push({"x":300,"y":i});
+	}
+}
+for (var i = 350; i < 390; i+=10) {
+	if (i!=110 || i!=170) {
+		blocks.push({"x":i,"y":350});
 	}
 }
 // Create random number between the minX and maxY margins;

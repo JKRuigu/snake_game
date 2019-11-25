@@ -2,7 +2,7 @@
 createTreasure = (treasure=[])=>{
 		let isTrue =true;
 		let dataLen = data.length;
-		console.log(data);
+		// console.log(data);
 		let blocksLen = blocks.length;
 		while(isTrue){
 			treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;

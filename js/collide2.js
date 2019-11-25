@@ -21,7 +21,7 @@ col2 = (x,y,colData,data,blocks)=>{
 		if (i==2) {
 			for (var k = 0; k < blocks.length; k++) {
 				if (blocks[k].x == colData[2].x && blocks[k].y == colData[2].y){
-					choices[1]=false;
+					choices[2]=false;
 					console.log("COL 3");
 				}
 			}
