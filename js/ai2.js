@@ -34,7 +34,7 @@ generateXY2 = (from,to,path)=>{
 
 
 	if (path[0] && path[1] && path[2]) {
-		console.log("YES!",diffX,diffY);
+		// console.log("YES!",diffX,diffY);
 		// SOLVE FOR ZERO X;
 		if (diffX == 0 && diffY !=0) {
 			return solveY();

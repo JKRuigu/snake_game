@@ -61,3 +61,13 @@ displayScore =(points)=>{
 	let txt = `Points: ${points} Time left: ${tLeft}`
 	ctx.strokeText(txt, 50, 30);//displays the game title;
 }
+
+
+
+displayGameOver = ()=>{
+	console.log("GAME OVER!")
+	ctx.clearRect(120,130,250,100);
+	ctx.font= 'Bold 35px Sans-Serif';
+	let txt = `Game Over !!!`;
+	ctx.strokeText(txt, 130, 190);//displays the game title;
+}

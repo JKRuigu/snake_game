@@ -37,16 +37,16 @@ detectCollitionX = (index,bool,blocks,data)=>{
 		}
 	}
 
-	// for(i=0;i<size;i++){
-	// 	if (i>0){
-	// 		if (i !=1) {
-	// 			if (data[i].x == x && data[i].y == y){
-	// 				console.log("BODY!",currentMove,toX,toY,pending,treasure[0].isFound);
-	// 				return true;
-	// 			}
-	// 		}
-	// 	}			
-	// }
+	for(i=0;i<size;i++){
+		if (i>0){
+			if (i !=1) {
+				if (data[i].x == x && data[i].y == y){
+					// console.log("BODY!",currentMove,toX,toY,pending,treasure[0].isFound);
+					return true;
+				}
+			}
+		}			
+	}
 	return false;
 }
 
@@ -59,16 +59,16 @@ detectCollitionY = (index,bool,blocks,data)=>{
 			return true;
 		}
 	}
-	// for(i=0;i<size;i++){
-	// 	if (i>0){
-	// 		if (i !=1) {
-	// 			if (data[i].x == x && data[i].y == y){
-	// 				console.log("BODY!",currentMove,toX,toY,pending,treasure[0].isFound);
-	// 				return true;
-	// 			}
-	// 		}
-	// 	}			
-	// }
+	for(i=0;i<size;i++){
+		if (i>0){
+			if (i !=1) {
+				if (data[i].x == x && data[i].y == y){
+					console.log("BODY!",currentMove,toX,toY,pending,treasure[0].isFound);
+					return true;
+				}
+			}
+		}			
+	}
 	return false;
 }
 

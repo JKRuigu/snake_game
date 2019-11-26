@@ -69,6 +69,7 @@ start2 =()=>{
 setTimeOut = (myTimer,timer)=>{
 	setTimeout(()=>{
 			if (!isPaused) {
+				displayGameOver();
 				clearInterval(myTimer);
 				isPlaying = false;
 				interval =0;
