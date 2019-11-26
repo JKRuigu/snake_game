@@ -56,6 +56,7 @@ start =()=>{
 		if (isPaused) {
 			
 		}
+		displayGameOver();
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;
