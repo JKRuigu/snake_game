@@ -28,7 +28,7 @@ var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 20000; //duration of the game;
+var timer = 500000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
@@ -46,7 +46,7 @@ var blocks = [];
 var isOver = false;
 var myTimer;
 var isPaused = false;
-var aiType = true;
+var aiType = 0;
 // [{"x":}]
 for (var i = 170; i < 250; i+=10) {
 	// console.log(i)
@@ -114,17 +114,23 @@ selectLevel = value =>{
 }
 
 selectTypeAi = () =>{
-	aiType = !aiType;
-	document.getElementById("typeAi").innerHTML = aiType == false? "Stupid":"Clever";
+	if (aiType == 0) {
+		aiType = 1;
+	}else if(aiType == 1){
+		aiType = 2
+	}else{
+		aiType = 0;
+	}
+	document.getElementById("typeAi").innerHTML = aiType == 0? "Stupid": aiType == 1?"Clever":"Wise";
 }
 
 selectTypeAiKeyBoard= bool =>{
-	if (bool && !aiType ) {
-		selectTypeAi();
-	}
-	if (!bool && aiType) {
-		selectTypeAi();		
-	}
+	// if (bool && !aiType ) {
+	// 	selectTypeAi();
+	// }
+	// if (!bool && aiType) {
+	// 	selectTypeAi();		
+	// }
 }
 
 selectType = type =>{

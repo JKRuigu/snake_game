@@ -14,7 +14,7 @@ start =()=>{
 
 			var l = data.length-1;
 			if (isAI) {
-				let myOpt = aiType ==0? generateXY(data[0],treasure[0]):generateXY2(data[0],treasure[0],path);
+				let myOpt = aiType == 0? generateXY(data[0],treasure[0]): aiType ==1?generateXY2(data[0],treasure[0]):generateXY3(data[0],treasure[0],path);
 				// let myCol = getNext(currentMove,toX,toY);
 				// console.log(myOpt,data,toX,toY);
 				currentMove = (myOpt == undefined ? currentMove:myOpt);

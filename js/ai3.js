@@ -1,8 +1,8 @@
 // ALGORTHM TO GET THE SHORTEST PATH; 46% accuracy;
-generateXY2 = (from,to)=>{
-	// console.log("CLEVER")
+generateXY3 = (from,to,path)=>{
 	numMove++;
-	// console.log(numMove,(points/numMove));
+	// console.log(path,currentMove);
+
 	let diffX = from.x-to.x;
 	let isdiffX = ((diffX<1)? true:false);//TRUE - RIGHT FALSE - LEFT;
 
@@ -32,22 +32,115 @@ generateXY2 = (from,to)=>{
 		}
 	}
 
-	// SOLVE FOR ZERO X;
-	if (diffX == 0 && diffY !=0) {
-		return solveY();
-	}
-	// SOLVE FOR ZERO Y;
-	if (diffY == 0 && diffX !=0) {
-		return solveX();
-	}
-	// SOLVE FOR X; 
-	if (diffX<diffY && diffX !=0 && diffY !=0) {
-		return solveX();
-	}
-	// SOLVE FOR Y;
-	if(diffY<diffX && diffX !=0 && diffY !=0){
-		return solveY();
+
+	if (path[0] && path[1] && path[2]) {
+		// console.log("YES!",diffX,diffY);
+		// SOLVE FOR ZERO X;
+		if (diffX == 0 && diffY !=0) {
+			return solveY();
+		}
+		// SOLVE FOR ZERO Y;
+		if (diffY == 0 && diffX !=0) {
+			return solveX();
+		}
+		// SOLVE FOR X; 
+		if (diffX<diffY && diffX !=0 && diffY !=0) {
+			return solveX();
+		}
+		// SOLVE FOR Y;
+		if(diffY<diffX && diffX !=0 && diffY !=0){
+			return solveY();
+		}
 	}
 
+	if (path[0] && path[1] && !path[0]) {
+		console.log("1");
+		if (currentMove == 0) {
+			return solveX();
+		}
+		if (currentMove == 1) {
+			return solveX();
+		}
+	}
+	
+	if (path[0] && !path[1] && path[0]) {
+		console.log("1B");
+		if (currentMove == 0 && toX) {
+			toY == false;
+			return 0;
+		}
+		if (currentMove == 0 && !toX) {
+			toY == false;
+			return 0;
+		}
+		// if (currentMove == 1 && toY) {
+		// 	toX = false;			
+		// 	return 0;
+		// }
+		// if (currentMove == 1 && !toY) {
+		// 	toX = false;			
+		// 	return 0;
+		// }
+	}
+
+	if (!path[0] && !path[1] && path[0]) {
+		console.log("2");
+		if (currentMove == 0) {
+			toY =false;
+			return 1;
+		}
+
+		if (currentMove == 1) {
+			toX = false;
+			return 0;
+		}
+	}
+
+	if (path[0] && !path[1] && !path[0]) {
+		console.log("3");
+		if (currentMove == 0) {
+			return solveX();
+		}
+		if (currentMove ==1) {
+			return solveY();
+		}
+	}
+	
+	if (!path[0] && path[1] && path[0]) {
+		console.log("4");
+		if (currentMove ==0) {
+			return solveY();
+		}
+		if (currentMove ==1) {
+			return solveX();
+		}
+	}
+
+	if (!path[0] && path[1] && !path[0]) {
+		console.log("5");
+		if (currentMove == 0) {
+			toY = true;
+			return 1; 
+		}
+		if (currentMove ==1) {
+			toX == true;
+			return 0;
+		}
+	}
+
+	if (!path[0] && !path[1] && path[0]) {
+		console.log("6");
+		if (currentMove ==0) {
+			toY = false;
+			return 1;
+		}
+		if (currentMove ==1) {
+			toX = true;
+			return 0;
+		}
+	}
+	if (!path[0] && !path[1] && !path[0]) {
+		console.log("NO MOVES!")
+	}
 	return undefined;
 };
