@@ -24,7 +24,11 @@ createTreasure = (treasure=[])=>{
 			}
 		}
 		// console.log(treasure);
-		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+		if (background ==0) {
+			ctx.drawImage(img, 200,200,50,50,treasure[0].x,treasure[0].y,sizeX,sizeY);
+		}else{
+			ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+		}
 		// ctx.drawImage(img, 100,580,100,400,treasure[0].x,treasure[0].y,sizeX,sizeY);
 		// console.log("created treasure!");
 		return treasure;
@@ -61,6 +65,9 @@ getReward =()=>{
 		displayScore(points);
 
 		treasure = createTreasure([]); //create treasure;
-		ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY); //display treasure;
-
+		if (background ==0) {
+			ctx.drawImage(img, 200,200,50,50,treasure.x,treasure.y,sizeX,sizeY);
+		}else{
+			ctx.clearRect(treasure.x,treasure.y,sizeX,sizeY);
+		}
 }

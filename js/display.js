@@ -4,9 +4,17 @@
 // DISPLAY BLOCKS;
 displayBlocks =()=>{
 	let l = blocks.length;
-	for(i=0;i<l;i++){
-		ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+	if (background == 0) {
+		for(i=0;i<l;i++){
+			// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+			ctx.drawImage(img2, 200,200,50,50,blocks[i].x,blocks[i].y,sizeX,sizeY);
+		}
+	}else{
+		for(i=0;i<l;i++){
+			ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+		}
 	}
+
 }
 
 //DISPLAY SNAKE IN THE SCREEN;
@@ -26,10 +34,15 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	
 	if(len !=0 && treasure[0].isFound == false) {
 		// ctx.drawImage(img, 100,580,100,400,treasure[0].x,(treasure[0].y-10),sizeX,(sizeY+sizeY));
-		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+		// ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+		if (background ==0) {
+			ctx.drawImage(img, 200,200,50,50,treasure[0].x,treasure[0].y,sizeX,sizeY);
+		}else{
+			ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
+		}
 	}
 	for(i=0; i<size; i++){
-		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
+		// ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
 
 		if (background == 0) {
 			ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
