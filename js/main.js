@@ -28,7 +28,7 @@ var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 500000; //duration of the game;
+var timer = 50000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
@@ -47,6 +47,8 @@ var isOver = false;
 var myTimer;
 var isPaused = false;
 var aiType = 0;
+var background = 0;
+
 // [{"x":}]
 for (var i = 170; i < 250; i+=10) {
 	// console.log(i)
@@ -108,9 +110,14 @@ addTime = ()=>{
 	}
 }
 
+selectBackground = value =>{
+	background = value;
+	displaySnake(x,y,sizeX,sizeY,data);
+}
 
 selectLevel = value =>{
 	speed = value;
+	// console.log(speed);
 }
 
 selectTypeAi = () =>{

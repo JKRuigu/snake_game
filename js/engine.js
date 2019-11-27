@@ -24,6 +24,7 @@ start =()=>{
 			isOver = col(myTimer,currentMove,blocks,data)
 			if(!isPlaying || isOver){
 				clearInterval(myTimer);
+				displayGameOver();
 			}
 			// console.log("HEY!")
 			interval++;
@@ -56,7 +57,7 @@ start =()=>{
 		if (isPaused) {
 			
 		}
-		displayGameOver();
+		// displayGameOver();
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;

@@ -14,11 +14,20 @@ img2.src = "./imgs/grass_15.png";
 
 displayBackGround = ()=>{
 	img2.onload=function() {
+
+	if (selectBackground == 1) {
+		let len = treasure.length;            
 		for (var i = m; i <=(maxX+10); i+=10) {
-			for (var j = m; j <=(maxX+10); j+=10) {
-				ctx.drawImage(img2, 10,10,50,50,i,j,10,20);
+			for (var j = m; j <=(maxX+10); j+=20) {
+				ctx.drawImage(img2, 200,200,50,50,i,j,10,20);
 			}
-		}									//pos//size			
+		}
+	}else{
+			ctx.fillRect(m,m,(maxX-m)+20,(maxY-m)+20);
+	}
+
+
+						//pos//size			
 	    	// ctx.drawImage(img, 1,2,3, 4,5,6, 7,8);
 	// BLOCK;
 	// ctx.drawImage(img, 100,580,100,400,50,50,10,20);
@@ -36,7 +45,11 @@ displayBackGround = ()=>{
 displayBackGround();
 
 restoreBlackGround =(x,y,sizeX,sizeY)=>{
-	ctx.drawImage(img, 10,10,50,50,x,y,sizeX,sizeY);
+	if (selectBackground ==1) {
+		ctx.drawImage(img, 10,10,50,50,x,y,sizeX,sizeY);
+	}else{
+		ctx.fillRect(m,m,(maxX-m),(maxY-m));
+	}
 }            
 
 //INTIALIZE THE GAME;

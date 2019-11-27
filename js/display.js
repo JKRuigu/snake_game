@@ -11,12 +11,17 @@ displayBlocks =()=>{
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
+	// console.log(selectBackground)
 	// console.log()
-	let len = treasure.length;            
-	for (var i = m; i <=(maxX+10); i+=10) {
-		for (var j = m; j <=(maxX+10); j+=20) {
-			ctx.drawImage(img2, 200,200,50,50,i,j,10,20);
+		let len = treasure.length;            
+	if (background == 1) {
+		for (var i = m; i <=(maxX+10); i+=10) {
+			for (var j = m; j <=(maxX+10); j+=20) {
+				ctx.drawImage(img2, 200,200,50,50,i,j,10,20);
+			}
 		}
+	}else{
+		ctx.fillRect(m,m,(maxX-m)+20,(maxY-m)+20);
 	}
 	
 	if(len !=0 && treasure[0].isFound == false) {
@@ -24,8 +29,11 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
 	}
 	for(i=0; i<size; i++){
-		if (snakeType == 0) {
-			// ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
+		ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
+
+		if (background == 0) {
+			ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
+		}else if(snakeType == 0 && background == 1){
 			ctx.drawImage(img, 100,100,700,500,data[i].x,data[i].y,sizeX,(sizeY));
 		}else{			
 			ctx.drawImage(img, 100,580,1000,1000,data[i].x,data[i].y,sizeX,(sizeY));
