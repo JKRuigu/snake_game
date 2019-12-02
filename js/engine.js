@@ -61,6 +61,7 @@ start =()=>{
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;
+		points =0;
 	}	
 }
 
@@ -78,6 +79,7 @@ setTimeOut = (myTimer,timer)=>{
 				isPlay =false;
 				size =1;
 				timer = state;
+				points =0;
 				document.getElementById('start').innerHTML ="RESTART";
 			}	
 	},timer);	
