@@ -32,7 +32,7 @@ setKey = (event,status,isPlaying)=>{
 				selectTypeAiKeyBoard(false);
 				break;
 			case 13:
-				isPlaying== false?start():console.log("KEY INPUT ERROR!",isPlaying);
+				start();
 				break;
 			case 9:
 				ai();

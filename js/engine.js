@@ -20,13 +20,13 @@ start =()=>{
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
-			// console.log(aiType);
 			isOver = col(myTimer,currentMove,blocks,data)
-			if(!isPlaying || isOver){
+			// console.log(isOver,isPlaying);
+			if(isOver){
 				clearInterval(myTimer);
 				displayGameOver();
+				document.getElementById('start').innerHTML ="RESTART";
 			}
-			// console.log("HEY!")
 			interval++;
 			displayScore(points);//Update time;
 
@@ -41,10 +41,8 @@ start =()=>{
 					console.log("default");
 			}
 		},speed);
-		// console.log(tLeft);
 		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,timer);
 		timer == isPaused?tLeft:timer;
-		// console.log("GAME IS PLAYING!",aiType);
 		isPlaying = true;
 	}else{
 		// isPaused = isPlay?true:false;
@@ -54,10 +52,7 @@ start =()=>{
 			isPaused = true;	
 			start2();
 		}
-		if (isPaused) {
-			
-		}
-		// displayGameOver();
+
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;
