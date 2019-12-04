@@ -61,6 +61,7 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 		document.getElementById('ai').innerHTML ="MANUAL";		
 	}
 	console.log("Intialized the game!");
+	displayBlocks();
 	return createSnake();
 	state = timer;	
 }

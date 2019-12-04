@@ -178,7 +178,7 @@ addTime = ()=>{
 
 selectBackground = value =>{
 	background = value;
-	displaySnake(x,y,sizeX,sizeY,data);
+	changeBackground(background,data,sizeX,sizeY);
 }
 
 selectLevel = value =>{

@@ -46,15 +46,28 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	}
 }
 
-changeType = (type,data,sizeX,sizeY)=>{
-	ctx.drawImage(img, 10,10,50,50,data[0].x,data[0].y,10,20);
-	for(i=0; i<size; i++){
-		if (type == 0) {
-			ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
-		}else{			
-			ctx.drawImage(img, 100,580,1000,1000,data[i].x,data[i].y,sizeX,(sizeY));
-		}
+displayTreasure =treasure=>{
+	if (background ==0) {
+		ctx.drawImage(img, 200,200,50,50,treasure[0].x,treasure[0].y,sizeX,sizeY);
+	}else{
+		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
 	}
+}
+changeBackground = (type,data,sizeX,sizeY)=>{
+	
+	if (type == 1) {
+		for (var i = m; i <=(maxX+10); i+=10) {
+			for (var j = m; j <=(maxX+10); j+=10) {
+				ctx.drawImage(img2, 200,200,50,50,i,j,10,10);
+			}
+		}
+	}else{
+			ctx.fillRect(m,m,(maxX-m)+20,(maxY-m)+20);
+	}
+
+	displaySnake(x,y,sizeX,sizeY,data);
+	displayBlocks();
+	displayTreasure(treasure);
 }
 
 //Displays score;

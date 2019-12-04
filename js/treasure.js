@@ -23,14 +23,9 @@ createTreasure = (treasure=[])=>{
 				isTrue == true;
 			}
 		}
-		// console.log(treasure);
-		if (background ==0) {
-			ctx.drawImage(img, 200,200,50,50,treasure[0].x,treasure[0].y,sizeX,sizeY);
-		}else{
-			ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
-		}
-		// ctx.drawImage(img, 100,580,100,400,treasure[0].x,treasure[0].y,sizeX,sizeY);
-		// console.log("created treasure!");
+		
+		displayTreasure(treasure);
+		
 		return treasure;
 }
 
