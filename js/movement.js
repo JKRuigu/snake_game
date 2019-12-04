@@ -41,8 +41,11 @@ moveVertical = (x,y,sizeX,sizeY,data,toY)=>{
 	}
 }
 
+
+
 addData = (newData)=>{
-	// console.log(newData,data,[newData,...data]);
+	dataRemove = data.slice(size-1,data.length);
+	// console.log(dataRemove);
 	data = [newData,...data].slice(0,size);
 }
 
