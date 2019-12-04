@@ -18,14 +18,16 @@ displayBlocks =()=>{
 }
 
 clearSnake= (rData,background) =>{
-	if (background == 0) {
-		if (rData.length != 0) {
-			ctx.fillRect(rData[0].x,rData[0].y,sizeX,sizeY);
+	if (rData.length != 0) {
+		if (background == 0) {
+				ctx.fillRect(rData[0].x,rData[0].y,sizeX,sizeY);
+		}else if(snakeType == 0 && background == 1){
+			ctx.drawImage(img2, 200,200,50,50,rData[0].x,rData[0].y,sizeX,(sizeY));
+			// console.log("1");		
+		}else{	
+			// console.log("2");		
+			ctx.drawImage(img2, 200,200,50,50,rData[0].x,rData[0].y,sizeX,(sizeY));
 		}
-	}else if(snakeType == 0 && background == 1){
-		ctx.drawImage(img2, 200,200,50,50,rData.x,rData.y,sizeX,(sizeY));
-	}else{			
-		ctx.drawImage(img2, 200,200,50,50,rData.x,rData.y,sizeX,(sizeY));
 	}
 }
 
