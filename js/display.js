@@ -34,7 +34,7 @@ clearSnake= (rData,background) =>{
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
 	if (!isOver) {
-		// console.log(data);
+		console.log(data);
 		for(i=0; i<size; i++){
 			if (background == 0) {
 				ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
@@ -57,13 +57,13 @@ displayTreasure =treasure=>{
 }
 changeBackground = (type,data,sizeX,sizeY)=>{
 	if (type == 1) {
-		for (var i = m; i <=(maxX+10); i+=10) {
-			for (var j = m; j <=(maxX+10); j+=10) {
-				ctx.drawImage(img2, 200,200,50,50,i,j,10,10);
+		for (var i = m; i <=maxY; i+=sizeY) {
+			for (var j = m; j <=maxX; j+=sizeX) {
+				ctx.drawImage(img2, 150,250,m,m,i,j,sizeX,sizeY);//display dark green green;
 			}
 		}
 	}else{
-			ctx.fillRect(m,m,(maxX-m)+20,(maxY-m)+20);
+		ctx.fillRect(m,m,maxX2,maxY2);
 	}
 }
 

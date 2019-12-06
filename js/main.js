@@ -115,7 +115,7 @@ var isOver = false;
 var myTimer;
 var isPaused = false;
 var aiType = 0;
-var background = 0;
+var background = 1;
 
 // [{"x":}]
 // for (var i = 170; i < 250; i+=10) {
@@ -181,7 +181,7 @@ addTime = ()=>{
 selectBackground = value =>{
 	background = value;
 	changeBackground(background,data,sizeX,sizeY);
-	reset();
+	reset(x,y,treasure,data,sizeX,sizeY);
 }
 
 selectLevel = value =>{

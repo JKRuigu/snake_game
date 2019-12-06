@@ -15,11 +15,11 @@ img2.src = "./imgs/grass_15.png";
 displayBackGround = ()=>{
 	img2.onload=function() {
 
-	if (selectBackground == 1) {
+	if (background == 1) {
 		let len = treasure.length;            
-		for (var i = m; i <=(maxX+10); i+=10) {
-			for (var j = m; j <=(maxX+10); j+=10) {
-				ctx.drawImage(img2, 200,200,50,50,i,j,10,10);
+		for (var i = m; i <=maxY; i+=sizeY) {
+			for (var j = m; j <=maxX; j+=sizeX) {
+				ctx.drawImage(img2, 150,250,m,m,i,j,sizeX,sizeY);//display dark green green;
 			}
 		}
 	}else{
@@ -43,14 +43,6 @@ displayBackGround = ()=>{
 
 
 displayBackGround();
-
-restoreBlackGround =(x,y,sizeX,sizeY)=>{
-	if (selectBackground ==1) {
-		ctx.drawImage(img, 10,10,50,50,x,y,sizeX,sizeY);
-	}else{
-		ctx.fillRect(m,m,(maxX-m),(maxY-m));
-	}
-}            
 
 //INTIALIZE THE GAME;
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
