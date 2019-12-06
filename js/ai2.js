@@ -12,7 +12,7 @@ generateXY2 = (from,to)=>{
 	solveX = ()=>{
 		diffX = (diffX<1)?(diffX*-1):diffX;
 		//FIND SHORTCUT;
-		if (diffX<(390-diffX)) {
+		if (diffX<(maxX-diffX)) {
 			toX = isdiffX;
 			return 0;
 		}else{
@@ -23,7 +23,7 @@ generateXY2 = (from,to)=>{
 	solveY = ()=>{
 		diffY = (diffY<1)?(diffY*-1):diffY;
 		//FIND SHORTCUT;
-		if (diffY<(390-diffY)) {
+		if (diffY<(maxY-diffY)) {
 			toY = !isdiffY;
 			return 1;
 		}else{
