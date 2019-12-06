@@ -6,7 +6,7 @@ generateXY = (from,to)=>{
 	let toXA = to.x;
 	let diffX = fromX-toXA;
 	let isdiffX = ((diffX<1)? true:false);
-	let sX = isdiffX?10:-10;
+	let sX = isdiffX?sizeX:-sizeX;
 
 
 	while((fromX+sX) != (toXA+sX)){
@@ -19,7 +19,7 @@ generateXY = (from,to)=>{
 	let toYA = to.y;
 	let diffY = fromY-toYA;
 	let isdiffY = ((diffY<1)?true:false);
-	let sY = isdiffY?10:-10;
+	let sY = isdiffY?sizeY:-sizeY;
 	// console.log(fromY,toYA,sY,diffY,isdiffY)
 	// console.log((fromY+sY),(toYA+sY),sY,diffY,isdiffY)
 
@@ -41,23 +41,23 @@ generateXY = (from,to)=>{
 	}
 	if (diffX < diffY && xLen<yLen) {
 		diffX = diffX <0 ? (diffX*-1):diffX;
-		toX = diffX<(390-diffX)? isdiffX:!isdiffX; 
+		toX = diffX<(maxX-diffX)? isdiffX:!isdiffX; 
 		return 0
 	}
 
 	if (diffY < diffX && yLen<xLen) {
 		diffY = diffY <0 ? (diffY*-1):diffY;
-		toY = diffY<(390-diffY)?!isdiffY:isdiffY; 
+		toY = diffY<(maxY-diffY)?!isdiffY:isdiffY; 
 		return 1	
 	}
 	if (xLen<yLen) {
 		diffX = diffX <0 ? (diffX*-1):diffX;
-		toX = diffX<(390-diffX)? isdiffX:!isdiffX; 
+		toX = diffX<(maxX-diffX)? isdiffX:!isdiffX; 
 		return 0
 	}
 	if (yLen<xLen) {
 		diffY = diffY <0 ? (diffY*-1):diffY;
-		toY = diffY<(390-diffY)?!isdiffY:isdiffY; 
+		toY = diffY<(maxY-diffY)?!isdiffY:isdiffY; 
 		return 1
 	}
 	return undefined;
