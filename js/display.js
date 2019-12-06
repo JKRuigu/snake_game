@@ -95,10 +95,11 @@ displayScore =(points)=>{
 
 
 
-displayGameOver = ()=>{
-	console.log("GAME OVER!")
+displayMessage = msg =>{
+	console.log(msg)
 	ctx.clearRect(120,130,250,100);
-	ctx.font= 'Bold 35px Sans-Serif';
-	let txt = `Game Over !!!`;
-	ctx.strokeText(txt, 130, 190);//displays the game title;
+	ctx.font= `Bold 20px Sans-Serif`;
+	ctx.strokeText("GAME OVER !!!", 150, 160);//displays the game title;
+	ctx.font= `Bold 30px Sans-Serif`;
+	ctx.strokeText(`You ${msg}`, 150, 190);//displays the game title;
 }

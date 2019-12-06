@@ -3,6 +3,7 @@ start =()=>{
 		state = timer;
 		isPlay =true;
 		tLeft =timer;
+		isLost = false;
 		document.getElementById('start').innerHTML ="PAUSE";	
 
 		myTimer = setInterval(()=>{
@@ -21,8 +22,18 @@ start =()=>{
 			isOver = col(myTimer,currentMove,blocks,data)
 			if(isOver){
 				clearInterval(myTimer);
-				displayGameOver();
+				displayMessage("LOST");
 				document.getElementById('start').innerHTML ="RESTART";
+			}
+
+			if (size ==10) {
+				isPaused = false;
+				isPlaying =false;
+				points =0;
+				isLost = true;
+				clearInterval(myTimer);
+				displayMessage("WON");
+				document.getElementById('start').innerHTML ="RESTART";	
 			}
 			interval++;
 			interval2=interval+1;
@@ -49,13 +60,15 @@ start =()=>{
 		if (isPlay && !isPaused){
 			document.getElementById('start').innerHTML ="PLAY"
 			isPlaying = true;
-			isPaused = true;	
+			isPaused = true;
+			isLost = false;	
 			start2();
 		}
 
 		clearInterval(myTimer);
 		isPaused = false;
 		isPlaying =false;
+		isLost = false;
 		points =0;
 	}	
 }
@@ -66,8 +79,8 @@ start2 =()=>{
 
 setTimeOut = (myTimer,timer)=>{
 	setTimeout(()=>{
-			if (!isPaused) {
-				displayGameOver();
+			if (!isPaused && !isLost) {
+				displayMessage("LOST");
 				clearInterval(myTimer);
 				isPlaying = false;
 				interval =0;

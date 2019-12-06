@@ -1,7 +1,6 @@
 // HORIZONTAL MOVEMENT along x-axis;
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 		if (x == maxX && toX == true) {
-			console.log(x,m,maxX);
 			x= m;//intialize x to margin of x;
 			var cData = addData({x,y});
 			displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);

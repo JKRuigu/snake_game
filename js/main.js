@@ -32,7 +32,7 @@ var interval2 =0;//test;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 400000; //duration of the game;
+var timer = 4000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
@@ -45,6 +45,7 @@ var snakeType = 0;
 var restart =false;
 var numMove =0; 
 var isPlaying = false;
+var isLost = false;
 var blocks = [
 {x: 220, y: 50},
 {x: 220, y: 70},
