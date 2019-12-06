@@ -1,7 +1,5 @@
 // HORIZONTAL MOVEMENT along x-axis;
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
-		// var rData = data[data.length-1];
-		// // console.log(rData,data)
 
 		if (x == maxX && toX == true) {
 			x= m;//intialize x to margin of x;
@@ -14,8 +12,8 @@ moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 			displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);
 			return x;
 		}else{
-			toX ? x+=sizeX:x-=sizeX;
-			x = (x == 390? 50:x); //checks if x is greater than maxX;
+			toX ? x+=sizeX:x-=sizeX;//adds sizeX;
+			x = (x == maxX? m:x); //checks if x is greater than maxX;
 	   		var cData = addData({x,y});
 			displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);
 			return x;
@@ -36,8 +34,8 @@ moveVertical = (x,y,sizeX,sizeY,data,toY)=>{
 		displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);
 		return y;
 	}else{
-		y = toY ?y-=sizeX: y+=sizeY;
-		var cData = addData({x,y});
+		y = toY ?y-=sizeX: y+=sizeY; //adds sizeY;
+		var cData = addData({x,y});//checks if y is greater than maxY;
 		displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);
 		return y;
 	}
@@ -46,13 +44,9 @@ moveVertical = (x,y,sizeX,sizeY,data,toY)=>{
 
 
 addData = (newData)=>{
-	var l = data[data.length-1];
+	var l = data[data.length-1];//data to be cleared/remove;
 	data = [newData,...data].slice(0,size);
-	var combData = [data,l];
-	console.log(combData);
-
-
-	// console.log("Add ",tLeft);
+	var combData = [data,l]; //combanies both snake data and the part we want to remove;
 	return combData;
 }
 
