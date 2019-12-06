@@ -12,6 +12,9 @@ img.src = "./imgs/mario.png";
 var img2 = new Image();
 img2.src = "./imgs/grass_15.png";
 
+// var img2 = new Image();
+// img2.src = "./imgs/tiles.png";
+
 displayBackGround = ()=>{
 	img2.onload=function() {
 
@@ -19,7 +22,7 @@ displayBackGround = ()=>{
 		let len = treasure.length;            
 		for (var i = m; i <=maxY; i+=sizeY) {
 			for (var j = m; j <=maxX; j+=sizeX) {
-				ctx.drawImage(img2, 200,200,m,m,i,j,sizeX,sizeY);//display dark green green;
+				ctx.drawImage(img2, img2X,img2Y,m,m,i,j,sizeX,sizeY);//display dark green green;
 			}
 		}
 	}else{

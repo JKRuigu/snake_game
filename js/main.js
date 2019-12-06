@@ -47,10 +47,10 @@ var restart =false;
 var numMove =0; 
 var isPlaying = false;
 var isLost = false;
-var imgX = 100;
-var imgY = 100;
-var img2X = 200;
-var img2Y = 200;
+var imgX = 150;
+var imgY = 150;
+var img2X = 0;
+var img2Y = 0;
 var blocks = [
 {x: 220, y: 50},
 {x: 220, y: 60},
@@ -122,7 +122,7 @@ var isOver = false;
 var myTimer;
 var isPaused = false;
 var aiType = 2;
-var background = 0;
+var background = 1;
 
 // [{"x":}]
 // for (var i = 170; i < 250; i+=10) {
