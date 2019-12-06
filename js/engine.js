@@ -15,13 +15,10 @@ start =()=>{
 			var l = data.length-1;
 			if (isAI) {
 				let myOpt = aiType == 0? generateXY(data[0],treasure[0]): aiType ==1?generateXY2(data[0],treasure[0]):generateXY3(data[0],treasure[0],path);
-				// let myCol = getNext(currentMove,toX,toY);
-				// console.log(myOpt,data,toX,toY);
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
 			isOver = col(myTimer,currentMove,blocks,data)
-			// console.log(isOver,isPlaying);
 			if(isOver){
 				clearInterval(myTimer);
 				displayGameOver();
@@ -41,9 +38,6 @@ start =()=>{
 				default:
 					console.log("default");
 			}
-		// console.log("JK",interval)
-		// setTimeout(()=>console.log("JK2",interval),speed);
-		// interval == 5? clearInterval(myTimer):"";
 
 		},speed);
 

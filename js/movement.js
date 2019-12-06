@@ -1,7 +1,7 @@
 // HORIZONTAL MOVEMENT along x-axis;
 moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
-
 		if (x == maxX && toX == true) {
+			console.log(x,m,maxX);
 			x= m;//intialize x to margin of x;
 			var cData = addData({x,y});
 			displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);
@@ -13,7 +13,7 @@ moveHorizontal = (x,y,sizeX,sizeY,data,toX)=>{
 			return x;
 		}else{
 			toX ? x+=sizeX:x-=sizeX;//adds sizeX;
-			x = (x == maxX? m:x); //checks if x is greater than maxX;
+			// x = (x == maxX? m:x); //checks if x is greater than maxX;
 	   		var cData = addData({x,y});
 			displaySnake2(x,y,sizeX,sizeY,cData[0],cData[1]);
 			return x;
@@ -52,13 +52,17 @@ addData = (newData)=>{
 
 // Communicates with moveHorizontal() function;
 moveHorizontal2 = (bool)=>{
-	if (y != 390) {	//Solves not displaying on the screen;		
+	if (y != maxX) {	//Solves not displaying on the screen;		
 		toX = bool;
 		var X = moveHorizontal(x,y,sizeX,sizeY,data,toX);
 		x=X; //Increment x;	
 	}else{
 		moveVertical2(toY);
 	}
+
+	// toX = bool;
+	// var X = moveVertical(x,y,sizeX,sizeX,data,toX);
+	// x=X; //Increment y;
 }
 
 // Communicates with moveVertical() function;
