@@ -19,7 +19,7 @@ displayBackGround = ()=>{
 		let len = treasure.length;            
 		for (var i = m; i <=maxY; i+=sizeY) {
 			for (var j = m; j <=maxX; j+=sizeX) {
-				ctx.drawImage(img2, 150,250,m,m,i,j,sizeX,sizeY);//display dark green green;
+				ctx.drawImage(img2, 200,200,m,m,i,j,sizeX,sizeY);//display dark green green;
 			}
 		}
 	}else{

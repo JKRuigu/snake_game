@@ -26,7 +26,7 @@ start =()=>{
 				document.getElementById('start').innerHTML ="RESTART";
 			}
 
-			if (size ==10) {
+			if (size ==target) {
 				isPaused = false;
 				isPlaying =false;
 				points =0;

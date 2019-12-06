@@ -32,12 +32,13 @@ var interval2 =0;//test;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 4000; //duration of the game;
-var isAI = true; //TRUE for manual FALSE for AI;
+var timer = 60000*2; //duration of the game;
+var isAI = false; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
 var medium = 100; 
 var hard = 50;
+var target = 12;
 var level = 0; // 0 -easy 1-medium 2 -hard;
 var speed =  easy; //speed of the game; 50 is the recommended speed for pc with low memory;
 var state = timer;
@@ -46,24 +47,28 @@ var restart =false;
 var numMove =0; 
 var isPlaying = false;
 var isLost = false;
+var imgX = 100;
+var imgY = 100;
+var img2X = 200;
+var img2Y = 200;
 var blocks = [
 {x: 220, y: 50},
-{x: 220, y: 70},
+{x: 220, y: 60},
 {x: 220, y: 80},
-{x: 220, y: 90},
-{x: 220, y: 100},
-{x: 220, y: 110},
+// {x: 220, y: 90},
+// {x: 220, y: 100},
+// {x: 220, y: 110},
 {x: 220, y: 120},
 {x: 220, y: 130},
-{x: 220, y: 140},
-{x: 220, y: 150},
-// {x: 220, y: 160},
-// {x: 220, y: 170},
+// {x: 220, y: 140},
+// {x: 220, y: 150},
+{x: 220, y: 160},
+{x: 220, y: 170},
 // {x: 220, y: 180},
 // {x: 220, y: 190},
 // {x: 220, y: 200},
-// {x: 220, y: 210},
-// {x: 220, y: 220},
+{x: 220, y: 210},
+{x: 220, y: 220},
 // {x: 220, y: 230},
 // {x: 220, y: 240},
 // {x: 220, y: 260},
