@@ -18,12 +18,12 @@ displayBackGround = ()=>{
 	if (selectBackground == 1) {
 		let len = treasure.length;            
 		for (var i = m; i <=(maxX+10); i+=10) {
-			for (var j = m; j <=(maxX+10); j+=20) {
+			for (var j = m; j <=(maxX+10); j+=10) {
 				ctx.drawImage(img2, 200,200,50,50,i,j,10,10);
 			}
 		}
 	}else{
-			ctx.fillRect(m,m,(maxX-m)+20,(maxY-m)+20);
+		ctx.fillRect(m,m,maxX2,maxY2);
 	}
 
 
@@ -62,6 +62,7 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	}
 	console.log("Intialized the game!");
 	displayBlocks();
-	return createSnake();
+	// ctx.clearRect(m,maxY,sizeX,sizeY);
 	state = timer;	
+	return createSnake();
 }

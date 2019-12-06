@@ -14,8 +14,10 @@ const m = 50; //external margin of the canvas;
 var sizeX =10; //width of the snake  	 
 var sizeY = 10; //heigth of the snake;
 var size = 1; // 2(TWO) is the least size; 
-var maxX = 390; //max width;
-var maxY =390; // max height;
+var maxX2 = 390; //max width;
+var maxX = maxX2+(m-sizeX); //max width to display;
+var maxY2 =390; // max height;
+var maxY =maxY2+(m-sizeY); // max height to display;
 var toX = true; //True when direction to X axis is positive (left to right);
 var toY = true;  //True when direction to Y axis is positive (up to down);
 var pending =false; //True when snake tail has reached the treasure location;
@@ -29,7 +31,7 @@ var interval =0; //many of time the game refreshes;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
-var timer = 50000; //duration of the game;
+var timer = 400000; //duration of the game;
 var isAI = true; //TRUE for manual FALSE for AI;
 var userTime = 0; //user input time used only if its greater than speed;
 var easy = 200;
@@ -179,6 +181,7 @@ addTime = ()=>{
 selectBackground = value =>{
 	background = value;
 	changeBackground(background,data,sizeX,sizeY);
+	reset();
 }
 
 selectLevel = value =>{

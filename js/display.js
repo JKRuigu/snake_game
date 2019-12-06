@@ -56,7 +56,6 @@ displayTreasure =treasure=>{
 	}
 }
 changeBackground = (type,data,sizeX,sizeY)=>{
-	
 	if (type == 1) {
 		for (var i = m; i <=(maxX+10); i+=10) {
 			for (var j = m; j <=(maxX+10); j+=10) {
@@ -66,7 +65,10 @@ changeBackground = (type,data,sizeX,sizeY)=>{
 	}else{
 			ctx.fillRect(m,m,(maxX-m)+20,(maxY-m)+20);
 	}
+}
 
+reset = (x,y,treasure,data,sizeX,sizeY)=>{
+	ctx.clearRect((m+0),(m+0),sizeX,sizeY);
 	displaySnake(x,y,sizeX,sizeY,data);
 	displayBlocks();
 	displayTreasure(treasure);
@@ -74,8 +76,8 @@ changeBackground = (type,data,sizeX,sizeY)=>{
 
 //Displays score;
 displayScore =(points)=>{
-	ctx.clearRect(30,5,400,55);
-	ctx.font= 'Bold 18px Sans-Serif';
+	// ctx.fillRect(30,0,450,55);
+	// ctx.font= 'Bold 18px Sans-Serif';
 	if (isPlay) {
 		tLeft = timer -(interval*speed);
 	}else{
@@ -86,8 +88,8 @@ displayScore =(points)=>{
 		}
 	}
 
-	let txt = `Points: ${points} Time left: ${tLeft}`
-	ctx.strokeText(txt, 50, 30);//displays the game title;
+	// let txt = `Points: ${points} Time left: ${tLeft}`
+	// ctx.strokeText(txt, 40, 30);//displays the game title;
 }
 
 
