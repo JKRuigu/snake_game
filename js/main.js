@@ -28,6 +28,7 @@ var treasure= []; //reward loacation;
 var isTreaseure = false; //if false a new treasure is created;
 var hasStarted = false; //if true the game begins;
 var interval =0; //many of time the game refreshes;
+var interval2 =0;//test;
 var points = 0; //score;
 var pointsArr =[]; //store points to help in calculating average performance of the game;
 var isPlay = false;
@@ -114,7 +115,7 @@ var blocks = [
 var isOver = false;
 var myTimer;
 var isPaused = false;
-var aiType = 0;
+var aiType = 2;
 var background = 0;
 
 // [{"x":}]

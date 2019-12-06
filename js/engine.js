@@ -28,6 +28,7 @@ start =()=>{
 				document.getElementById('start').innerHTML ="RESTART";
 			}
 			interval++;
+			interval2=interval+1;
 			displayScore(points);//Update time;
 
 			switch(currentMove){
@@ -40,7 +41,12 @@ start =()=>{
 				default:
 					console.log("default");
 			}
+		// console.log("JK",interval)
+		// setTimeout(()=>console.log("JK2",interval),speed);
+		// interval == 5? clearInterval(myTimer):"";
+
 		},speed);
+
 		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,timer);
 		timer == isPaused?tLeft:timer;
 		isPlaying = true;

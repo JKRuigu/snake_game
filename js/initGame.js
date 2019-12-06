@@ -46,15 +46,12 @@ displayBackGround();
 
 //INTIALIZE THE GAME;
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
-	// ctx.fillRect(m,m,(maxX-m),(maxY-m));
-	if (isAI) {
-		document.getElementById('ai').innerHTML ="AI";
-	}else{
-		document.getElementById('ai').innerHTML ="MANUAL";		
-	}
+	
+	document.getElementById('ai').innerHTML =isAI?"AI":"MANUAL";
+	document.getElementById("typeAi").innerHTML = aiType == 0? "Stupid": aiType == 1?"Clever":"Wise";
+
 	console.log("Intialized the game!");
 	displayBlocks();
-	// ctx.clearRect(m,maxY,sizeX,sizeY);
 	state = timer;	
 	return createSnake();
 }
