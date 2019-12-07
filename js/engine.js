@@ -8,8 +8,8 @@ start =()=>{
 		!isDivided?divideBlocks():"";
 		myTimer = setInterval(()=>{
 			getZone();
-		// console.log(zone);
-			let path = col2(x,y,getNext(),data,blocks);
+		console.log(zone);
+			let path = col2(x,y,getNext(),data,getBlocks(zone));
 		
 			if (data) {
 				isTreaseureFound();

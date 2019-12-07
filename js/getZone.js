@@ -25,31 +25,31 @@ function getZones(axis) {
 function divideBlocks() {
 	console.log("divideBlocks");
 	for (var i = 0; i < blocks.length; i++) {
-			
+		getvaluesX(blocks[i].x,blocks[i].y);		
 	}
 	// console.log(blocksA);
 	isDivided =true;
 }
 
-function getvaluesX() {
-	if (blocks[i].x<80) {
-		getvaluesY("A",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<160){
-		getvaluesY("B",blocks[i].x,blocks[i].y);
-	}else if(blocks[i].x<200){
-		getvaluesY("C",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<240){
-		getvaluesY("D",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<280){
-		getvaluesY("E",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<320){
-		getvaluesY("F",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<360){
-		getvaluesY("G",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<400){
-		getvaluesY("H",blocks[i].x,blocks[i].y);	
-	}else if(blocks[i].x<=430){
-		getvaluesY("I",blocks[i].x,blocks[i].y);	
+function getvaluesX(x,y) {
+	if (x<80) {
+		getvaluesY("A",x,y);	
+	}else if(x<160){
+		getvaluesY("B",x,y);
+	}else if(x<200){
+		getvaluesY("C",x,y);	
+	}else if(x<240){
+		getvaluesY("D",x,y);	
+	}else if(x<280){
+		getvaluesY("E",x,y);	
+	}else if(x<320){
+		getvaluesY("F",x,y);	
+	}else if(x<360){
+		getvaluesY("G",x,y);	
+	}else if(x<400){
+		getvaluesY("H",x,y);	
+	}else if(x<=430){
+		getvaluesY("I",x,y);	
 	}
 }
 
@@ -57,21 +57,21 @@ function getvaluesY(letter,x,y) {
 	if (y<80) {
 		letter == "A"?blocksAA.push({x,y}):letter == "B"?blocksAB.push({x,y}):letter == "C"?blocksAC.push({x,y}):letter == "D"?blocksAD.push({x,y}):letter == "E"?blocksAE.push({x,y}):letter == "F"?blocksAF.push({x,y}):letter == "G"?blocksAG.push({x,y}):letter == "H"?blocksAH.push({x,y}):blocksAI.push({x,y});	
 	}else if(y<160){
-		letter == "B"?blocksBA.push({x,y}):letter == "B"?blocksBB.push({x,y}):letter == "C"?blocksBC.push({x,y}):letter == "D"?blocksBD.push({x,y}):letter == "E"?blocksBE.push({x,y}):letter == "F"?blocksBF.push({x,y}):letter == "G"?blocksBG.push({x,y}):letter == "H"?blocksBH.push({x,y}):blocksBI.push({x,y});	
+		letter == "A"?blocksBA.push({x,y}):letter == "B"?blocksBB.push({x,y}):letter == "C"?blocksBC.push({x,y}):letter == "D"?blocksBD.push({x,y}):letter == "E"?blocksBE.push({x,y}):letter == "F"?blocksBF.push({x,y}):letter == "G"?blocksBG.push({x,y}):letter == "H"?blocksBH.push({x,y}):blocksBI.push({x,y});	
 	}else if(y<200){
-		letter == "C"?blocksCA.push({x,y}):letter == "B"?blocksCB.push({x,y}):letter == "C"?blocksCC.push({x,y}):letter == "D"?blocksCD.push({x,y}):letter == "E"?blocksCE.push({x,y}):letter == "F"?blocksCF.push({x,y}):letter == "G"?blocksCG.push({x,y}):letter == "H"?blocksCH.push({x,y}):blocksCI.push({x,y});	
+		letter == "A"?blocksCA.push({x,y}):letter == "B"?blocksCB.push({x,y}):letter == "C"?blocksCC.push({x,y}):letter == "D"?blocksCD.push({x,y}):letter == "E"?blocksCE.push({x,y}):letter == "F"?blocksCF.push({x,y}):letter == "G"?blocksCG.push({x,y}):letter == "H"?blocksCH.push({x,y}):blocksCI.push({x,y});	
 	}else if(y<240){divideBlocksdivideBlocks
-		letter == "D"?blocksDA.push({x,y}):letter == "B"?blocksDB.push({x,y}):letter == "C"?blocksDC.push({x,y}):letter == "D"?blocksDD.push({x,y}):letter == "E"?blocksDE.push({x,y}):letter == "F"?blocksDF.push({x,y}):letter == "G"?blocksDG.push({x,y}):letter == "H"?blocksDH.push({x,y}):blocksDI.push({x,y});	
+		letter == "A"?blocksDA.push({x,y}):letter == "B"?blocksDB.push({x,y}):letter == "C"?blocksDC.push({x,y}):letter == "D"?blocksDD.push({x,y}):letter == "E"?blocksDE.push({x,y}):letter == "F"?blocksDF.push({x,y}):letter == "G"?blocksDG.push({x,y}):letter == "H"?blocksDH.push({x,y}):blocksDI.push({x,y});	
 	}else if(y<280){
-		letter == "E"?blocksEA.push({x,y}):letter == "B"?blocksEB.push({x,y}):letter == "C"?blocksEC.push({x,y}):letter == "E"?blocksED.push({x,y}):letter == "E"?blocksEE.push({x,y}):letter == "F"?blocksEF.push({x,y}):letter == "G"?blocksEG.push({x,y}):letter == "H"?blocksEH.push({x,y}):blocksEI.push({x,y});		
+		letter == "A"?blocksEA.push({x,y}):letter == "B"?blocksEB.push({x,y}):letter == "C"?blocksEC.push({x,y}):letter == "E"?blocksED.push({x,y}):letter == "E"?blocksEE.push({x,y}):letter == "F"?blocksEF.push({x,y}):letter == "G"?blocksEG.push({x,y}):letter == "H"?blocksEH.push({x,y}):blocksEI.push({x,y});		
 	}else if(y<320){
-		letter == "F"?blocksFA.push({x,y}):letter == "B"?blocksFB.push({x,y}):letter == "C"?blocksFC.push({x,y}):letter == "D"?blocksFD.push({x,y}):letter == "E"?blocksFE.push({x,y}):letter == "F"?blocksFF.push({x,y}):letter == "G"?blocksFG.push({x,y}):letter == "H"?blocksFH.push({x,y}):blocksFI.push({x,y});	
+		letter == "A"?blocksFA.push({x,y}):letter == "B"?blocksFB.push({x,y}):letter == "C"?blocksFC.push({x,y}):letter == "D"?blocksFD.push({x,y}):letter == "E"?blocksFE.push({x,y}):letter == "F"?blocksFF.push({x,y}):letter == "G"?blocksFG.push({x,y}):letter == "H"?blocksFH.push({x,y}):blocksFI.push({x,y});	
 	}else if(y<360){	
-		letter == "G"?blocksGA.push({x,y}):letter == "B"?blocksGB.push({x,y}):letter == "C"?blocksGC.push({x,y}):letter == "D"?blocksGD.push({x,y}):letter == "E"?blocksGE.push({x,y}):letter == "F"?blocksGF.push({x,y}):letter == "G"?blocksGG.push({x,y}):letter == "H"?blocksGH.push({x,y}):blocksGI.push({x,y});	
+		letter == "A"?blocksGA.push({x,y}):letter == "B"?blocksGB.push({x,y}):letter == "C"?blocksGC.push({x,y}):letter == "D"?blocksGD.push({x,y}):letter == "E"?blocksGE.push({x,y}):letter == "F"?blocksGF.push({x,y}):letter == "G"?blocksGG.push({x,y}):letter == "H"?blocksGH.push({x,y}):blocksGI.push({x,y});	
 	}else if(y<400){
-		letter == "H"?blocksHA.push({x,y}):letter == "B"?blocksHB.push({x,y}):letter == "C"?blocksHC.push({x,y}):letter == "D"?blocksHD.push({x,y}):letter == "E"?blocksHE.push({x,y}):letter == "F"?blocksHF.push({x,y}):letter == "G"?blocksHG.push({x,y}):letter == "H"?blocksHH.push({x,y}):blocksHI.push({x,y});	
+		letter == "A"?blocksHA.push({x,y}):letter == "B"?blocksHB.push({x,y}):letter == "C"?blocksHC.push({x,y}):letter == "D"?blocksHD.push({x,y}):letter == "E"?blocksHE.push({x,y}):letter == "F"?blocksHF.push({x,y}):letter == "G"?blocksHG.push({x,y}):letter == "H"?blocksHH.push({x,y}):blocksHI.push({x,y});	
 	}else if(y<=430){
-		letter == "I"?blocksIA.push({x,y}):letter == "B"?blocksIB.push({x,y}):letter == "C"?blocksIC.push({x,y}):letter == "D"?blocksID.push({x,y}):letter == "E"?blocksIE.push({x,y}):letter == "F"?blocksIF.push({x,y}):letter == "G"?blocksIG.push({x,y}):letter == "H"?blocksIH.push({x,y}):blocksII.push({x,y});	
+		letter == "A"?blocksIA.push({x,y}):letter == "B"?blocksIB.push({x,y}):letter == "C"?blocksIC.push({x,y}):letter == "D"?blocksID.push({x,y}):letter == "E"?blocksIE.push({x,y}):letter == "F"?blocksIF.push({x,y}):letter == "G"?blocksIG.push({x,y}):letter == "H"?blocksIH.push({x,y}):blocksII.push({x,y});	
 	}
 }
 
@@ -168,6 +168,9 @@ function getBlocks(zone) {
 		case "DC":
 			blks = blocksDC;
 			break;
+		case "DD":
+			blks = blocksDD;
+			break;
 		case "DE":
 			blks = blocksDE;
 			break;
@@ -230,6 +233,9 @@ function getBlocks(zone) {
 			break;
 		case "FG":
 			blks = blocksFG;
+			break;
+		case "FH":
+			blks = blocksFH;
 			break;
 		case "FI":
 			blks = blocksFI;
