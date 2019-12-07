@@ -11,7 +11,8 @@ displayBlocks =()=>{
 		}
 	}else{
 		for(i=0;i<l;i++){
-			ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+			ctx.drawImage(img3, 0,0,10,10,blocks[i].x,blocks[i].y,sizeX,sizeY);
+			// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
 		}
 	}
 

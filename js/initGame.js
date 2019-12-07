@@ -6,18 +6,21 @@ createSnake =()=>{
 	return data;
 }
 
-var img = new Image();
-img.src = "./imgs/mario.png";
-
-var img2 = new Image();
-img2.src = "./imgs/grass_15.png";
+// var img = new Image();
+// img.src = "./imgs/mario.png";
 
 // var img2 = new Image();
-// img2.src = "./imgs/tiles.png";
+// img2.src = "./imgs/grass_15.png";
+
+// console.log(window);
+
+var img3 = new Image();
+img3.src = "./imgs/tiles.png";
+
+
 
 displayBackGround = ()=>{
 	img2.onload=function() {
-
 	if (background == 1) {
 		let len = treasure.length;            
 		for (var i = m; i <=maxY; i+=sizeY) {
@@ -34,6 +37,7 @@ displayBackGround = ()=>{
 	    	// ctx.drawImage(img, 1,2,3, 4,5,6, 7,8);
 	// BLOCK;
 	// ctx.drawImage(img, 100,580,100,400,50,50,10,20);
+	
 	console.log("IMG LOADED!");
 	if (data.length ==0) {
 		data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
@@ -44,8 +48,9 @@ displayBackGround = ()=>{
 	}
 }
 
-
-displayBackGround();
+img3.onload=function () {
+	displayBackGround();
+}
 
 //INTIALIZE THE GAME;
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
