@@ -5,10 +5,12 @@ start =()=>{
 		tLeft =timer;
 		isLost = false;
 		document.getElementById('start').innerHTML ="PAUSE";	
-
+		// console.log(isDivided);
+		!isDivided?divideBlocks():"";
 		myTimer = setInterval(()=>{
-		let path = col2(x,y,getNext(),data,blocks);
-
+			getZone();
+			let path = col2(x,y,getNext(),data,getBlocks(zone));
+		
 			if (data) {
 				isTreaseureFound();
 			}
