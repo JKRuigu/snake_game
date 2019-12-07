@@ -49,6 +49,7 @@ displayBackGround = ()=>{
 }
 
 img3.onload=function () {
+	
 	displayBackGround();
 }
 
