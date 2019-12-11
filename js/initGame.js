@@ -6,11 +6,11 @@ createSnake =()=>{
 	return data;
 }
 
-// var img = new Image();
-// img.src = "./imgs/mario.png";
+var img = new Image();
+img.src = "./imgs/mario.png";
 
-// var img2 = new Image();
-// img2.src = "./imgs/grass_15.png";
+var img2 = new Image();
+img2.src = "./imgs/grass_15.png";
 
 // console.log(window);
 
