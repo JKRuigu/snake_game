@@ -58,7 +58,7 @@ var blocks = [
 var isOver = false;
 var myTimer;
 var isPaused = false;
-var aiType = 2;
+var aiType = 3;
 var background = 1;
 var level = 1;
 var zone = "";
@@ -113,10 +113,12 @@ selectTypeAi = () =>{
 		aiType = 1;
 	}else if(aiType == 1){
 		aiType = 2
+	}else if(aiType == 2){
+		aiType = 3
 	}else{
 		aiType = 0;
 	}
-	document.getElementById("typeAi").innerHTML = aiType == 0? "Stupid": aiType == 1?"Clever":"Wise";
+	document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
 }
 
 selectTypeAiKeyBoard= bool =>{

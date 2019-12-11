@@ -57,7 +57,7 @@ img3.onload=function () {
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	
 	document.getElementById('ai').innerHTML =isAI?"AI":"MANUAL";
-	document.getElementById("typeAi").innerHTML = aiType == 0? "Stupid": aiType == 1?"Clever":"Wise";
+	document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
 
 	console.log("Intialized the game!");
 	displayBlocks();
