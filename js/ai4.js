@@ -1,6 +1,5 @@
 // ALGORTHIM TO AVOID COLLITION;
 generateXY4 = (from,to)=>{
-	// console.log("CLEVER")
 	numMove++;
 	// console.log(numMove,(points/numMove));
 	let diffX = from.x-to.x;
