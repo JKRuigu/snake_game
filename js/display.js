@@ -97,7 +97,9 @@ displayScore =(points)=>{
 
 
 displayMessage = msg =>{
-	console.log(msg)
+	if(msg){
+		isLost = false;
+	}
 	ctx.clearRect(120,130,250,100);
 	ctx.font= `Bold 20px Sans-Serif`;
 	ctx.strokeText("GAME OVER !!!", 150, 160);//displays the game title;

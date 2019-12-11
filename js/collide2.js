@@ -1,5 +1,5 @@
 col2 = (x,y,colData,data,blocks)=>{
-	console.log(zone,blocks);
+	// console.log(zone,blocks);
 	let choices =[true,true,true];
 	for (var i = 0; i<colData.length;i++) {
 		if(i==0){

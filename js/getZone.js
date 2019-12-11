@@ -2,6 +2,7 @@ function getZone() {
 	zone = getZones(x)+""+getZones(y);
 }
 function getZones(axis) {
+	// console.log(axis);
 	if (axis<80) {
 		return "A";
 	}else if(axis<160){
@@ -22,13 +23,15 @@ function getZones(axis) {
 		return "I";
 	}
 }
+
 function divideBlocks() {
 	console.log("divideBlocks");
 	for (var i = 0; i < blocks.length; i++) {
 		getvaluesX(blocks[i].x,blocks[i].y);		
 	}
-	// console.log(blocksA);
-	isDivided =true;
+
+	// console.log("blocksAA",blocksAA,"blocksAB",blocksAB,"blocksAC",blocksAC,"blocksAD",blocksAD,"blocksAE",blocksAE,"blocksAF",blocksAF,"blocksAG",blocksAG,"blocksAH",blocksAH,"blocksAI",blocksAI,"blocksBA",blocksBA,"blocksBB",blocksBB,"blocksBC",blocksBC,"blocksBD",blocksBD,"blocksBE",blocksBE,"blocksBF",blocksBF,"blocksBG",blocksBG,"blocksBH",blocksBH,"blocksBI",blocksBI,"blocksCA",blocksCA,"blocksCB",blocksCB,"blocksCC",blocksCC,"blocksCD",blocksCD,"blocksCE",blocksCE,"blocksCF",blocksCF,"blocksCG",blocksCG,"blocksCH",blocksCH,"blocksCI",blocksCI,"blocksDA",blocksDA,"blocksDB",blocksDB,"blocksDC",blocksDC,"blocksDD",blocksDD,"blocksDE",blocksDE,"blocksDF",blocksDF,"blocksDG",blocksDG,"blocksDH",blocksDH,"blocksDI",blocksDI,"blocksEA",blocksEA,"blocksEB",blocksEB,"blocksEC",blocksEC,"blocksED",blocksED,"blocksEE",blocksEE,"blocksEF",blocksEF,"blocksEG",blocksEG,"blocksEH",blocksEH,"blocksEI",blocksEI,"blocksFA",blocksFA,"blocksFB",blocksFB,"blocksFC",blocksFC,"blocksFD",blocksFD,"blocksFE",blocksFE,"blocksFF",blocksFF,"blocksFG",blocksFG,"blocksFH",blocksFH,"blocksFI",blocksFI,"blocksEA",blocksEA,"blocksEB",blocksEB,"blocksEC",blocksEC,"blocksED",blocksED,"blocksEE",blocksEE,"blocksEF",blocksEF,"blocksEG",blocksEG,"blocksEH",blocksEH,"blocksEI",blocksEI,"blocksFA",blocksFA,"blocksFB",blocksFB,"blocksFC",blocksFC,"blocksFD",blocksFD,"blocksFE",blocksFE,"blocksFF",blocksFF,"blocksFG",blocksFG,"blocksFH",blocksFH,"blocksFI",blocksFI,"blocksGA",blocksGA,"blocksGB",blocksGB,"blocksGC",blocksGC,"blocksGD",blocksGD,"blocksGE",blocksGE,"blocksGF",blocksGF,"blocksGG",blocksGG,"blocksGH",blocksGH,"blocksGI",blocksGI,"blocksHA",blocksHA,"blocksHB",blocksHB,"blocksHC",blocksHC,"blocksHD",blocksHD,"blocksHE",blocksHE,"blocksHF",blocksHF,"blocksHG",blocksHG,"blocksHH",blocksHH,"blocksHI",blocksHI,"blocksIA",blocksIA,"blocksIB",blocksIB,"blocksIC",blocksIC,"blocksID",blocksID,"blocksIE",blocksIE,"blocksIF",blocksIF,"blocksIG",blocksIG,"blocksIH",blocksIH,"blocksII",blocksII);
+	Divided =true;
 }
 
 function getvaluesX(x,y) {
@@ -322,6 +325,7 @@ function getBlocks(zone) {
 			blks = blocksII;
 			break;
 	}
+	console.log(blks,zone);
 	// if (zone == "AA") {
 	// 	blks = blocksAA;
 	// }else if(zone == "B"){

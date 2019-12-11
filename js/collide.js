@@ -36,7 +36,13 @@ detectCollitionX = (index,bool,blocks,data)=>{
 			return true;
 		}
 	}
+	if (colideBodyX()) {
+		return true;
+	}	
+	return false;
+}
 
+colideBodyX  =()=>{
 	for(i=0;i<size;i++){
 		if (i>0){
 			if (i !=1) {
@@ -47,7 +53,6 @@ detectCollitionX = (index,bool,blocks,data)=>{
 			}
 		}			
 	}
-	return false;
 }
 
 detectCollitionY = (index,bool,blocks,data)=>{
@@ -59,6 +64,14 @@ detectCollitionY = (index,bool,blocks,data)=>{
 			return true;
 		}
 	}
+	if (colideBodyY()) {
+		return true;
+	}
+	
+	return false;
+}
+
+colideBodyY =()=>{
 	for(i=0;i<size;i++){
 		if (i>0){
 			if (i !=1) {
@@ -69,8 +82,8 @@ detectCollitionY = (index,bool,blocks,data)=>{
 			}
 		}			
 	}
-	return false;
 }
+
 
 col = (myTimer,currentMove,blocks,data)=>{
 	if (currentMove == 0) {
