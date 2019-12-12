@@ -45,11 +45,21 @@ start =()=>{
 				displayMessage("LOST");
 				count++;
 				document.getElementById('start').innerHTML ="RESTART";
-				reset();
+				size = 1;
+				isPaused = false;
+				isPlaying =false;
+				isLost = true;
+				count++;
+				isOver =false;
 			}
 			// console.log(currentLevel);
 			if (size-1 ==gameLevels[currentLevel][0].target) {
-				reset();
+				size = 1;
+				isPaused = false;
+				isPlaying =false;
+				isLost = true;
+				count++;
+				isOver =false;
 				count++;
 				clearInterval(myTimer);
 				currentLevel++;

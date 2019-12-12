@@ -37,7 +37,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 		for(i=0; i<size; i++){
 			if (gameLevels[currentLevel][0].background == 0) {
 				ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
-			}else if(snakeType == 0 && background == 1){
+			}else if(snakeType == 0 && gameLevels[currentLevel][0].background == 1){
 				ctx.drawImage(img,imgX,imgY,700,500,data[i].x,data[i].y,sizeX,(sizeY));
 			}else{			
 				ctx.drawImage(img,imgX,580,1000,1000,data[i].x,data[i].y,sizeX,(sizeY));
