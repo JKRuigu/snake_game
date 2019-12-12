@@ -68,7 +68,7 @@ var currentLevel =0;
 var gameLevels = [
 [{
 	"level":1,
-	"blocks":[],
+	"blocks":[{x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50}],
 	"speed":200,
 	"target":2,
 	"timer":60000,

@@ -22,12 +22,13 @@ start =()=>{
 
 		if (count !=0) {
 			changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
-			displayTreasure(treasure);
+			displayBlocks();
+			displayTreasure(treasure);			
 		}
-		!isDivided?divideBlocks():"";
+		// !isDivided?divideBlocks():"";
 		myTimer = setInterval(()=>{
 			getZone();
-			let path = col2(x,y,getNext(),data,blocks);
+			let path = col2(x,y,getNext(),data,gameLevels[currentLevel][0].blocks);
 		
 			if (data) {
 				isTreaseureFound();
@@ -39,7 +40,7 @@ start =()=>{
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
-			isOver = col(myTimer,currentMove,blocks,data)
+			isOver = col(myTimer,currentMove,gameLevels[currentLevel][0].blocks,data)
 			if(isOver){
 				clearInterval(myTimer);
 				displayMessage("LOST");

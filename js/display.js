@@ -3,7 +3,9 @@
 
 // DISPLAY BLOCKS;
 displayBlocks =()=>{
+	let blocks = gameLevels[currentLevel][0].blocks;
 	let l = blocks.length;
+	// console.log(blocks);
 	if (gameLevels[currentLevel][0].background == 0) {
 		for(i=0;i<l;i++){
 			// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
