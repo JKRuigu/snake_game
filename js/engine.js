@@ -1,3 +1,13 @@
+reset =()=>{
+	count++;
+	size = 1;
+	isPaused = false;
+	isPlaying =false;
+	isLost = true;
+	count++;
+	isOver =false;
+}
+
 start =()=>{
 	if (!isPlaying) {
 		isPlay = true;
@@ -9,15 +19,10 @@ start =()=>{
 		isLost = false;
 		!isDivided?divideBlocks():"";
 		document.getElementById('start').innerHTML ="PAUSE";	
-		// console.log("START GAME!");
-		// console.log(data,sizeX,sizeY);
+
 		if (count !=0) {
 			changeBackground(background,data,sizeX,sizeY);
-			// createSnake();
 			displayTreasure(treasure);
-			// displaySnake(x,y,sizeX,sizeY,data);
-			// createTreasure([]);			
-			// start3(1);
 		}
 		!isDivided?divideBlocks():"";
 		myTimer = setInterval(()=>{
@@ -38,28 +43,14 @@ start =()=>{
 			if(isOver){
 				clearInterval(myTimer);
 				displayMessage("LOST");
-				count++;
-				size = 1;
-				isPaused = false;
-				isPlaying =false;
-				// points =0;
-				isLost = true;
-				count++;
-				isOver =false;
 				document.getElementById('start').innerHTML ="RESTART";
+				reset();
 			}
-			console.log(size,target);
+			// console.log(size,target);
 			if (size ==target+1) {
-				isPaused = false;
-				isPlaying =false;
-				isLost = true;
-				count++;
-				isOver =false;
+				reset();
 				clearInterval(myTimer);
 				displayMessage("WON");
-				// points =0;
-				// console.log("WON");
-				size = 1;
 				document.getElementById('start').innerHTML ="RESTART";	
 			}
 			interval++;
