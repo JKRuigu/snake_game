@@ -30,7 +30,7 @@ clearSnake= (rData,background) =>{
 
 //DISPLAY SNAKE IN THE SCREEN;
 displaySnake = (x,y,sizeX,sizeY,data)=>{
-	// console.log("display",data);
+	// console.log("display");
 	if (!isOver) {
 		for(i=0; i<size; i++){
 			if (background == 0) {

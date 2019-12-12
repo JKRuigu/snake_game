@@ -1,14 +1,27 @@
 start =()=>{
 	if (!isPlaying) {
+		isPlay = true;
+		isPlaying = true;
 		state = timer;
 		isPlay =true;
 		tLeft =timer;
+		points =0;
 		isLost = false;
+		!isDivided?divideBlocks():"";
 		document.getElementById('start').innerHTML ="PAUSE";	
+		// console.log("START GAME!");
+		// console.log(data,sizeX,sizeY);
+		if (count !=0) {
+			changeBackground(background,data,sizeX,sizeY);
+			// createSnake();
+			displayTreasure(treasure);
+			// displaySnake(x,y,sizeX,sizeY,data);
+			// createTreasure([]);			
+			// start3(1);
+		}
 		!isDivided?divideBlocks():"";
 		myTimer = setInterval(()=>{
 			getZone();
-		// console.log(zone);
 			let path = col2(x,y,getNext(),data,blocks);
 		
 			if (data) {
@@ -17,7 +30,7 @@ start =()=>{
 
 			var l = data.length-1;
 			if (isAI) {
-				let myOpt = aiType == 0? generateXY(data[0],treasure[0]): aiType ==1?generateXY2(data[0],treasure[0]): aiType ==3?generateXY3(data[0],treasure[0]):generateXY4(data[0],treasure[0],path);
+				let myOpt = aiType == 0? generateXY(data[0],treasure[0]): aiType ==1?generateXY2(data[0],treasure[0]): aiType ==3?generateXY3(data[0],treasure[0],path):generateXY4(data[0],treasure[0],path);
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
@@ -25,16 +38,28 @@ start =()=>{
 			if(isOver){
 				clearInterval(myTimer);
 				displayMessage("LOST");
-				document.getElementById('start').innerHTML ="RESTART";
-			}
-
-			if (size ==target) {
+				count++;
+				size = 1;
 				isPaused = false;
 				isPlaying =false;
-				points =0;
+				// points =0;
 				isLost = true;
+				count++;
+				isOver =false;
+				document.getElementById('start').innerHTML ="RESTART";
+			}
+			console.log(size,target);
+			if (size ==target+1) {
+				isPaused = false;
+				isPlaying =false;
+				isLost = true;
+				count++;
+				isOver =false;
 				clearInterval(myTimer);
 				displayMessage("WON");
+				// points =0;
+				// console.log("WON");
+				size = 1;
 				document.getElementById('start').innerHTML ="RESTART";	
 			}
 			interval++;
