@@ -37,6 +37,9 @@ setKey = (event,status,isPlaying)=>{
 			case 9:
 				ai();
 				break;
+			case 76:
+				gameLevel();
+				break;				
 			default:
             	console.log("Invalid key");
 		}
