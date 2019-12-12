@@ -68,10 +68,10 @@ var currentLevel =0;
 var gameLevels = [
 [{
 	"level":1,
-	"blocks":[{x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50}],
+	"blocks":[],
 	"speed":200,
 	"target":5,
-	"timer":6000,
+	"timer":60000,
 	"background":0
 }],
 [{
@@ -145,16 +145,20 @@ selectLevel = value =>{
 
 gameLevel = ()=>{
 	if (!isPlaying && !isPlay) {
-		if (currentLevel == 1) {
-			currentLevel = 2;
+		if (currentLevel == 0) {
+			currentLevel = 1;
+		}else if(currentLevel == 1){
+			currentLevel = 2
 		}else if(currentLevel == 2){
 			currentLevel = 3
-		}else if(currentLevel == 3){
-			currentLevel = 4
 		}else{
-			currentLevel = 1;
+			currentLevel = 0;
 		}
-		document.getElementById("Level").innerHTML = `LEVEL ${currentLevel}`;		
+		document.getElementById("Level").innerHTML = `LEVEL ${currentLevel}`;	
+		changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
+		displayBlocks();
+		displayTreasure(treasure);
+		displaySnake(x,y,sizeX,sizeY,data);	
 	}
 }
 

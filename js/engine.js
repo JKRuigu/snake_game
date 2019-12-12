@@ -47,7 +47,7 @@ start =()=>{
 				document.getElementById('start').innerHTML ="RESTART";
 				reset();
 			}
-			console.log(currentLevel);
+			// console.log(currentLevel);
 			if (size-1 ==gameLevels[currentLevel][0].target) {
 				reset();
 				count++;

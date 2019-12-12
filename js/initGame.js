@@ -30,6 +30,13 @@ displayBackGround = ()=>{
 		}
 	}else{
 		ctx.fillRect(m,m,maxX2,maxY2);
+		for (var i = m-sizeY; i <=maxY+(sizeY*2); i+=sizeY) {
+			for (var j = m-sizeX; j <=maxX+(sizeX*2); j+=sizeX) {
+				if (i== 40 || i==440 || j == 40 || j == 440) {
+					ctx.drawImage(img3, 0,0,10,10,i,j,sizeX,sizeY);
+				}
+			}
+		}
 	}
 
 
@@ -62,5 +69,10 @@ intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	console.log("Intialized the game!");
 	displayBlocks();
 	state = timer;	
+	//clears unwanted walls;
+	ctx.clearRect(40,450,sizeX,sizeY);
+	ctx.clearRect(450,40,sizeX,sizeY);
+	ctx.clearRect(440,450,sizeX,sizeY);
+	ctx.clearRect(450,440,sizeX,sizeY);
 	return createSnake();
 }
