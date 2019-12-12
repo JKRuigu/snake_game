@@ -64,6 +64,40 @@ var level = 1;
 var zone = "";
 var isDivided =false;
 var count = 0;
+var currentLevel =0;
+var gameLevels = [
+[{
+	"level":1,
+	"blocks":[],
+	"speed":200,
+	"target":2,
+	"timer":60000,
+	"background":0
+}],
+[{
+	"level":2,
+	"blocks":[{x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50}],
+	"speed":150,
+	"target":3,
+	"timer":50000,
+	"background":0
+}],
+[{
+	"level":3,
+	"blocks":[{x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50},{x: 100, y: 50},{x: 110, y: 50},{x: 120, y: 50},{x: 130, y: 50},{x: 140, y: 50},{x: 150, y: 50},{x: 160, y: 50},{x: 170, y: 50},{x: 180, y: 50},{x: 190, y: 50},{x: 200, y: 50},{x: 210, y: 50},{x: 220, y: 50},{x: 230, y: 50},{x: 240, y: 50},{x: 250, y: 50},{x: 260, y: 50},{x: 270, y: 50},{x: 280, y: 50},{x: 290, y: 50},{x: 300, y: 50},{x: 310, y: 50},{x: 320, y: 50},{x: 330, y: 50},{x: 340, y: 50},{x: 350, y: 50},{x: 360, y: 50},{x: 370, y: 50},{x: 380, y: 50},{x: 390, y: 50},{x: 400, y: 50}],
+	"speed":100,
+	"target":20,
+	"timer":40000,
+	"background":1	
+}],
+[{
+	"level":4,
+	"blocks":[{x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50},{x: 100, y: 50},{x: 110, y: 50},{x: 120, y: 50},{x: 130, y: 50},{x: 140, y: 50},{x: 150, y: 50},{x: 160, y: 50},{x: 170, y: 50},{x: 180, y: 50},{x: 190, y: 50},{x: 200, y: 50},{x: 210, y: 50},{x: 220, y: 50},{x: 230, y: 50},{x: 240, y: 50},{x: 250, y: 50},{x: 260, y: 50},{x: 270, y: 50},{x: 280, y: 50},{x: 290, y: 50},{x: 300, y: 50},{x: 310, y: 50},{x: 320, y: 50},{x: 330, y: 50},{x: 340, y: 50},{x: 350, y: 50},{x: 360, y: 50},{x: 370, y: 50},{x: 380, y: 50},{x: 390, y: 50},{x: 400, y: 50},{x: 410, y: 50},{x: 420, y: 50},{x: 430, y: 50},{x: 60, y: 430},{x: 70, y: 430},{x: 80, y: 430},{x: 90, y: 430},{x: 100, y: 430},{x: 110, y: 430},{x: 120, y: 430},{x: 130, y: 430},{x: 140, y: 430},{x: 150, y: 430},{x: 160, y: 430},{x: 170, y: 430},{x: 180, y: 430},{x: 190, y: 430},{x: 200, y: 430},{x: 210, y: 430},{x: 220, y: 430},{x: 230, y: 430},{x: 240, y: 430},{x: 250, y: 430},{x: 260, y: 430},{x: 270, y: 430},{x: 280, y: 430},{x: 290, y: 430},{x: 300, y: 430},{x: 310, y: 430},{x: 320, y: 430},{x: 330, y: 430},{x: 340, y: 430},{x: 350, y: 430},{x: 360, y: 430},{x: 370, y: 430},{x: 380, y: 430},{x: 390, y: 430},{x: 400, y: 430},{x: 410, y: 430},{x: 420, y: 430},{x: 430, y: 430}],
+	"speed":50,
+	"target":25,
+	"background":1	
+}]];
+
 
 // Create random number between the minX and maxY margins;
 createRandom = ()=>{
@@ -109,6 +143,21 @@ selectLevel = value =>{
 	// console.log(speed);
 }
 
+gameLevel = ()=>{
+	if (!isPlaying && !isPlay) {
+		if (currentLevel == 1) {
+			currentLevel = 2;
+		}else if(currentLevel == 2){
+			currentLevel = 3
+		}else if(currentLevel == 3){
+			currentLevel = 4
+		}else{
+			currentLevel = 1;
+		}
+		document.getElementById("Level").innerHTML = `LEVEL ${currentLevel}`;		
+	}
+}
+
 selectTypeAi = () =>{
 	if (aiType == 0) {
 		aiType = 1;
@@ -119,7 +168,7 @@ selectTypeAi = () =>{
 	}else{
 		aiType = 0;
 	}
-	document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
+	document.getElementById("typeAi").innerHTML = `AI ${aiType}`
 }
 
 selectTypeAiKeyBoard= bool =>{

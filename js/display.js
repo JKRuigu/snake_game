@@ -4,7 +4,7 @@
 // DISPLAY BLOCKS;
 displayBlocks =()=>{
 	let l = blocks.length;
-	if (background == 0) {
+	if (gameLevels[currentLevel][0].background == 0) {
 		for(i=0;i<l;i++){
 			// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
 			ctx.drawImage(img2, img2X,img2Y,m,m,blocks[i].x,blocks[i].y,sizeX,sizeY);
@@ -19,7 +19,7 @@ displayBlocks =()=>{
 }
 
 clearSnake= (rData,background) =>{
-		if (background == 0) {
+		if (gameLevels[currentLevel][0].background == 0) {
 				ctx.fillRect(rData.x,rData.y,sizeX,sizeY);
 		}else if(snakeType == 0 && background == 1){
 			ctx.drawImage(img2, img2X,img2Y,m,m,rData.x,rData.y,sizeX,(sizeY));
@@ -33,7 +33,7 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	// console.log("display");
 	if (!isOver) {
 		for(i=0; i<size; i++){
-			if (background == 0) {
+			if (gameLevels[currentLevel][0].background == 0) {
 				ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
 			}else if(snakeType == 0 && background == 1){
 				ctx.drawImage(img,imgX,imgY,700,500,data[i].x,data[i].y,sizeX,(sizeY));
@@ -51,7 +51,7 @@ displaySnake2 = (x,y,sizeX,sizeY,data,clearData)=>{
 }
 
 displayTreasure =treasure=>{
-	if (background ==0) {
+	if (gameLevels[currentLevel][0].background ==0) {
 		ctx.drawImage(img, (imgX*2),(imgY*2),m,m,treasure[0].x,treasure[0].y,sizeX,sizeY);
 	}else{
 		ctx.clearRect(treasure[0].x,treasure[0].y,sizeX,sizeY);
@@ -80,17 +80,19 @@ reset = (x,y,treasure,data,sizeX,sizeY)=>{
 displayScore =(points)=>{
 	ctx.clearRect(30,0,450,40);
 	ctx.font= 'Bold 18px Sans-Serif';
-	if (isPlay) {
-		tLeft = timer -(interval*speed);
-	}else{
-		if (userTime>(speed/1000)) {
-			tLeft = userTime -(interval*speed);
-		}else{
-			tLeft = timer -(interval*speed);
-		}
-	}
+	// console.log(gameLevels[currentLevel][0].timer)
+		tLeft = gameLevels[currentLevel][0].timer -(interval*gameLevels[currentLevel][0].speed);
+	// if (isPlay) {
+	// }else{
+	// 	if (userTime>(speed/1000)) {
+	// 		tLeft = userTime -(interval*speed);
+	// 	}else{
+	// 		tLeft = timer -(interval*speed);
+	// 	}
+	// }
+	var myLevel = currentLevel+1;
 
-	let txt = `Points: ${points} Target:${target*10}  Time left: ${tLeft}`
+	let txt = `Points: ${points} Target:${gameLevels[currentLevel][0].target*10}  Time left: ${tLeft} Level ${myLevel}`
 	ctx.strokeText(txt, 40, 30);//displays the game title;
 }
 

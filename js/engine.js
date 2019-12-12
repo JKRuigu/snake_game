@@ -12,16 +12,16 @@ start =()=>{
 	if (!isPlaying) {
 		isPlay = true;
 		isPlaying = true;
-		state = timer;
+		// state = timer;
 		isPlay =true;
-		tLeft =timer;
+		tLeft =gameLevels[currentLevel][0].timer;
 		points =0;
 		isLost = false;
 		!isDivided?divideBlocks():"";
 		document.getElementById('start').innerHTML ="PAUSE";	
 
 		if (count !=0) {
-			changeBackground(background,data,sizeX,sizeY);
+			changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 			displayTreasure(treasure);
 		}
 		!isDivided?divideBlocks():"";
@@ -47,10 +47,13 @@ start =()=>{
 				reset();
 			}
 			// console.log(size,target);
-			if (size ==target+1) {
+			if (size-1 ==gameLevels[currentLevel][0].target) {
 				reset();
 				clearInterval(myTimer);
+				currentLevel++;
 				displayMessage("WON");
+				document.getElementById("Level").innerHTML = `LEVEL ${currentLevel}`;		
+				gameLevel();
 				document.getElementById('start').innerHTML ="RESTART";	
 			}
 			interval++;
@@ -68,10 +71,10 @@ start =()=>{
 					console.log("default");
 			}
 
-		},speed);
+		},gameLevels[currentLevel][0].speed);
 
-		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,timer);
-		timer == isPaused?tLeft:timer;
+		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,gameLevels[currentLevel][0].timer);
+		timer == isPaused?tLeft:gameLevels[currentLevel][0].timer;
 		isPlaying = true;
 	}else{
 		// isPaused = isPlay?true:false;
@@ -104,7 +107,7 @@ setTimeOut = (myTimer,timer)=>{
 				interval =0;
 				isPlay =false;
 				size =1;
-				timer = state;
+				timer = gameLevels[currentLevel][0].timer;
 				points =0;
 				document.getElementById('start').innerHTML ="RESTART";
 			}	
