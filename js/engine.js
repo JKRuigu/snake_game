@@ -1,5 +1,4 @@
 reset =()=>{
-	count++;
 	size = 1;
 	isPaused = false;
 	isPlaying =false;
@@ -44,12 +43,14 @@ start =()=>{
 			if(isOver){
 				clearInterval(myTimer);
 				displayMessage("LOST");
+				count++;
 				document.getElementById('start').innerHTML ="RESTART";
 				reset();
 			}
-			// console.log(size,target);
+			console.log(currentLevel);
 			if (size-1 ==gameLevels[currentLevel][0].target) {
 				reset();
+				count++;
 				clearInterval(myTimer);
 				currentLevel++;
 				displayMessage("WON");
@@ -97,6 +98,7 @@ start =()=>{
 
 start2 =()=>{
 	start();
+	count++;
 }
 
 setTimeOut = (myTimer,timer)=>{

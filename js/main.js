@@ -70,8 +70,8 @@ var gameLevels = [
 	"level":1,
 	"blocks":[{x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50}],
 	"speed":200,
-	"target":2,
-	"timer":60000,
+	"target":5,
+	"timer":6000,
 	"background":0
 }],
 [{
