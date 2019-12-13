@@ -84,6 +84,13 @@ displayScore =(points)=>{
 	ctx.font= 'Bold 18px Sans-Serif';
 	// console.log(gameLevels[currentLevel][0].timer)
 		tLeft = gameLevels[currentLevel][0].timer -(interval*gameLevels[currentLevel][0].speed);
+		if (tLeft <=0) {
+			isPlay = false;
+			tLeft =0;
+		}
+		var myLevel = currentLevel+1;
+		let txt = `Points: ${points} Target:${gameLevels[currentLevel][0].target*10}  Time left: ${tLeft} Level ${myLevel}`
+		ctx.strokeText(txt, 40, 30);//displays the game title;
 	// if (isPlay) {
 	// }else{
 	// 	if (userTime>(speed/1000)) {
@@ -92,10 +99,7 @@ displayScore =(points)=>{
 	// 		tLeft = timer -(interval*speed);
 	// 	}
 	// }
-	var myLevel = currentLevel+1;
-
-	let txt = `Points: ${points} Target:${gameLevels[currentLevel][0].target*10}  Time left: ${tLeft} Level ${myLevel}`
-	ctx.strokeText(txt, 40, 30);//displays the game title;
+	
 }
 
 

@@ -1,37 +1,31 @@
-reset =()=>{
-	size = 1;
+reset =(msg,display) =>{
+	console.log("RESET");
 	isPaused = false;
-	isPlaying =false;
-	isLost = true;
-	count++;
-	isOver =false;
+	isPlaying = false;
+	isPlay = false;
+	interval =0;
+	size =1;			
+	points =0;
+	displayMessage(display);
+	changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
+	displayBlocks();
+	displayTreasure(treasure);
+	console.log(display);
+	document.getElementById('start').innerHTML = msg;
+	tLeft = gameLevels[currentLevel][0].timer;
 }
 
 start =()=>{
-	if (!isPlaying) {
+	if (!isPlay) {
+		console.log("START",tLeft);
 		isPlay = true;
 		isPlaying = true;
-		// state = timer;
-		isPlay =true;
-		tLeft =gameLevels[currentLevel][0].timer;
-		points =0;
-		isLost = false;
-		!isDivided?divideBlocks():"";
-		document.getElementById('start').innerHTML ="PAUSE";	
 
-		if (count !=0) {
-			changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
-			displayBlocks();
-			displayTreasure(treasure);			
-		}
-		// !isDivided?divideBlocks():"";
-		myTimer = setInterval(()=>{
+		Time = setInterval(()=>{
 			getZone();
 			let path = col2(x,y,getNext(),data,gameLevels[currentLevel][0].blocks);
 		
-			if (data) {
-				isTreaseureFound();
-			}
+			data?isTreaseureFound():"";
 
 			var l = data.length-1;
 			if (isAI) {
@@ -39,37 +33,20 @@ start =()=>{
 				currentMove = (myOpt == undefined ? currentMove:myOpt);
 			}
 
-			isOver = col(myTimer,currentMove,gameLevels[currentLevel][0].blocks,data)
-			if(isOver){
-				clearInterval(myTimer);
-				displayMessage("LOST");
-				count++;
-				document.getElementById('start').innerHTML ="RESTART";
-				size = 1;
-				isPaused = false;
-				isPlaying =false;
-				isLost = true;
-				count++;
-				isOver =false;
+			isOver = col(myTimer,currentMove,gameLevels[currentLevel][0].blocks,data);
+
+			if(isOver || tLeft <= 0){
+				clearInterval(Time);
+				reset("RESTART","LOST");
 			}
-			// console.log(currentLevel);
+
 			if (size-1 ==gameLevels[currentLevel][0].target) {
-				size = 1;
-				isPaused = false;
-				isPlaying =false;
-				isLost = true;
-				count++;
-				isOver =false;
-				count++;
-				clearInterval(myTimer);
-				currentLevel++;
-				displayMessage("WON");
-				document.getElementById("Level").innerHTML = `LEVEL ${currentLevel}`;		
-				gameLevel();
-				document.getElementById('start').innerHTML ="RESTART";	
+				clearInterval(Time);
+				// currentLevel==4?currentLevel =0:currentLevel++;
+				reset("NEXT","WON");
 			}
-			interval++;
-			interval2=interval+1;
+
+			interval++;			
 			displayScore(points);//Update time;
 
 			switch(currentMove){
@@ -84,25 +61,21 @@ start =()=>{
 			}
 
 		},gameLevels[currentLevel][0].speed);
-
-		isPaused?setTimeOut(myTimer,tLeft):setTimeOut(myTimer,gameLevels[currentLevel][0].timer);
-		timer == isPaused?tLeft:gameLevels[currentLevel][0].timer;
-		isPlaying = true;
 	}else{
-		// isPaused = isPlay?true:false;
-		if (isPlay && !isPaused){
-			document.getElementById('start').innerHTML ="PLAY"
+		if (isPaused) {
+			console.log("UNPAUSE");
+			isPaused = false;
+			document.getElementById('start').innerHTML ="PLAY";
+			isPlay =false;
+			start();
 			isPlaying = true;
+		}else{
+			console.log("PAUSE",tLeft);
+			clearInterval(Time);
 			isPaused = true;
-			isLost = false;	
-			start2();
+			isPlaying = false;
+			document.getElementById('start').innerHTML ="PAUSE";
 		}
-
-		clearInterval(myTimer);
-		isPaused = false;
-		isPlaying =false;
-		isLost = false;
-		points =0;
 	}	
 }
 

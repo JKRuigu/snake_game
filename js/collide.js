@@ -36,9 +36,9 @@ detectCollitionX = (index,bool,blocks,data)=>{
 			return true;
 		}
 	}
-	if (colideBodyX()) {
-		return true;
-	}	
+	// if (colideBodyX()) {
+	// 	return true;
+	// }	
 	return false;
 }
 
@@ -64,9 +64,9 @@ detectCollitionY = (index,bool,blocks,data)=>{
 			return true;
 		}
 	}
-	if (colideBodyY()) {
-		return true;
-	}
+	// if (colideBodyY()) {
+	// 	return true;
+	// }
 	
 	return false;
 }
