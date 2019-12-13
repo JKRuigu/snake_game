@@ -49,6 +49,7 @@ start =()=>{
 			if(isOver || isLost){
 				clearInterval(Time);
 				displayMessage("LOST");
+				isLost = true;
 				document.getElementById('start').innerHTML ="RESTART";
 				tLeft = gameLevels[currentLevel][0].timer;
 			}

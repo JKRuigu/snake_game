@@ -66,6 +66,7 @@ var isDivided =false;
 var count = 0;
 var currentLevel =0;
 var Time;
+var colBody=true;
 var gameLevels = [
 [{
 	"level":1,
@@ -177,7 +178,8 @@ gameLevel = ()=>{
 		}else{
 			currentLevel = 0;
 		}
-		document.getElementById("Level").innerHTML = `LEVEL ${currentLevel}`;	
+		let l=currentLevel+1;
+		document.getElementById("Level").innerHTML = `LEVEL ${l}`;	
 		changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 		displayBlocks();
 		displayTreasure(treasure);
