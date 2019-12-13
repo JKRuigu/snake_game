@@ -1,23 +1,31 @@
-reset =(msg,display) =>{
+reset = bool =>{
 	console.log("RESET");
+	// if (true) {}
 	isPaused = false;
 	isPlaying = false;
 	isPlay = false;
 	interval =0;
 	size =1;			
 	points =0;
-	displayMessage(display);
+	isOver =false;
+	isLost = false;
+	if (!bool) {
+		currentLevel==4?currentLevel =0:currentLevel++;		
+	}
 	changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 	displayBlocks();
 	displayTreasure(treasure);
-	console.log(display);
-	document.getElementById('start').innerHTML = msg;
+	document.getElementById('start').innerHTML = "PAUSE";
 	tLeft = gameLevels[currentLevel][0].timer;
 }
 
 start =()=>{
+	if (isOver) {
+		reset(isLost);
+	}
 	if (!isPlay) {
-		console.log("START",tLeft);
+		console.log("START");
+		tLeft= (tLeft<=0)?gameLevels[currentLevel][0].timer:tLeft;
 		isPlay = true;
 		isPlaying = true;
 
@@ -27,6 +35,7 @@ start =()=>{
 		
 			data?isTreaseureFound():"";
 
+
 			var l = data.length-1;
 			if (isAI) {
 				let myOpt = aiType == 0? generateXY(data[0],treasure[0]): aiType ==1?generateXY2(data[0],treasure[0]): aiType ==3?generateXY3(data[0],treasure[0],path):generateXY4(data[0],treasure[0],path);
@@ -34,16 +43,18 @@ start =()=>{
 			}
 
 			isOver = col(myTimer,currentMove,gameLevels[currentLevel][0].blocks,data);
+			// console.log(isPlay,isPlaying,isPaused,isLost,isOver,tLeft);
 
-			if(isOver || tLeft <= 0){
+			if(isOver || isLost){
 				clearInterval(Time);
-				reset("RESTART","LOST");
+				displayMessage("LOST");
+				tLeft = gameLevels[currentLevel][0].timer;
 			}
 
-			if (size-1 ==gameLevels[currentLevel][0].target) {
+			if (size-1 == gameLevels[currentLevel][0].target) {
 				clearInterval(Time);
-				// currentLevel==4?currentLevel =0:currentLevel++;
-				reset("NEXT","WON");
+				displayMessage("WON");
+				isOver = true;
 			}
 
 			interval++;			

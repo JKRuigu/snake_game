@@ -72,7 +72,7 @@ var gameLevels = [
 	"blocks":[],
 	"speed":200,
 	"target":5,
-	"timer":30000,
+	"timer":60000,
 	"background":0
 }],
 [{
