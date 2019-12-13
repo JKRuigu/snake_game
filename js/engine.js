@@ -24,6 +24,7 @@ start =()=>{
 		reset(isLost);
 	}
 	if (!isPlay) {
+		document.getElementById('start').innerHTML ="PAUSE";
 		console.log("START");
 		tLeft= (tLeft<=0)?gameLevels[currentLevel][0].timer:tLeft;
 		isPlay = true;
@@ -48,17 +49,20 @@ start =()=>{
 			if(isOver || isLost){
 				clearInterval(Time);
 				displayMessage("LOST");
+				document.getElementById('start').innerHTML ="RESTART";
 				tLeft = gameLevels[currentLevel][0].timer;
 			}
 
 			if (size-1 == gameLevels[currentLevel][0].target) {
 				clearInterval(Time);
+				document.getElementById('start').innerHTML ="NEXT";
 				displayMessage("WON");
 				isOver = true;
 			}
-
-			interval++;			
-			displayScore(points);//Update time;
+			if (!isOver || !isLost) {
+				interval++;			
+				displayScore(points);//Update time;				
+			}
 
 			switch(currentMove){
 				case 0:

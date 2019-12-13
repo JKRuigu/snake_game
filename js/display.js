@@ -3,31 +3,35 @@
 
 // DISPLAY BLOCKS;
 displayBlocks =()=>{
-	let blocks = gameLevels[currentLevel][0].blocks;
-	let l = blocks.length;
-	// console.log(blocks);
-	if (gameLevels[currentLevel][0].background == 0) {
-		for(i=0;i<l;i++){
-			// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
-			ctx.drawImage(img2, img2X,img2Y,m,m,blocks[i].x,blocks[i].y,sizeX,sizeY);
-		}
-	}else{
-		for(i=0;i<l;i++){
-			ctx.drawImage(img3, 0,0,10,10,blocks[i].x,blocks[i].y,sizeX,sizeY);
-			// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
-		}
+	if (!isOver || !isLost) {
+		let blocks = gameLevels[currentLevel][0].blocks;
+		let l = blocks.length;
+		// console.log(blocks);
+		if (gameLevels[currentLevel][0].background == 0) {
+			for(i=0;i<l;i++){
+				// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+				ctx.drawImage(img2, img2X,img2Y,m,m,blocks[i].x,blocks[i].y,sizeX,sizeY);
+			}
+		}else{
+			for(i=0;i<l;i++){
+				ctx.drawImage(img3, 0,0,10,10,blocks[i].x,blocks[i].y,sizeX,sizeY);
+				// ctx.clearRect(blocks[i].x,blocks[i].y,sizeX,sizeY);
+			}
+		}		
 	}
 
 }
 
 clearSnake= (rData,background) =>{
+	if (!isOver || !isLost) {
 		if (gameLevels[currentLevel][0].background == 0) {
 				ctx.fillRect(rData.x,rData.y,sizeX,sizeY);
 		}else if(snakeType == 0 && background == 1){
 			ctx.drawImage(img2, img2X,img2Y,m,m,rData.x,rData.y,sizeX,(sizeY));
 		}else{	
 			ctx.drawImage(img2, img2X,img2Y,m,m,rData.x,rData.y,sizeX,(sizeY));
-		}
+		}		
+	}
 }
 
 //DISPLAY SNAKE IN THE SCREEN;
