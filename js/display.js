@@ -40,10 +40,13 @@ displaySnake = (x,y,sizeX,sizeY,data)=>{
 	if (!isOver || !isLost) {
 		for(i=0; i<size; i++){
 			if (gameLevels[currentLevel][0].background == 0) {
-				ctx.clearRect(data[i].x,data[i].y+5,3,3);
-				ctx.clearRect(data[i].x+5,data[i].y+5,3,3);
-				ctx.clearRect(data[i].x+5,data[i].y,3,3);
-				ctx.clearRect(data[i].x,data[i].y,3,3);
+				// ctx.clearRect(data[i].x,data[i].y+5,3,3);
+				// ctx.clearRect(data[i].x+5,data[i].y+5,3,3);
+				// ctx.clearRect(data[i].x+5,data[i].y,3,3);
+				// ctx.clearRect(data[i].x,data[i].y,3,3);
+				
+				ctx.clearRect(data[i].x,data[i].y,sizeX,sizeY);
+
 			}else if(snakeType == 0 && gameLevels[currentLevel][0].background == 1){
 				ctx.drawImage(img,imgX,imgY,700,500,data[i].x,data[i].y,sizeX,(sizeY));
 			}else{			

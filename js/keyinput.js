@@ -20,10 +20,10 @@ setKey = (event,status,isPlaying)=>{
 				move(1,false);
 				break;
 			case 32:
-				start();
+				start2();
 				break;
 			case 27:
-				start();
+				start2();
 				break;
 			case 67:
 				selectTypeAiKeyBoard(true);
@@ -32,7 +32,7 @@ setKey = (event,status,isPlaying)=>{
 				selectTypeAiKeyBoard(false);
 				break;
 			case 13:
-				start();
+				start2();
 				break;
 			case 9:
 				ai();
