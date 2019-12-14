@@ -102,7 +102,8 @@ displayScore =(points)=>{
 			isLost =true;
 			tLeft = 0;
 		}
-		var myLevel = currentLevel == 0 ?1:currentLevel;
+		let temp = currentLevel+1;
+		var myLevel = currentLevel == 0 ?1:temp;
 		let txt = `Points: ${points} Target:${gameLevels[currentLevel][0].target*10}  Time left: ${tLeft} Level ${myLevel}`
 		ctx.strokeText(txt, 40, 30);//displays the game title;
 	// if (isPlay) {

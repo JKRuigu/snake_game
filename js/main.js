@@ -98,7 +98,7 @@ var gameLevels = [
 	"speed":200,
 	"target":15,
 	"timer":60000,
-	"background":1	
+	"background":0	
 }],
 [{
 	"level":4,
@@ -112,10 +112,24 @@ var gameLevels = [
 	"speed":200,
 	"target":20,
 	"timer":60000,
-	"background":1	
+	"background":0	
 }],
 [{
 	"level":5,
+	"blocks":[
+		{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
+		{x: 390, y: 80},{x: 400, y: 80},{x: 410, y: 80},{x: 420, y: 80},
+		{x:220, y: 230},{x:230, y: 230},{x:240, y: 230},{x:250, y: 230},
+		{x: 60, y: 400},{x: 70, y: 400},{x: 80, y: 400},{x: 90, y: 400},
+		{x: 390, y: 400},{x: 400, y: 400},{x: 410, y: 400},{x: 420, y: 400}
+	],
+	"speed":200,
+	"target":20,
+	"timer":60000,
+	"background":1	
+}],
+[{
+	"level":6,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x: 390, y: 80},{x: 400, y: 80},{x: 410, y: 80},{x: 420, y: 80},
@@ -130,7 +144,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":6,
+	"level":7,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x: 390, y: 80},{x: 400, y: 80},{x: 410, y: 80},{x: 420, y: 80},
@@ -146,7 +160,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":7,
+	"level":8,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x:220, y: 80},{x:230, y: 80},{x:240, y: 80},{x:250, y: 80},
@@ -163,7 +177,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":8,
+	"level":9,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x:220, y: 80},{x:230, y: 80},{x:240, y: 80},{x:250, y: 80},
@@ -181,7 +195,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":7,
+	"level":10,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x:220, y: 80},{x:230, y: 80},{x:240, y: 80},{x:250, y: 80},
@@ -200,7 +214,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":8,
+	"level":11,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x:220, y: 80},{x:230, y: 80},{x:240, y: 80},{x:250, y: 80},
@@ -220,7 +234,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":9,
+	"level":12,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x:220, y: 80},{x:230, y: 80},{x:240, y: 80},{x:250, y: 80},
@@ -240,7 +254,7 @@ var gameLevels = [
 	"background":1	
 }],
 [{
-	"level":10,
+	"level":13,
 	"blocks":[
 			{x: 60, y: 80},{x: 70, y: 80},{x: 80, y: 80},{x: 90, y: 80},
 			{x:220, y: 80},{x:230, y: 80},{x:240, y: 80},{x:250, y: 80},
@@ -308,20 +322,10 @@ selectLevel = value =>{
 
 gameLevel = ()=>{
 	if (!isPlaying && !isPlay) {
-		// if (currentLevel == 0) {
-		// 	currentLevel = 1;
-		// }else if(currentLevel == 1){
-		// 	currentLevel = 2
-		// }else if(currentLevel == 2){
-		// 	currentLevel = 3
-		// }else if(currentLevel == 3){
-		// 	currentLevel = 4
-		// }else{
-		// 	currentLevel = 0;
-		// }
-		let l=currentLevel == 0?currentLevel+2:currentLevel+1;
-		currentLevel = currentLevel == 11? 0:l;
-		l = l == 12?1:l;
+		let cLevel = currentLevel+1;
+		currentLevel = currentLevel==12?0:cLevel;
+		let l=currentLevel+1;
+
 		document.getElementById("Level").innerHTML = `LEVEL ${l}`;	
 		changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 		displayBlocks();
