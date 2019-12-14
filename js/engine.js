@@ -11,7 +11,7 @@ reset = bool =>{
 	isLost = false;
 	if (!bool) {
 		let temp =  currentLevel +1;
-		currentLevel =  currentLevel==12?currentLevel =0:temp;
+		currentLevel =  currentLevel==tLevels?currentLevel =0:temp;
 		let l =currentLevel+1;
 
 		document.getElementById("Level").innerHTML = `LEVEL ${l}`;			
