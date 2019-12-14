@@ -156,7 +156,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":25,
-	"timer":1500000,
+	"timer":1800000,
 	"background":1	
 }],
 [{
@@ -173,7 +173,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":30,
-	"timer":1200000,
+	"timer":1800000,
 	"background":1	
 }],
 [{
@@ -191,7 +191,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":35,
-	"timer":1200000,
+	"timer":2100000,
 	"background":1	
 }],
 [{
@@ -210,7 +210,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":40,
-	"timer":1200000,
+	"timer":2100000,
 	"background":1	
 }],
 [{
@@ -230,7 +230,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":45,
-	"timer":1200000,
+	"timer":2400000,
 	"background":1	
 }],
 [{
@@ -250,7 +250,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":50,
-	"timer":1200000,
+	"timer":2400000,
 	"background":1	
 }],
 [{
@@ -262,7 +262,7 @@ var gameLevels = [
 	],
 	"speed":190,
 	"target":55,
-	"timer":1200000,
+	"timer":3000000,
 	"background":1	
 }]
 ];
