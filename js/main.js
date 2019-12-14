@@ -125,7 +125,7 @@ var gameLevels = [
 	],
 	"speed":200,
 	"target":20,
-	"timer":60000,
+	"timer":75000,
 	"background":1	
 }],
 [{
@@ -140,7 +140,7 @@ var gameLevels = [
 	],
 	"speed":200,
 	"target":20,
-	"timer":60000,
+	"timer":75000,
 	"background":1	
 }],
 [{

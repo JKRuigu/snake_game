@@ -31,9 +31,9 @@ setKey = (event,status,isPlaying)=>{
 			case 83:
 				selectTypeAiKeyBoard(false);
 				break;
-			case 13:
-				start2();
-				break;
+			// case 13:
+			// 	start2();
+			// 	break;
 			case 9:
 				ai();
 				break;

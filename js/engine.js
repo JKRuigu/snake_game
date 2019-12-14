@@ -10,7 +10,11 @@ reset = bool =>{
 	isOver =false;
 	isLost = false;
 	if (!bool) {
-		currentLevel==4?currentLevel =0:currentLevel++;		
+		let temp =  currentLevel +1;
+		currentLevel==12?currentLevel =0:temp;
+		let l =currentLevel+1;
+
+		document.getElementById("Level").innerHTML = `LEVEL ${l}`;			
 	}
 	changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 	displayBlocks();

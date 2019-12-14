@@ -3,7 +3,8 @@ createTreasure = (treasure=[])=>{
 		let isTrue =true;
 		let dataLen = data.length;
 		// console.log(data);
-		let blocksLen = blocks.length;
+		let blocks =gameLevels[currentLevel][0].blocks;
+		let blocksLen = gameLevels[currentLevel][0].blocks.length;
 		while(isTrue){
 			treasure = [{"x":createRandom(),"y":createRandom(),isFound:false}]; //create treasure;
 			let num =0;

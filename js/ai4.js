@@ -1,7 +1,7 @@
 // ALGORTHIM TO AVOID COLLITION;
 generateXY4 = (from,to)=>{
 	numMove++;
-	// console.log(numMove,(points/numMove));
+	console.log("AI 4");
 	let diffX = from.x-to.x;
 	let isdiffX = ((diffX<1)? true:false);//TRUE - RIGHT FALSE - LEFT;
 
@@ -13,7 +13,7 @@ generateXY4 = (from,to)=>{
 		//FIND SHORTCUT;
 		if (diffX<(maxX-diffX)) {
 			if (colideBodyX()) {
-				return solveY();
+				return 1;
 			}
 			toX = isdiffX;
 			return 0;
@@ -27,7 +27,7 @@ generateXY4 = (from,to)=>{
 		//FIND SHORTCUT;
 		if (diffY<(maxY-diffY)) {			
 			if (colideBodyY()) {
-				return solveX();
+				return 0;
 			}
 			toY = !isdiffY;
 			return 1;
