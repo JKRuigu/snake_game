@@ -1,0 +1,7 @@
+{
+  "name": "Snake Game",
+  "version": "1.0.0",
+  "description": "Simple snake game using javascript and canvas",
+  "author": "JKRuigu",
+  "license": "ISC"
+}
