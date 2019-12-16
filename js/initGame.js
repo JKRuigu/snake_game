@@ -22,12 +22,18 @@ img3.src = "./imgs/tiles.png";
 displayBackGround = ()=>{
 	img2.onload=function() {
 	if( localStorage.level ){
+    	if (confirm(`Welcome again,Click Ok to continue,You are in level ${Number(localStorage.level)+1}.`)) {
             currentLevel = Number(localStorage.level);
             var l = currentLevel+1
-            document.getElementById("Level").innerHTML = `LEVEL ${l}`;
+            document.getElementById("Level").innerHTML = `LEVEL ${l}`;    		
+    	}else{
+        	localStorage.level = Number(currentLevel);
+    	}
     }else{
         localStorage.level = Number(currentLevel);
-    }		
+    }
+    var btn = '<button>HELLO</button>';
+
 	if (gameLevels[currentLevel].background == 1) {
 		let len = treasure.length;            
 		for (var i = m; i <=maxY; i+=sizeY) {
