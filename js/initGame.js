@@ -27,11 +27,13 @@ displayBackGround = ()=>{
             var l = currentLevel+1
             document.getElementById("Level").innerHTML = `LEVEL ${l}`;    		
     	}else{
-        	localStorage.level = Number(currentLevel);
+        	if (confirm("Are you sure you want restart ?")) {
+        		localStorage.level = Number(currentLevel);
+	        }else{
+	        	currentLevel = Number(localStorage.level);	
+	        }
     	}
-    }else{
-        localStorage.level = Number(currentLevel);
-    }
+    } 
     var btn = '<button>HELLO</button>';
 
 	if (gameLevels[currentLevel].background == 1) {
