@@ -21,6 +21,13 @@ img3.src = "./imgs/tiles.png";
 
 displayBackGround = ()=>{
 	img2.onload=function() {
+	if( localStorage.level ){
+            currentLevel = Number(localStorage.level);
+            var l = currentLevel+1
+            document.getElementById("Level").innerHTML = `LEVEL ${l}`;
+    }else{
+        localStorage.level = Number(currentLevel);
+    }		
 	if (gameLevels[currentLevel].background == 1) {
 		let len = treasure.length;            
 		for (var i = m; i <=maxY; i+=sizeY) {

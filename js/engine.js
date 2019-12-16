@@ -16,6 +16,8 @@ reset = bool =>{
 
 		document.getElementById("Level").innerHTML = `LEVEL ${l}`;			
 	}
+
+    localStorage.level = Number(currentLevel);
 	changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 	displayBlocks();
 	displayTreasure(treasure);
@@ -62,6 +64,7 @@ start =()=>{
 				clearInterval(Time);
 				document.getElementById('start').innerHTML ="NEXT";
 				displayMessage("WON");
+				localStorage.level = Number(currentLevel)+1;
 				isOver = true;
 			}
 			if (!isOver || !isLost) {
