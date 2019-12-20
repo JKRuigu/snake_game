@@ -21,7 +21,7 @@ reset = bool =>{
 	changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
 	displayBlocks();
 	displayTreasure(treasure);
-	document.getElementById('start').innerHTML = "PAUSE";
+	document.getElementById('start').innerHTML = `PLAY`;
 	tLeft = gameLevels[currentLevel][0].timer;
 }
 
