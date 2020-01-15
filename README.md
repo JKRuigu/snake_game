@@ -1,5 +1,6 @@
 # SNAKE GAME
 This is a simple snake game made using `JavaScript` and `Canvas`.
+![Image](./Screenshot from 2019-12-28 06-02-19.png)
 
 ## Features
 * Simple Algorithm to play the game.***NOT THE BEST***
