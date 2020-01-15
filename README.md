@@ -22,3 +22,8 @@ This is a simple snake game made using `JavaScript` and `Canvas`.
 		 - Can avoid blocks
 * `A1 3` - Able to get the treasure ***Using Shortcut***
 		 - Can avoid blocks ***Using Shortcut***
+
+
+## Support  
+- **Buy Me a cup of coffee** [link](https://buymeacoff.ee/UOoP6At7H) 
+- **CHECK IT OUT** [link](https://lucid-murdock-531970.netlify.com/)
