@@ -1,5 +1,5 @@
 # SNAKE GAME
-![Image](./Screenshot from 2019-12-28 06-02-19.png)
+![Image](./'Screenshot from 2019-12-28 06-02-19.png')
 
 This is a simple snake game made using `JavaScript` and `Canvas`.
 
