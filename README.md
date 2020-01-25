@@ -26,4 +26,4 @@ This is a simple snake game made using `JavaScript` and `Canvas`.
 
 ## Support  
 - **Buy Me a cup of coffee** [link](https://buymeacoff.ee/UOoP6At7H) 
-- **CHECK IT OUT** [link](https://lucid-murdock-531970.netlify.com/)
+- **CHECK IT OUT** [link](https://eloquent-curran-9edf29.netlify.com/)
