@@ -1,13 +1,15 @@
 {
   "name": "snake-game",
-  "version": "1.0.0",
+  "version": "1.3.4",
   "description": "Simple snake game using javascript and canvas",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-win":"electron-packager . snake-game --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.HSTechnologies=CE --version-string.FileDescription=CE --version-string.ProductName=\"Snake Game\""
   },
   "devDependencies": {
-    "electron": "^8.2.5"
+    "electron": "^8.2.5",
+    "electron-packager": "^14.2.1"
   },
   "author": "JKRuigu",
   "license": "ISC"

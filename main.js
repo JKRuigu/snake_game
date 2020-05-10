@@ -4,7 +4,8 @@ const url = require('url');
 let win;
 
 function createWindow () {
-  win = new BrowserWindow({width: 850,height: 700});
+  win = new BrowserWindow({width: 750,height: 610,icon:__dirname+'/assets/icons/win/icon.ico'});
+  win.setMenuBarVisibility(false)
 
   // win.loadFile(url.format({
   //   pathname:path.join(__dirname,'index2.html'),
@@ -13,7 +14,7 @@ function createWindow () {
   // }));
   win.loadFile('./index.html');
   //devtools
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   win.on('closed',()=>{
     win = null;
