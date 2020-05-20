@@ -91,7 +91,7 @@ reset = (x,y,treasure,data,sizeX,sizeY)=>{
 }
 
 //Displays score;
-displayScore =(points)=>{
+displayScore =(points,moves)=>{
 	ctx.clearRect(30,0,450,40);
 	ctx.font= 'Bold 18px Sans-Serif';
 	// console.log(gameLevels[currentLevel][0].timer)
@@ -104,7 +104,7 @@ displayScore =(points)=>{
 		}
 		let temp = currentLevel+1;
 		var myLevel = currentLevel == 0 ?1:temp;
-		let txt = `Points: ${points} Target:${gameLevels[currentLevel][0].target*10}  Time left: ${tLeft} Level ${myLevel}`
+		let txt = `${points}/${gameLevels[currentLevel][0].target*10} ${tLeft} Level ${myLevel}                  Free Moves ${moves}`
 		ctx.strokeText(txt, 40, 30);//displays the game title;
 	// if (isPlay) {
 	// }else{

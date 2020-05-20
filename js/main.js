@@ -52,6 +52,7 @@ var imgY = 150;
 var img2X = 0;
 var img2Y = 0;
 var intial = false;
+var moves = 3;
 var blocks = [
 // {x: 60, y: 50},{x: 70, y: 50},{x: 80, y: 50},{x: 90, y: 50},{x: 100, y: 50},{x: 110, y: 50},{x: 120, y: 50},{x: 130, y: 50},{x: 140, y: 50},{x: 150, y: 50},{x: 160, y: 50},{x: 170, y: 50},{x: 180, y: 50},{x: 190, y: 50},{x: 200, y: 50},{x: 210, y: 50},{x: 220, y: 50},{x: 230, y: 50},{x: 240, y: 50},{x: 250, y: 50},{x: 260, y: 50},{x: 270, y: 50},{x: 280, y: 50},{x: 290, y: 50},{x: 300, y: 50},{x: 310, y: 50},{x: 320, y: 50},{x: 330, y: 50},{x: 340, y: 50},{x: 350, y: 50},{x: 360, y: 50},{x: 370, y: 50},{x: 380, y: 50},{x: 390, y: 50},{x: 400, y: 50},{x: 410, y: 50},{x: 420, y: 50},{x: 430, y: 50},
 // {x: 60, y: 430},{x: 70, y: 430},{x: 80, y: 430},{x: 90, y: 430},{x: 100, y: 430},{x: 110, y: 430},{x: 120, y: 430},{x: 130, y: 430},{x: 140, y: 430},{x: 150, y: 430},{x: 160, y: 430},{x: 170, y: 430},{x: 180, y: 430},{x: 190, y: 430},{x: 200, y: 430},{x: 210, y: 430},{x: 220, y: 430},{x: 230, y: 430},{x: 240, y: 430},{x: 250, y: 430},{x: 260, y: 430},{x: 270, y: 430},{x: 280, y: 430},{x: 290, y: 430},{x: 300, y: 430},{x: 310, y: 430},{x: 320, y: 430},{x: 330, y: 430},{x: 340, y: 430},{x: 350, y: 430},{x: 360, y: 430},{x: 370, y: 430},{x: 380, y: 430},{x: 390, y: 430},{x: 400, y: 430},{x: 410, y: 430},{x: 420, y: 430},{x: 430, y: 430}
@@ -317,9 +318,9 @@ createRandom = ()=>{
 ai = ()=>{
 	isAI = !isAI;
 	if (isAI) {
-		document.getElementById('ai').innerHTML ="AI";
+		// document.getElementById('ai').innerHTML ="AI";
 	}else{
-		document.getElementById('ai').innerHTML ="MANUAL";		
+		// document.getElementById('ai').innerHTML ="MANUAL";		
 	}
 }
 
@@ -329,10 +330,10 @@ addTime = ()=>{
 	if (!isPlaying) {
 		if (t>(speed/1000)) {
 			userTime = t*1000;
-			displayScore(points);
+			displayScore(points,moves);
 		}else{
 			userTime = t*1000;
-			displayScore(points);
+			displayScore(points,moves);
 		}
 	}
 }
@@ -350,17 +351,31 @@ selectLevel = value =>{
 	// console.log(speed);
 }
 
-gameLevel = ()=>{
+gameLevel= (num)=>{
 	if (!isPlaying && !isPlay) {
-		let cLevel = currentLevel+1;
-		currentLevel = currentLevel==tLevels?0:cLevel;
-		let l=currentLevel+1;
+		let cLevel = currentLevel+num;
+			let tempL = cLevel < 0 ?0:cLevel== tLevels?tLevels:cLevel
+		 // = currentLevel==tLevels?0:cLevel;
+		 if (cLevel >= 0 && cLevel < tLevels && cLevel < Number(localStorage.maxLevel)+1) {
+			let l=tempL+1;
+			currentLevel = tempL;
 
-		document.getElementById("Level").innerHTML = `LEVEL ${l}`;	
-		changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
-		displayBlocks();
-		treasure = createTreasure([]);
-		data = createSnake();	
+			document.getElementById("Level").innerHTML = `LEVEL ${l}`;	
+			changeBackground(gameLevels[currentLevel][0].background,data,sizeX,sizeY);
+			displayBlocks();
+			treasure = createTreasure([]);
+			data = createSnake();			 	
+		 }
+	}
+}
+useMove = ()=>{
+	if (moves != 0 && isPlaying && !isAI) {
+		moves =moves-1;
+		displayScore(points,moves);
+		ai();
+		if (moves == 0) {
+			document.getElementById("move").innerHTML = `No Move`;
+		}
 	}
 }
 

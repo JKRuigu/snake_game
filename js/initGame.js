@@ -1,6 +1,6 @@
 // CREATE THE SNAKE;
 createSnake =()=>{
-	displayScore(points);
+	displayScore(points,moves);
 	data= [{"x":createRandom(),"y":createRandom()}];
 	displaySnake(data[0].x,data[0].y,sizeX,sizeY,data);
 	return data;
@@ -16,8 +16,8 @@ img2.src = "./imgs/grass_15.png";
 
 var img3 = new Image();
 img3.src = "./imgs/tiles.png";
-document.getElementById('ai').innerHTML =isAI?"AI":"MANUAL";
-document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
+// document.getElementById('ai').innerHTML =isAI?"AI":"MANUAL";
+// document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
 
 
 
@@ -26,12 +26,11 @@ displayBackGround = ()=>{
     displayMessage('Snake Game by JKRuigu')
 	img2.onload=function() {
 	if( localStorage.level ){
-		let msg = Number(localStorage.level) == 0?'Welcome ':'Welcome again ';
     	if ( Number(localStorage.level) == 0) {
     		alert("Welcome, Enjoy the game.")
 	        actualDisplay();    		
     	}else{
-    		if (confirm(`${msg},Click Ok to continue,You are in level ${Number(localStorage.level)+1}.`)) {
+    		if (confirm(`Welcome again,Click Ok to continue,You are in level ${Number(localStorage.level)+1}.`)) {
 	            currentLevel = Number(localStorage.level);
 	            var l = currentLevel+1
 	            document.getElementById("Level").innerHTML = `LEVEL ${l}`;

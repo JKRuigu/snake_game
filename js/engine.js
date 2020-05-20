@@ -23,6 +23,10 @@ reset = bool =>{
 	displayTreasure(treasure);
 	document.getElementById('start').innerHTML = `PLAY`;
 	tLeft = gameLevels[currentLevel][0].timer;
+	console.log(data);
+	data= [{"x":createRandom(),"y":createRandom()}];
+	console.log(data);
+	displaySnake(data[0].x,data[0].y,sizeX,sizeY,data);
 }
 
 start =()=>{
@@ -50,7 +54,6 @@ start =()=>{
 			}
 
 			isOver = col(myTimer,currentMove,gameLevels[currentLevel][0].blocks,data);
-			// console.log(isPlay,isPlaying,isPaused,isLost,isOver,tLeft);
 
 			if(isOver || isLost){
 				clearInterval(Time);
@@ -65,11 +68,12 @@ start =()=>{
 				document.getElementById('start').innerHTML ="NEXT";
 				displayMessage("WON");
 				localStorage.level = Number(currentLevel)+1;
+				localStorage.maxLevel = Number(localStorage.level) > Number(localStorage.maxLevel)?Number(localStorage.level):Number(localStorage.maxLevel)
 				isOver = true;
 			}
 			if (!isOver || !isLost) {
 				interval++;			
-				displayScore(points);//Update time;				
+				displayScore(points,moves);//Update time;				
 			}
 
 			switch(currentMove){

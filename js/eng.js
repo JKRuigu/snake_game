@@ -83,7 +83,7 @@ startGame = ()=>{
 			clearInterval(myTimer);
 		}
 		interval++;
-		displayScore(points);//Update time;
+		displayScore(points,moves);//Update time;
 
 		switch(currentMove){
 			case 0:

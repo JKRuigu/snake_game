@@ -35,6 +35,7 @@ isTreaseureFound = ()=>{
 	if (data[0].x == treasure[0].x && data[0].y == treasure[0].y && treasure[0].isFound == false ) {
 		treasure[0].isFound = true;
 		used = false;
+		isAI = false;
 		setPending();
 	}
 }
@@ -58,7 +59,7 @@ getReward =()=>{
 
 		pending=false;
 		points +=10;
-		displayScore(points);
+		displayScore(points,moves);
 
 		treasure = createTreasure([]); //create treasure;
 		if (background ==0) {
