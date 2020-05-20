@@ -88,7 +88,6 @@ start =()=>{
 		if (isPaused) {
 			console.log("UNPAUSE");
 			isPaused = false;
-			document.getElementById('start').innerHTML ="PLAY";
 			isPlay =false;
 			start();
 			isPlaying = true;
@@ -97,7 +96,7 @@ start =()=>{
 			clearInterval(Time);
 			isPaused = true;
 			isPlaying = false;
-			document.getElementById('start').innerHTML ="PAUSE";
+			document.getElementById('start').innerHTML ="RESUME";
 		}
 	}	
 }
