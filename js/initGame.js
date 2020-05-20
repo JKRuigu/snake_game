@@ -16,26 +16,53 @@ img2.src = "./imgs/grass_15.png";
 
 var img3 = new Image();
 img3.src = "./imgs/tiles.png";
+document.getElementById('ai').innerHTML =isAI?"AI":"MANUAL";
+document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
 
 
 
 displayBackGround = ()=>{
+    actualDisplay();
+    displayMessage('Snake Game by JKRuigu')
 	img2.onload=function() {
 	if( localStorage.level ){
-    	if (confirm(`Welcome again,Click Ok to continue,You are in level ${Number(localStorage.level)+1}.`)) {
-            currentLevel = Number(localStorage.level);
-            var l = currentLevel+1
-            document.getElementById("Level").innerHTML = `LEVEL ${l}`;    		
+		let msg = Number(localStorage.level) == 0?'Welcome ':'Welcome again ';
+    	if ( Number(localStorage.level) == 0) {
+    		alert("Welcome, Enjoy the game.")
+	        actualDisplay();    		
     	}else{
-        	if (confirm("Are you sure you want restart ?")) {
-        		localStorage.level = Number(currentLevel);
-	        }else{
-	        	currentLevel = Number(localStorage.level);	
-	        }
+    		if (confirm(`${msg},Click Ok to continue,You are in level ${Number(localStorage.level)+1}.`)) {
+	            currentLevel = Number(localStorage.level);
+	            var l = currentLevel+1
+	            document.getElementById("Level").innerHTML = `LEVEL ${l}`;
+	            actualDisplay();    		
+	    	}else{
+	        	if (confirm("Are you sure you want restart ?")) {
+	        		localStorage.level = Number(currentLevel);
+		        }else{
+		        	currentLevel = Number(localStorage.level);	
+		        }
+		        actualDisplay();
+	    	}
     	}
     } 
     var btn = '<button>HELLO</button>';
+						//pos//size			
+	    	// ctx.drawImage(img, 1,2,3, 4,5,6, 7,8);
+	// BLOCK;
+	// ctx.drawImage(img, 100,580,100,400,50,50,10,20);
+	
+	console.log("IMG LOADED!");
+	if (data.length ==0) {
+		data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
+		x = data[0].x;
+		y = data[0].y;
+		treasure = createTreasure(treasure);
+	}
+	}
+}
 
+function actualDisplay() {
 	if (gameLevels[currentLevel].background == 1) {
 		let len = treasure.length;            
 		for (var i = m; i <=maxY; i+=sizeY) {
@@ -54,20 +81,11 @@ displayBackGround = ()=>{
 		}
 	}
 
-
-						//pos//size			
-	    	// ctx.drawImage(img, 1,2,3, 4,5,6, 7,8);
-	// BLOCK;
-	// ctx.drawImage(img, 100,580,100,400,50,50,10,20);
-	
-	console.log("IMG LOADED!");
-	if (data.length ==0) {
-		data = intializeGame(m,maxX,maxY,sizeX,sizeY,data,treasure);
-		x = data[0].x;
-		y = data[0].y;
-		treasure = createTreasure(treasure);
-	}
-	}
+	//clears unwanted walls;
+	ctx.clearRect(40,450,sizeX,sizeY);
+	ctx.clearRect(450,40,sizeX,sizeY);
+	ctx.clearRect(440,450,sizeX,sizeY);
+	ctx.clearRect(450,440,sizeX,sizeY);
 }
 
 img3.onload=function () {
@@ -78,16 +96,9 @@ img3.onload=function () {
 //INTIALIZE THE GAME;
 intializeGame = (m,maxX,maxY,sizeX,sizeY,data,treasure)=>{
 	
-	document.getElementById('ai').innerHTML =isAI?"AI":"MANUAL";
-	document.getElementById("typeAi").innerHTML = aiType == 0? "AI 0": aiType == 1?"AI 1": aiType == 2?"AI 2": "AI 3";
-
+	
 	console.log("Intialized the game!");
 	displayBlocks();
 	state = timer;	
-	//clears unwanted walls;
-	ctx.clearRect(40,450,sizeX,sizeY);
-	ctx.clearRect(450,40,sizeX,sizeY);
-	ctx.clearRect(440,450,sizeX,sizeY);
-	ctx.clearRect(450,440,sizeX,sizeY);
 	return createSnake();
 }

@@ -123,9 +123,18 @@ displayMessage = msg =>{
 	if(msg){
 		isLost = false;
 	}
-	ctx.clearRect(120,130,250,100);
-	ctx.font= `Bold 20px Sans-Serif`;
-	ctx.strokeText("GAME OVER !!!", 150, 160);//displays the game title;
-	ctx.font= `Bold 30px Sans-Serif`;
-	ctx.strokeText(`You ${msg}`, 150, 190);//displays the game title;
+	if (intial) {
+		ctx.clearRect(120,130,250,100);
+		ctx.font= `Bold 20px Sans-Serif`;
+		ctx.strokeText("GAME OVER !!!", 150, 160);//displays the game title;
+		ctx.font= `Bold 30px Sans-Serif`;
+		ctx.strokeText(`You ${msg}`, 150, 190);//displays the game title;
+	}else{
+		ctx.clearRect(120,130,250,100);
+		ctx.font= `Bold 20px Sans-Serif`;
+		ctx.strokeText("Snake Game", 150, 160);//displays the game title;
+		ctx.font= `Bold 15px Sans-Serif`;
+		ctx.strokeText(`Designed by JKRuigu`, 150, 190);//displays the game title;
+		intial = true
+	}
 }
