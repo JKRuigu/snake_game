@@ -86,7 +86,7 @@ var gameLevels = [
 		{x: 390, y: 80},{x: 400, y: 80},{x: 410, y: 80},{x: 420, y: 80}
 	],
 	"speed":200,
-	"target":10,
+	"target":8,
 	"timer":60000,
 	"background":0
 }],
@@ -99,7 +99,7 @@ var gameLevels = [
 		{x: 390, y: 400},{x: 400, y: 400},{x: 410, y: 400},{x: 420, y: 400}
 	],
 	"speed":200,
-	"target":15,
+	"target":13,
 	"timer":75000,
 	"background":0	
 }],

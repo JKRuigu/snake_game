@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build-win":"electron-packager . snake-game --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.HSTechnologies=CE --version-string.FileDescription=CE --version-string.ProductName=\"Snake Game\""
+    "build-win":"electron-packager . snake-game --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.HSTechnologies=CE --version-string.FileDescription=CE --version-string.ProductName=\"Snake Game\""
   },
   "devDependencies": {
     "electron": "^8.2.5",

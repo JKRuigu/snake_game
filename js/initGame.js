@@ -25,9 +25,11 @@ displayBackGround = ()=>{
     actualDisplay();
     displayMessage('Snake Game by JKRuigu')
 	img2.onload=function() {
+		localStorage.maxLevel = Number(localStorage.maxLevel) < Number(localStorage.level)?Number(localStorage.level):Number(localStorage.maxLevel) == NaN?0:Number(localStorage.maxLevel)
 	if( localStorage.level ){
     	if ( Number(localStorage.level) == 0) {
     		alert("Welcome, Enjoy the game.")
+    		localStorage.maxLevel = 0;
 	        actualDisplay();    		
     	}else{
     		if (confirm(`Welcome again,Click Ok to continue,You are in level ${Number(localStorage.level)+1}.`)) {
