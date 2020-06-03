@@ -24,18 +24,20 @@ function createWindow () {
   // }));
   mainWindow.loadFile('index.html');
   //devtools
-  win.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed',()=>{
     mainWindow = null;
-  })  
+  })
+
+  mainWindow.once('ready-to-show', () => {
+    autoUpdater.checkForUpdatesAndNotify();
+  });  
 }
 
 app.on('ready',createWindow);
 
-mainWindow.once('ready-to-show', () => {
-  autoUpdater.checkForUpdatesAndNotify();
-});
+
 
 //quit
 app.on('window-all-closed',() =>{
