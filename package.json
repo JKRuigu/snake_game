@@ -1,6 +1,6 @@
 {
   "name": "snake-game",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Simple snake game using javascript and canvas",
   "main": "main.js",
   "scripts": {
